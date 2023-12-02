@@ -1,7 +1,6 @@
 package com.itep.hust.aimsgroup;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import com.itep.hust.aimsgroup.util.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;

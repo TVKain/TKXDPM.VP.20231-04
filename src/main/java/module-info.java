@@ -3,7 +3,7 @@ module com.itep.hust.aimsgroup {
     requires javafx.fxml;
     requires java.sql;
 
-
     opens com.itep.hust.aimsgroup to javafx.fxml;
     exports com.itep.hust.aimsgroup;
+    exports com.itep.hust.aimsgroup.util;
 }
