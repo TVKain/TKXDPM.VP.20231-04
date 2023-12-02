@@ -1,11 +1,12 @@
-# Thiết kế và xây dựng phần mềm - HUST 
-# Dự án: AIMS 
+# TKXDPM.20231-01
 
+This is the source code for the AIMS project for the Software Design and Construction course
 
-Thành viên 
-| Mã số sinh viên| Họ tên | Lớp |
-|----------|----------|----------|
-| 20205207 | Đàm Ngọc Khánh | CNTT-VP 01-K65 |
-| 20205208 | Trần Vinh Khánh | CNTT-VP 01-K65 |
-| 20205209 | Lê Ngọc Đăng Khoa | CNTT-VP 01-K65 |
+## Member 
+| Student ID  | Name               | Role    |
+|:------------|:-------------------|:--------|
+| 20205207    | Đàm Ngọc Khánh     | Leader  |
+| 20205208    | Trần Vinh Khánh    | Member  |
+| 20205209    | Lê Ngọc Đăng Khoa  | Member  |
 
+## Report content 
