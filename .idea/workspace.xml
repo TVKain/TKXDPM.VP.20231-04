@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31a76c4-30e9-4d26-8f51-89e4c63f15b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/admin/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/AdminDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/view/AdminLoginViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database/query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/controller/AdminLoginControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/util/Popup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/util/Popup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/MediaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/database/SqliteDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/database/SqliteDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database/aims.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/aims.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,22 +60,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/test/java"
+    "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/main/resources/database"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\resources\database" />
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\resources\fxml" />
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\java\com\itep\hust\aimsgroup\controller" />
       <recent name="C:\Users\tvkai\Desktop\aims-group\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="JUnit.AdminLoginControllerTest.testLogin">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.Application" />
       <module name="aims-group" />
@@ -77,37 +93,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ScreenTest$ScreenTestApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.util.ScreenTest$ScreenTestApp" />
+    <configuration name="AdminDaoTest.getTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aims-group" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.itep.hust.aimsgroup.util.*" />
+          <option name="PATTERN" value="com.itep.hust.aimsgroup.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.itep.hust.aimsgroup.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.dao.AdminDaoTest" />
+      <option name="METHOD_NAME" value="getTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ScreenTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.util.ScreenTest" />
+    <configuration name="AdminLoginControllerTest.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aims-group" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.itep.hust.aimsgroup.util.*" />
+          <option name="PATTERN" value="com.itep.hust.aimsgroup.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.itep.hust.aimsgroup.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.controller.AdminLoginControllerTest" />
+      <option name="METHOD_NAME" value="testLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aims-group" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itep.hust.aimsgroup.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itep.hust.aimsgroup.view" />
+      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.view.AdminViewTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminViewTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aims-group" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itep.hust.aimsgroup.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itep.hust.aimsgroup.view" />
+      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.view.AdminViewTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdminLoginControllerTest.testLogin" />
+        <item itemvalue="JUnit.AdminDaoTest.getTest" />
         <item itemvalue="Application.Application" />
-        <item itemvalue="Application.ScreenTest" />
-        <item itemvalue="Application.ScreenTest$ScreenTestApp" />
+        <item itemvalue="JUnit.AdminViewTest.test" />
+        <item itemvalue="JUnit.AdminViewTest" />
       </list>
     </recent_temporary>
   </component>

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class SqliteDatabase {
     private static Connection connection;
     private static final String SQLITE_URL = String.format("jdbc:sqlite:%s",
-            SqliteDatabase.class.getResource("/com/hust/aims/database/aims.sqlite"));
+            SqliteDatabase.class.getResource("/database/aims.sqlite"));
     private SqliteDatabase() {
     }
 

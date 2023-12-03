@@ -7,9 +7,9 @@ import java.util.List;
  * @param <T>
  */
 public interface Dao<T> {
-    public List<T> getAll();
-    public T get(T t);
-    public T insert(T t);
-    public T update(T t);
-    public T delete(T t);
+    List<T> getAll();
+    T get(Integer id);
+    T insert(T t);
+    T update(T t);
+    T delete(T t);
 }

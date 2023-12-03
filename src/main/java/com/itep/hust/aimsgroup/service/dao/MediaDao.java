@@ -8,14 +8,14 @@ import java.util.List;
  * SqliteMediaDao class implements Dao interface uses sqlite database
  * @author TVKain
  */
-public class SqliteMediaDao implements Dao<Media> {
+public class MediaDao implements Dao<Media> {
     @Override
     public List<Media> getAll() {
         return null;
     }
 
     @Override
-    public Media get(Media media) {
+    public Media get(Integer id) {
         return null;
     }
 
