@@ -2,6 +2,7 @@ package com.itep.hust.aimsgroup;
 
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.AdminLoginViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -11,8 +12,6 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("Hello!");
         stage.show();
-
-        Popup.showSuccess("Success");
     }
 
     public static void main(String[] args) {
