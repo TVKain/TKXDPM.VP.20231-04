@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface Dao<T> {
     public List<T> getAll();
-    public T get(T t);
+    public T get(Integer id);
     public T insert(T t);
     public T update(T t);
     public T delete(T t);

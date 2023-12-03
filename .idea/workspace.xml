@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31a76c4-30e9-4d26-8f51-89e4c63f15b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/null" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/admin/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/AdminDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/view/AdminLoginViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database/query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/image/icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/controller/AdminLoginControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/util/Popup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/util/Popup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/database/SqliteDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/database/SqliteDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database/aims.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/aims.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,7 +64,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/admin-login",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/test/java"
   }
@@ -60,7 +74,11 @@
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tvkai\Desktop\aims-group\src\main\resources" />
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\java\com\itep\hust\aimsgroup\view" />
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java\com\itep\hust\aimsgroup\controller" />
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\java\com\itep\hust\aimsgroup\controller" />
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java\com\itep\hust\aimsgroup\dao" />
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\java\com\itep\hust\aimsgroup\model" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Application">

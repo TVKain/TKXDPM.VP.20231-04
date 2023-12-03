@@ -15,7 +15,7 @@ public class SqliteMediaDao implements Dao<Media> {
     }
 
     @Override
-    public Media get(Media media) {
+    public Media get(Integer id) {
         return null;
     }
 
