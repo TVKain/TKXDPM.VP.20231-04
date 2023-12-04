@@ -70,7 +70,6 @@ public class Cart {
         return size;
     }
 
-    // TODO change the if with the getSupportedMedia
     /**
      * Get the list of medias that support rush order in the cart
      * @return          the supported medias
@@ -79,7 +78,7 @@ public class Cart {
         Map<Media, Integer> supportMedias = new HashMap<>();
 
         for (Map.Entry<Media, Integer> entry : medias.entrySet()) {
-            if (true) {
+            if (entry.getKey().isRushDelivery()) {
                 supportMedias.put(entry.getKey(), entry.getValue());
             }
         }
@@ -100,21 +99,20 @@ public class Cart {
         return total;
     }
 
-    // TODO change the if
+
     /**
      * Check if the medias in cart has enough in stock to support for the quantity in cart
      * @return          true if enough, false otherwise
      */
     public boolean hasEnoughStock() {
         for (Map.Entry<Media, Integer> entry : medias.entrySet()) {
-            if (entry.getValue() > 0) {
+            if (entry.getValue() > entry.getKey().getQuantity()) {
                 return false;
             }
         }
         return true;
     }
 
-    // TODO uncomment the weight line
     /**
      * Return the heaviest media in cart
      * @return          The heaviest entry in the cart
@@ -124,8 +122,8 @@ public class Cart {
 
         Map.Entry<Media, Integer> heaviestMedia = null;
         for (Map.Entry<Media, Integer> entry : medias.entrySet()) {
-            // double weight = entry.getKey().getWeight() * entry.getValue();
-            double weight = 0.;
+            double weight = entry.getKey().getWeight() * entry.getValue();
+
             if (weight > heaviest) {
                 weight = heaviest;
                 heaviestMedia = entry;
