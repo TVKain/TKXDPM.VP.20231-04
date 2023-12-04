@@ -27,8 +27,9 @@ This is the source code for the AIMS project for the Software Design and Constru
 - Implementation details:
     - Pull Request(s):[#6](https://github.com/TVKain/TKXDPM.VP.20231/pull/6) [#9](https://github.com/TVKain/TKXDPM.VP.20231/pull/9) [#10](https://github.com/TVKain/TKXDPM.VP.20231/pull/10)
     - Specific implementation details:
-        - Describe specific in detail what you did last week
-        - You can attach images if you want
+        - Cài đặt lớp Media
+        - Cài đặt giao diện cho SqliteMediaDao
+        - Cài đặt HomeViewHandler.java và MediaHomeViewHandler.java để có thể show giao diện
 
 </details>
 
