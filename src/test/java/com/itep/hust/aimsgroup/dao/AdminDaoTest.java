@@ -14,5 +14,6 @@ public class AdminDaoTest {
 
         assertEquals("khanhtv", admin.getUsername());
         assertEquals("1", admin.getPassword());
+
     }
 }

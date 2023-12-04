@@ -108,5 +108,4 @@ public class Media {
         return Objects.hash(id);
     }
 
-
 }
