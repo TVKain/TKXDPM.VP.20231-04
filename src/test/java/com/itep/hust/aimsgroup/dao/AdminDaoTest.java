@@ -10,7 +10,7 @@ public class AdminDaoTest {
     public void getTest() {
         AdminDao adminDao = new AdminDao();
 
-        Admin admin = adminDao.getByUsername("khanhtv");
+        Admin admin = adminDao.get("khanhtv");
 
         assertEquals("khanhtv", admin.getUsername());
         assertEquals("1", admin.getPassword());

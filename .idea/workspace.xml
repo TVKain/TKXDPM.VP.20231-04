@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31a76c4-30e9-4d26-8f51-89e4c63f15b6" name="Changes" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" afterDir="false" />
@@ -16,6 +17,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" afterDir="false" />
+>>>>>>> 19b6156ec3781520ad9c17043d4c07000d573be1
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +65,24 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/cart",
     "ignore.virus.scanning.warn.message": "true",
+<<<<<<< HEAD
     "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/main/resources/image",
+=======
+    "last_opened_file_path": "C:/Users/DELL/Desktop/TKXDPM.VP.20231/src/main/resources/database",
+>>>>>>> 19b6156ec3781520ad9c17043d4c07000d573be1
     "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\resources\image" />
+=======
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\database" />
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\image" />
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources" />
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\fxml\home" />
+>>>>>>> 19b6156ec3781520ad9c17043d4c07000d573be1
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -80,7 +96,7 @@
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.Application" />
-      <module name="aims-group" />
+      <module name="TKXDPM.VP.20231" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.itep.hust.aimsgroup.*" />
@@ -117,9 +133,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MediaDaoTest.testGetAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TKXDPM.VP.20231" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itep.hust.aimsgroup.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itep.hust.aimsgroup.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.dao.MediaDaoTest" />
+      <option name="METHOD_NAME" value="testGetAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.MediaDaoTest.testGetAll" />
         <item itemvalue="Application.ScreenTest" />
         <item itemvalue="Application.ScreenTest$ScreenTestApp" />
       </list>
