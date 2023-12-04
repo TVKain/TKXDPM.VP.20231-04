@@ -1,7 +1,14 @@
 package com.itep.hust.aimsgroup.service.dao;
 
+import com.itep.hust.aimsgroup.model.admin.Admin;
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +18,20 @@ import java.util.List;
 public class SqliteMediaDao implements Dao<Media, Integer> {
     @Override
     public List<Media> getAll() {
-        return null;
+        List<Media> listMedia = new ArrayList<>();
+        String query = "select * from media";
+        Connection connection = SqliteDatabase.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                listMedia.add(new Media(rs.getInt("id"), rs.getString("title"), (int) rs.getDouble("price") * 1000,
+                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listMedia;
     }
 
     @Override

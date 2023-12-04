@@ -5,13 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31a76c4-30e9-4d26-8f51-89e4c63f15b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/view/MediaHomeViewHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/home/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/home/media_home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/Logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/book/book9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cd/cd9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/image/dvd/dvd9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/MediaDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/AdminDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/media/Media.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/media/Media.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/view/HomeViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/view/HomeViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database/aims.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/aims.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +99,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/test/java",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+    "last_opened_file_path": "C:/Users/DELL/Desktop/TKXDPM.VP.20231/src/main/resources/database",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\database" />
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\image" />
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources" />
+      <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\fxml\home" />
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -74,7 +122,7 @@
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.Application" />
-      <module name="aims-group" />
+      <module name="TKXDPM.VP.20231" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.itep.hust.aimsgroup.*" />
@@ -111,9 +159,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MediaDaoTest.testGetAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TKXDPM.VP.20231" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.itep.hust.aimsgroup.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.itep.hust.aimsgroup.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.dao.MediaDaoTest" />
+      <option name="METHOD_NAME" value="testGetAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.MediaDaoTest.testGetAll" />
         <item itemvalue="Application.ScreenTest" />
         <item itemvalue="Application.ScreenTest$ScreenTestApp" />
       </list>
