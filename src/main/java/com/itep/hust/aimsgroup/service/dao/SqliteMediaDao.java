@@ -16,6 +16,12 @@ import java.util.List;
  * @author TVKain
  */
 public class SqliteMediaDao implements Dao<Media, Integer> {
+
+    /**
+     * Get all media from db
+     * @return list media
+     * @author KhanhND
+     */
     @Override
     public List<Media> getAll() {
         List<Media> listMedia = new ArrayList<>();
