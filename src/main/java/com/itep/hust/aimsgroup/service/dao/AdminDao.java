@@ -9,25 +9,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AdminDao implements Dao<Admin> {
+public class AdminDao implements Dao<Admin, String> {
     @Override
     public List<Admin> getAll() {
         return null;
     }
 
     @Override
-    public Admin get(Integer id) {
-        return null;
-    }
-
-    public Admin getByUsername(String username) {
+    public Admin get(String id) {
         String query = "SELECT * FROM Admin WHERE username=?";
 
         Connection connection = SqliteDatabase.getConnection();
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

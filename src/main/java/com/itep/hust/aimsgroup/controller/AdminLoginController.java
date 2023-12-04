@@ -11,7 +11,7 @@ public class AdminLoginController {
 
         AdminDao adminDao = new AdminDao();
 
-        Admin adminDb = adminDao.getByUsername(username);
+        Admin adminDb = adminDao.get(username);
 
         if (adminDb == null) {
             return false;
