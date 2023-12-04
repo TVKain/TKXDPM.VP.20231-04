@@ -37,6 +37,13 @@ public class MediaHomeViewHandler {
 
     private Media media;
 
+    /**
+     * Vi phạm stamp coupling vì khi truyền media để hiển thị được lên giao diện home, ta chỉ cần truyền 4 trường
+     * title, urlImage, price, và quantity nhưng ta vẫn truyền cả Media. nhưng truyền cả Media sẽ giúp chúng ta thuận tiện
+     * khi truyền media qua các màn hình, và tiện khi xem chi tiết 1 sản phẩm khi người dùng muốn xem chi tiết
+     * @param media
+     */
+
     public MediaHomeViewHandler(Media media) {
         this.media = media;
     }
