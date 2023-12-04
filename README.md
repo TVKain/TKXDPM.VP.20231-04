@@ -19,12 +19,13 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Task 1
-    - Task 2
-    - ...
+    - Bổ sung class Media
+    - Cài đặt MediaDao để lấy data
+    - Tạo file FXML và hiển thị các media lên home
+    - Phân tích coupling liên quan đến task đã làm
 
 - Implementation details:
-    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+    - Pull Request(s):[#6](https://github.com/TVKain/TKXDPM.VP.20231/pull/6) [#9](https://github.com/TVKain/TKXDPM.VP.20231/pull/9) [#10](https://github.com/TVKain/TKXDPM.VP.20231/pull/10)
     - Specific implementation details:
         - Describe specific in detail what you did last week
         - You can attach images if you want
