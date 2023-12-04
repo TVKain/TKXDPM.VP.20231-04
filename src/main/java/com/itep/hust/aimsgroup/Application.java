@@ -2,6 +2,7 @@ package com.itep.hust.aimsgroup;
 
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.AdminLoginViewHandler;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;

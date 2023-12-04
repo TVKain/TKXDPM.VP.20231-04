@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31a76c4-30e9-4d26-8f51-89e4c63f15b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/cart/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/media/Media.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/media/Media.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,16 +55,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/cart",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/test/java",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+    "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/main/resources/image",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\resources\image" />
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -129,5 +135,9 @@
       <updated>1700848875203</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

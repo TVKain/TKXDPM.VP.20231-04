@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS Admin (
     username VARCHAR(32) PRIMARY KEY,
     password VARCHAR(32) NOT NULL

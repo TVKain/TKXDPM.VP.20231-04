@@ -1,5 +1,7 @@
 package com.itep.hust.aimsgroup.service.dao;
 
+import com.itep.hust.aimsgroup.model.media.Media;
+
 import java.util.List;
 
 /**

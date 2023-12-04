@@ -2,6 +2,7 @@ package com.itep.hust.aimsgroup.controller;
 
 import com.itep.hust.aimsgroup.model.admin.Admin;
 import com.itep.hust.aimsgroup.service.dao.AdminDao;
+import com.itep.hust.aimsgroup.service.dao.Dao;
 
 
 public class AdminLoginController {
@@ -9,7 +10,7 @@ public class AdminLoginController {
         String username = admin.getUsername();
         String password = admin.getPassword();
 
-        AdminDao adminDao = new AdminDao();
+        Dao<Admin, String> adminDao = new AdminDao();
 
         Admin adminDb = adminDao.get(username);
 
