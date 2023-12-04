@@ -15,6 +15,7 @@ public class Application extends javafx.application.Application {
         Screen.setMainStage(stage);
         Screen.setScreen("/fxml/home/home.fxml", new HomeViewHandler());
 
+        stage.setResizable(false);
         stage.setTitle("Hello!");
         stage.show();
     }

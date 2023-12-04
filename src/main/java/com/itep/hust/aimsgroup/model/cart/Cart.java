@@ -8,6 +8,12 @@ import javafx.collections.ObservableMap;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/*
+ * This class violates common coupling
+ * The whole application uses one single global instance of the Cart class
+ */
+
 /**
  * Cart class represents the shopping cart for the application
  * This class is implemented using the Singleton pattern

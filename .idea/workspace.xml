@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b31a76c4-30e9-4d26-8f51-89e4c63f15b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="769b2ffb-d81e-43ba-bff6-1824388276cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/controller/AdminLoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/cart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/media/Media.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/model/media/Media.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database/query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/query.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/login-admin/login-admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/itep/hust/aimsgroup/dao/AdminDaoTest.java" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/itep/hust/aimsgroup/service/dao/SqliteMediaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/home/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/home/home.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,29 +48,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/cart",
-    "ignore.virus.scanning.warn.message": "true",
-<<<<<<< HEAD
-    "last_opened_file_path": "C:/Users/tvkai/Desktop/TKXDPM.VP.20231/src/main/resources/image",
-=======
-    "last_opened_file_path": "C:/Users/DELL/Desktop/TKXDPM.VP.20231/src/main/resources/database",
->>>>>>> 19b6156ec3781520ad9c17043d4c07000d573be1
-    "settings.editor.selected.configurable": "preferences.JavaFX"
+    "git-widget-placeholder": "feature/cart"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-<<<<<<< HEAD
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\main\resources\image" />
-=======
       <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\database" />
       <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\image" />
       <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources" />
       <recent name="C:\Users\DELL\Desktop\TKXDPM.VP.20231\src\main\resources\fxml\home" />
->>>>>>> 19b6156ec3781520ad9c17043d4c07000d573be1
       <recent name="C:\Users\tvkai\Desktop\TKXDPM.VP.20231\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -93,8 +70,10 @@
   </component>
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.itep.hust.aimsgroup.Application" />
-      <module name="TKXDPM.VP.20231" />
+      <module name="aims-group" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.itep.hust.aimsgroup.*" />
