@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableMap;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -122,6 +123,15 @@ public class Cart {
      */
     public boolean isInCart(Media media) {
         return medias.containsKey(media);
+    }
+
+    /**
+     * Return an unmodifiable view of the inner map media -> quantity
+     * The map is unmodifiable to preserve encapsulation
+     * @return          the unmodifiable view of the inner map
+     */
+    public Map<Media, Integer> getMedias() {
+        return Collections.unmodifiableMap(medias);
     }
 
     /**
