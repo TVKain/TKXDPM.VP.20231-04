@@ -20,16 +20,19 @@ import java.util.Map;
 public class CartViewHandler {
 
     @FXML
+    private Label VAT;
+
+    @FXML
+    private ImageView aimsImage;
+
+    @FXML
+    private Label amount;
+
+    @FXML
     private Button btnPlaceOrder;
 
     @FXML
-    private Label labelAmount;
-
-    @FXML
     private Label labelSubtotal;
-
-    @FXML
-    private Label labelVAT;
 
     @FXML
     private AnchorPane mainAnchorPane;
@@ -42,7 +45,6 @@ public class CartViewHandler {
 
     @FXML
     private VBox vboxCart;
-
 
     public CartViewHandler() {
     }
@@ -62,6 +64,10 @@ public class CartViewHandler {
             }
             vboxCart.getChildren().add(loader.getRoot());
         }) ;
+
+        int subTotal = Cart.getInstance().getTotalPrice();
+        subtotal.setText(String.valueOf(subTotal));
+        amount.setText(String.valueOf(subTotal * 1.1));
     }
 
     @FXML
