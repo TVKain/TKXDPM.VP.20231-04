@@ -3,6 +3,7 @@ package com.itep.hust.aimsgroup.view;
 import com.itep.hust.aimsgroup.controller.HomeController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.service.dao.SqliteMediaDao;
+import com.itep.hust.aimsgroup.util.Screen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -125,5 +127,10 @@ public class HomeViewHandler {
             }
             i++;
         }
+    }
+
+    @FXML
+    void viewCart(MouseEvent event) {
+        Screen.setScreen("/fxml/cart/cart.fxml", new CartViewHandler());
     }
 }
