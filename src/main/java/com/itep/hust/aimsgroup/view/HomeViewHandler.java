@@ -64,6 +64,10 @@ public class HomeViewHandler {
     public HomeViewHandler() {
     }
 
+    /**
+     * Hàm này khởi tạo các giá trị và lấy ra thông tin của media từ database thông qua DAO và hiển thị lên giao diện
+     * @author: KhanhND
+     */
     @FXML
     public void initialize() {
         // Sửa List thành ObservableList để lắng nghe thay đổi
@@ -94,6 +98,7 @@ public class HomeViewHandler {
         Cart.getInstance().addChangeListener(e -> {
             updateNumberOfMedia();
         });
+        numMediaInCart.setText(Cart.getInstance().getSize() + " media");
         splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
