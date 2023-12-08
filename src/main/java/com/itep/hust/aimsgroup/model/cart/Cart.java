@@ -100,8 +100,7 @@ public class Cart {
     public Integer getTotalPrice() {
         int total = 0;
         for (Map.Entry<Media, Integer> entry : medias.entrySet()) {
-            // total += entry.getKey().getPrice() * entry.getValue();
-            total += entry.getValue();
+            total += entry.getKey().getPrice() * entry.getValue();
         }
         return total;
     }
@@ -159,7 +158,7 @@ public class Cart {
             double weight = entry.getKey().getWeight() * entry.getValue();
 
             if (weight > heaviest) {
-                weight = heaviest;
+                heaviest = weight;
                 heaviestMedia = entry;
             }
         }
