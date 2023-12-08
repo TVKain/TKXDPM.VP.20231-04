@@ -1,6 +1,7 @@
 package com.itep.hust.aimsgroup.view;
 
 import com.itep.hust.aimsgroup.controller.HomeController;
+import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.service.dao.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Screen;
@@ -89,6 +90,10 @@ public class HomeViewHandler {
             }
             i++;
         }
+
+        Cart.getInstance().addChangeListener(e -> {
+            updateNumberOfMedia();
+        });
         splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -104,6 +109,10 @@ public class HomeViewHandler {
                 }
             }
         });
+    }
+
+    private void updateNumberOfMedia() {
+        numMediaInCart.setText(Cart.getInstance().getSize() + " media");
     }
 
     @FXML
