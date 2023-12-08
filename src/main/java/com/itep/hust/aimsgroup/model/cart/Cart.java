@@ -21,7 +21,7 @@ import java.util.Map;
  * @author tvkain
  */
 public class Cart {
-    private final Cart cart = new Cart();
+    private final static Cart cart = new Cart();
     private final ObservableMap<Media, Integer> medias = FXCollections.observableHashMap();
 
     /**
@@ -29,7 +29,7 @@ public class Cart {
      * @return              the global cart object
      * @author tvkain
      */
-    public Cart getInstance() {
+    public static Cart getInstance() {
         return cart;
     }
 
