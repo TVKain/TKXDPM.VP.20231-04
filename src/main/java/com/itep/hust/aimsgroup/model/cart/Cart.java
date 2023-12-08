@@ -105,6 +105,24 @@ public class Cart {
         return total;
     }
 
+    /**
+     * Get the quantity of the specified media in the cart
+     * Return null if the media is not in the cart
+     * @param media     the media
+     * @return          the quantity of the specified media
+     */
+    public Integer getQuantity(Media media) {
+        return medias.get(media);
+    }
+
+    /**
+     * Check if the media is in cart
+     * @param media     the media
+     * @return          true or false
+     */
+    public boolean isInCart(Media media) {
+        return medias.containsKey(media);
+    }
 
     /**
      * Check if the medias in cart has enough in stock to support for the quantity in cart
