@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view;
 
+import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,7 +69,7 @@ public class MediaHomeViewHandler {
 
     @FXML
     void handleAddToCart(ActionEvent event) {
-
+        Cart.getInstance().add(media, spinnerChangeNumber.getValue());
     }
 
 }
