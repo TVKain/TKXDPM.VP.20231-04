@@ -76,7 +76,6 @@ public class CartMediaViewHandler {
                     Cart.getInstance().add(media, newValue);
                     price.setText(String.valueOf(media.getPrice() * medias.get(media)));
                 }
-
             }
         });
 
