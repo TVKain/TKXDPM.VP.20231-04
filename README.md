@@ -59,15 +59,12 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Task 1
-    - Task 2
-    - ...
+    - Implement search by title
 
 - Implementation details:
-    - Pull Request(s): [Attach links to your pull requests here. You can attach multiple pull requests]()
+    - Pull Request(s): [23](https://github.com/TVKain/TKXDPM.VP.20231/pull/23)
     - Specific implementation details:
-        - Describe specific in detail what you did last week
-        - You can attach images if you want
+        - Implement search by title
 
 </details>
 
