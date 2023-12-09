@@ -73,6 +73,7 @@ public class HomeViewHandler {
         // Sửa List thành ObservableList để lắng nghe thay đổi
         ObservableList<Media> lstMedia = FXCollections.observableArrayList();
         lstMedia.addAll(new SqliteMediaDao().getAll());
+        // List filtered lưu danh sách kết quả khớp với tìm kiếm
         ObservableList<Media> filtered = FXCollections.observableArrayList();
         // Tạo danh sách VBox để lưu trữ các cột
         List<VBox> vboxColumns = new ArrayList<>();
@@ -102,20 +103,26 @@ public class HomeViewHandler {
         splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                // kiểm tra xem searchbox có trống không
                 if (!searchBox.getText().isEmpty()){
+                    // xóa toàn bộ list filtered
                     filtered.clear();
                     int i = 0;
                     while (i< lstMedia.size()){
+                        // tìm kiếm dựa theo tên sản phẩm
                         if ( lstMedia.get(i).getTitle().contains(searchBox.getCharacters())){
                             System.out.println(lstMedia.get(i).getTitle());
+                            // thêm sản phẩm trùng khớp vào list filtered
                             filtered.add(lstMedia.get(i));
                         }
                         i++;
                     }
+                    // thay danh sách toàn bộ sản phẩm bằng danh sách đã được lọc
                     refresh(filtered,vboxColumns);
                 }
                 else
                 {
+                    // nếu searchbox trống thì quay về danh sách ban đầu
                     refresh(lstMedia,vboxColumns);
                 }
             }
@@ -129,6 +136,7 @@ public class HomeViewHandler {
     @FXML
     public void refresh(ObservableList<Media> lstMedia, List<VBox> vboxColumns  ){
         int i = 0;
+        //xóa toàn bộ item khỏi các cột
         vboxColumns.get(0).getChildren().clear();
         vboxColumns.get(1).getChildren().clear();
         vboxColumns.get(2).getChildren().clear();
