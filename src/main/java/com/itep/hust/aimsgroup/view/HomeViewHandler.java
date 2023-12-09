@@ -73,7 +73,7 @@ public class HomeViewHandler {
         // Sửa List thành ObservableList để lắng nghe thay đổi
         ObservableList<Media> lstMedia = FXCollections.observableArrayList();
         lstMedia.addAll(new SqliteMediaDao().getAll());
-
+        ObservableList<Media> filtered = FXCollections.observableArrayList();
         // Tạo danh sách VBox để lưu trữ các cột
         List<VBox> vboxColumns = new ArrayList<>();
         vboxColumns.add(vboxMedia1);
@@ -102,15 +102,21 @@ public class HomeViewHandler {
         splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (searchBox.getText() != null){
+                if (!searchBox.getText().isEmpty()){
+                    filtered.clear();
                     int i = 0;
                     while (i< lstMedia.size()){
-                        if ( !lstMedia.get(i).getTitle().contains(searchBox.getCharacters())){
+                        if ( lstMedia.get(i).getTitle().contains(searchBox.getCharacters())){
                             System.out.println(lstMedia.get(i).getTitle());
-                            lstMedia.remove(lstMedia.get(i));
+                            filtered.add(lstMedia.get(i));
                         }
                         i++;
                     }
+                    refresh(filtered,vboxColumns);
+                }
+                else
+                {
+                    refresh(lstMedia,vboxColumns);
                 }
             }
         });
@@ -121,13 +127,12 @@ public class HomeViewHandler {
     }
 
     @FXML
-    public void handleSearch(){
-
-    }
-
-    @FXML
     public void refresh(ObservableList<Media> lstMedia, List<VBox> vboxColumns  ){
         int i = 0;
+        vboxColumns.get(0).getChildren().clear();
+        vboxColumns.get(1).getChildren().clear();
+        vboxColumns.get(2).getChildren().clear();
+        vboxColumns.get(3).getChildren().clear();
         while (i < lstMedia.size()) {
             try {
                 VBox vboxColumn = vboxColumns.get(i%4);
