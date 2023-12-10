@@ -79,17 +79,16 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Bổ sung class Media
-    - Cài đặt MediaDao để lấy data
-    - Tạo file FXML và hiển thị các media lên home
-    - Phân tích coupling liên quan đến task đã làm
+    - Sửa đổi lớp Media
+    - Cài đặt thực thi khi click nút đặt hàng và add to cart
+    - Phân tích cohesion dao
 
 - Implementation details:
-    - Pull Request(s):[#6](https://github.com/TVKain/TKXDPM.VP.20231/pull/6) [#9](https://github.com/TVKain/TKXDPM.VP.20231/pull/9) [#10](https://github.com/TVKain/TKXDPM.VP.20231/pull/10)
+    - Pull Request(s):[#26](https://github.com/TVKain/TKXDPM.VP.20231/pull/26) [#28](https://github.com/TVKain/TKXDPM.VP.20231/pull/28) [#18](https://github.com/TVKain/TKXDPM.VP.20231/pull/18) [#19](https://github.com/TVKain/TKXDPM.VP.20231/pull/19) [#20](https://github.com/TVKain/TKXDPM.VP.20231/pull/20) [#21](https://github.com/TVKain/TKXDPM.VP.20231/pull/21)
     - Specific implementation details:
-        - Cài đặt lớp Media
-        - Cài đặt giao diện cho SqliteMediaDao
-        - Cài đặt HomeViewHandler.java và MediaHomeViewHandler.java để có thể show giao diện
+        - Sửa đổi kiểu dữ liệu Media và các lớp liên quan
+        - Cài đặt chức năng đặt hàng và thêm màn hình giỏ hàng
+        - Tạo file FXML và hiển thị các media lên màn hình giỏ hàng
 
 </details>
 
