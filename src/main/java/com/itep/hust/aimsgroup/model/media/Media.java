@@ -6,15 +6,15 @@ public class Media {
     protected int id;
     protected String title;
     protected String category;
-    protected double value;
-    protected double price;
+    protected int value;
+    protected int price;
     protected int quantity;
     protected double weight;
     protected String imageURL;
     protected boolean rushDelivery;
 
     //Constructor
-    public Media(int id, String title, double price, int quantity, double weight, String imageURL ) {
+    public Media(int id, String title, int price, int quantity, double weight, String imageURL ) {
         this.id = id;
         this.title = title;
         this.price = price;
@@ -47,19 +47,19 @@ public class Media {
         this.category = category;
     }
 
-    public double getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
