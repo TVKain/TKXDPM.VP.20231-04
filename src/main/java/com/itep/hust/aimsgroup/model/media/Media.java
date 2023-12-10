@@ -2,6 +2,7 @@ package com.itep.hust.aimsgroup.model.media;
 
 import java.util.Objects;
 
+
 public class Media {
     protected int id;
     protected String title;
