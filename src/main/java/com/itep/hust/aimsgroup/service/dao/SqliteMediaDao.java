@@ -31,7 +31,7 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                listMedia.add(new Media(rs.getInt("id"), rs.getString("title"), (int) rs.getDouble("price") * 1000,
+                listMedia.add(new Media(rs.getInt("id"), rs.getString("title"), (int) rs.getInt("price") * 1000,
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL")));
             }
         } catch (SQLException e) {
