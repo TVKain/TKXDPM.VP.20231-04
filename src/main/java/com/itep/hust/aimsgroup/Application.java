@@ -7,6 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * Analyze cohesion
+ * Temporal cohesion
+ * Initialize Screen and Initialize stage in the same subcomponent
+ */
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {

@@ -15,6 +15,12 @@ import java.util.Map;
  * The whole application uses one single global instance of the Cart class
  */
 
+/*
+ * Analyze cohesion
+ * Functional cohesion
+ * All subcomponents of this component serves one purpose of working with the cart
+ */
+
 /**
  * Cart class represents the shopping cart for the application
  * This class is implemented using the Singleton pattern
