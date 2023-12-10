@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
@@ -63,13 +64,15 @@ public class HomeViewHandler {
 
     public HomeViewHandler() {
     }
-
+    private int currentList = 0;
     /**
      * Hàm này khởi tạo các giá trị và lấy ra thông tin của media từ database thông qua DAO và hiển thị lên giao diện
      * @author: KhanhND
      */
     @FXML
     public void initialize() {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+
         // Sửa List thành ObservableList để lắng nghe thay đổi
         ObservableList<Media> lstMedia = FXCollections.observableArrayList();
         lstMedia.addAll(new SqliteMediaDao().getAll());
@@ -100,6 +103,14 @@ public class HomeViewHandler {
             updateNumberOfMedia();
         });
         numMediaInCart.setText(Cart.getInstance().getSize() + " media");
+
+        // Nếu searchbox trống và danh sách đang được hiển thị là Filtered thì chuyển về danh sách ban đầu
+        searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            if ((newValue.isEmpty()) && (currentList==1)) {
+                refresh(lstMedia, vboxColumns);
+                currentList=0;
+            }
+        });
         splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -111,19 +122,21 @@ public class HomeViewHandler {
                     while (i< lstMedia.size()){
                         // tìm kiếm dựa theo tên sản phẩm
                         if ( lstMedia.get(i).getTitle().contains(searchBox.getCharacters())){
-                            System.out.println(lstMedia.get(i).getTitle());
                             // thêm sản phẩm trùng khớp vào list filtered
                             filtered.add(lstMedia.get(i));
                         }
                         i++;
                     }
-                    // thay danh sách toàn bộ sản phẩm bằng danh sách đã được lọc
-                    refresh(filtered,vboxColumns);
-                }
-                else
-                {
-                    // nếu searchbox trống thì quay về danh sách ban đầu
-                    refresh(lstMedia,vboxColumns);
+                   // nếu danh sách filtered trống thì thông báo tới người dùng
+                    if (filtered.isEmpty()){
+                        a.setContentText("No results were found");
+                        a.show();
+                    }
+                    else {
+                        // nếu danh sách filtered không trống thay danh sách toàn bộ sản phẩm bằng danh sách đã được lọc
+                        refresh(filtered, vboxColumns);
+                        currentList=1;
+                    }
                 }
             }
         });
