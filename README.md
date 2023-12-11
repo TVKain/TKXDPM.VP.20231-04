@@ -99,12 +99,13 @@ This is the source code for the AIMS project for the Software Design and Constru
 - Assigned tasks:
     - Fix the cart class 
     - Analyze cohesion for Cart.java Application.java 
-
+    - Implement Login Screen for the application
 - Implementation details:
     - Pull Request(s): [#24](https://github.com/TVKain/TKXDPM.VP.20231/pull/24) [#22](https://github.com/TVKain/TKXDPM.VP.20231/pull/22) [#14](https://github.com/TVKain/TKXDPM.VP.20231/pull/14) [#15](https://github.com/TVKain/TKXDPM.VP.20231/pull/15) [#16](https://github.com/TVKain/TKXDPM.VP.20231/pull/16) [#17](https://github.com/TVKain/TKXDPM.VP.20231/pull/17)
     - Specific implementation details:
         - Fix some methods in the cart class 
         - Analyze cohesion 
+        - Implement the fxml file for the login screen along with the corresponding view handler
 
 </details>
 
