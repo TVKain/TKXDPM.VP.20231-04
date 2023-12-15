@@ -76,6 +76,9 @@ public class HomeViewHandler {
         // Sửa List thành ObservableList để lắng nghe thay đổi
         ObservableList<Media> lstMedia = FXCollections.observableArrayList();
         lstMedia.addAll(new SqliteMediaDao().getAll());
+        if(Cart.getInstance().getMedias().size() > 0) {
+            updateMedia(lstMedia);
+        }
         // List filtered lưu danh sách kết quả khớp với tìm kiếm
         ObservableList<Media> filtered = FXCollections.observableArrayList();
         // Tạo danh sách VBox để lưu trữ các cột
@@ -166,6 +169,14 @@ public class HomeViewHandler {
                 e.printStackTrace();
             }
             i++;
+        }
+    }
+
+    public void updateMedia(List<Media> lstMedia) {
+        for (Media m : lstMedia) {
+            if (Cart.getInstance().getMedias().containsKey(m)) {
+                m.setQuantity(m.getQuantity() - Cart.getInstance().getMedias().get(m));
+            }
         }
     }
 
