@@ -70,6 +70,18 @@ public class MediaHomeViewHandler {
     @FXML
     void handleAddToCart(ActionEvent event) {
         Cart.getInstance().add(media, spinnerChangeNumber.getValue());
+        media.setQuantity(media.getQuantity() - spinnerChangeNumber.getValue());
+        mediaAvail.setText(media.getQuantity() + "");
+        if (media.getQuantity() == 0) {
+            spinnerChangeNumber.setVisible(false);
+            addToCartBtn.setVisible(false);
+            soldOut.setVisible(true);
+        } else {
+            spinnerChangeNumber.setValueFactory(
+                    new SpinnerValueFactory.IntegerSpinnerValueFactory(1, media.getQuantity(), 1)
+            );
+        }
+
     }
 
 }
