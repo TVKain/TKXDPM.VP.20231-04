@@ -66,13 +66,27 @@ public class CartViewHandler {
         }) ;
 
         int subTotal = Cart.getInstance().getTotalPrice();
-        subtotal.setText(String.valueOf(subTotal));
-        amount.setText(String.valueOf(subTotal * 1.1));
-    }
+        int vat = (int) (subTotal * 0.1);
 
+        subtotal.setText(String.valueOf(subTotal));
+        VAT.setText(String.valueOf(vat));
+        amount.setText(String.valueOf(subTotal + vat));
+
+        Cart.getInstance().addChangeListener(e -> {
+            updateLabel();
+        });
+    }
     @FXML
     void PlaceOrder(ActionEvent event) {
         Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
+    }
+    public void updateLabel() {
+        int subTotal = Cart.getInstance().getTotalPrice();
+        int vat = (int) (subTotal * 0.1);
+
+        subtotal.setText(String.valueOf(subTotal));
+        VAT.setText(String.valueOf(vat));
+        amount.setText(String.valueOf(subTotal + vat));
     }
     @FXML
     void backToPrevPage(ActionEvent event) {
