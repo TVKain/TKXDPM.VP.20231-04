@@ -78,7 +78,7 @@ public class CartViewHandler {
     }
     @FXML
     void PlaceOrder(ActionEvent event) {
-
+        Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
     }
     public void updateLabel() {
         int subTotal = Cart.getInstance().getTotalPrice();

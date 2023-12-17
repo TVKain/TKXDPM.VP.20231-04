@@ -48,3 +48,6 @@ codemr
 **/.idea/vcs.xml
 **/.idea/jsLibraryMappings.xml
 .idea/
+
+qodana.yaml
+

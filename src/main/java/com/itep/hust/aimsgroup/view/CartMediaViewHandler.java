@@ -2,7 +2,6 @@ package com.itep.hust.aimsgroup.view;
 
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.util.Screen;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,7 +12,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -67,15 +65,14 @@ public class CartMediaViewHandler {
         avail.setText(String.valueOf(media.getQuantity()));
         image.setImage(new Image(getClass().getResource(media.getImageURL()).toURI().toString()));
 
-            numberOfMedia.setValueFactory(
-                    new SpinnerValueFactory.IntegerSpinnerValueFactory(1, media.getQuantity() + medias.get(media), 1)
-            );
-            numberOfMedia.getValueFactory().setValue(medias.get(media));
-            if (media.getQuantity() == 0 ) {
-                numberOfMedia.setEditable(false);
-            }
 
-
+        numberOfMedia.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, media.getQuantity() + medias.get(media), 1)
+        );
+        numberOfMedia.getValueFactory().setValue(medias.get(media));
+        if (media.getQuantity() == 0) {
+            numberOfMedia.setEditable(false);
+        }
 
 
         numberOfMedia.valueProperty().addListener(new ChangeListener<Integer>() {
@@ -97,6 +94,7 @@ public class CartMediaViewHandler {
         });
 
     }
+
     @FXML
     void deleteMediaInCart(ActionEvent event) {
         Cart.getInstance().remove(media);

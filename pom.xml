@@ -52,6 +52,13 @@
       <version>3.44.0.0</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version> <!-- Use the latest version -->
+      <scope>provided</scope>
+    </dependency>
+
     <!-- SLF4J API -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -114,6 +121,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 </project>
