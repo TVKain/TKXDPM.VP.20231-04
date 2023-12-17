@@ -63,6 +63,9 @@ public class CartMediaViewHandler {
         numberOfMedia.setValueFactory(
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, media.getQuantity(), 1)
         );
+
+        numberOfMedia.setPrefWidth(80);
+
         numberOfMedia.getValueFactory().setValue(medias.get(media));
 
         numberOfMedia.valueProperty().addListener(new ChangeListener<Integer>() {

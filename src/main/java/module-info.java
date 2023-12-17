@@ -3,6 +3,7 @@ module com.itep.hust.aimsgroup {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.graphics;
+    requires static lombok;
 
     opens com.itep.hust.aimsgroup to javafx.fxml;
     opens com.itep.hust.aimsgroup.view to javafx.fxml;

@@ -72,7 +72,7 @@ public class CartViewHandler {
 
     @FXML
     void PlaceOrder(ActionEvent event) {
-
+        Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
     }
     @FXML
     void backToPrevPage(ActionEvent event) {
