@@ -26,6 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeViewHandler {
+    /**
+     * SOLID analysis
+     * Single responsibility principle: lớp này có nhiệm vụ điều khiển màn hình xem danh sách mặt hàng bao gồm chức năng xem danh sách mặt hàng và tìm kiếm (thỏa mãn)
+     * Open / CLosed Principle: lớp này không áp dụng kĩ thuật kế thừa
+     * Liskov substitution principle: lớp này không áp dụng kĩ thuật kế thừa
+     * Interface segregation principle: lớp này không áp dụng kĩ thuật implements
+     * Dependency inversion principle: lớp này phụ thuộc vào lớp Media và MediaHomeViewHandler giao tiếp qua interface (thỏa mãn)
+     */
+
 
     @FXML
     private ImageView aimsImage;

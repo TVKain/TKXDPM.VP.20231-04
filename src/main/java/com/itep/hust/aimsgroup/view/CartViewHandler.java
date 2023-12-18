@@ -18,7 +18,14 @@ import java.io.IOException;
 import java.util.Map;
 
 public class CartViewHandler {
-
+    /**
+     * SOLID analysis
+     * Single responsibility principle: lớp này có nhiệm vụ điều khiển màn hình xem giỏ hàng bao gồm chức năng xem danh sách mặt hàng trong giỏ hàng và thực hiện đặt hàng (thỏa mãn)
+     * Open / CLosed Principle: lớp này không áp dụng kĩ thuật kế thừa
+     * Liskov substitution principle: lớp này không áp dụng kĩ thuật kế thừa
+     * Interface segregation principle: lớp này không áp dụng kĩ thuật implements
+     * Dependency inversion principle: lớp này phụ thuộc vào lớp Media và CartMediaViewHandler giao tiếp qua interface (thỏa mãn)
+     */
     @FXML
     private Label VAT;
 
@@ -45,6 +52,7 @@ public class CartViewHandler {
 
     @FXML
     private VBox vboxCart;
+
 
     public CartViewHandler() {
     }
