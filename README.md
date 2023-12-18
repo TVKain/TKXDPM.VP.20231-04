@@ -134,9 +134,8 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Sửa đổi lớp Media
-    - Cài đặt thực thi khi click nút đặt hàng và add to cart
-    - Phân tích cohesion dao
+    - Sửa đổi liên quan đến số lượng và giới hạn số lượng media ở HomeView, CartView,..
+    - Phân tích SOLID DAO và SqliteDatabase
 
 - Implementation details:
     - Pull Request(s):[#26](https://github.com/TVKain/TKXDPM.VP.20231/pull/26) [#28](https://github.com/TVKain/TKXDPM.VP.20231/pull/28) [#18](https://github.com/TVKain/TKXDPM.VP.20231/pull/18) [#19](https://github.com/TVKain/TKXDPM.VP.20231/pull/19) [#20](https://github.com/TVKain/TKXDPM.VP.20231/pull/20) [#21](https://github.com/TVKain/TKXDPM.VP.20231/pull/21)
