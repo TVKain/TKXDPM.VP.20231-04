@@ -11,6 +11,12 @@ import java.util.Map;
 
 
 /*
+ * SOLID ANALYSIS
+ * SINGLE RESPONSIBILITY: This class only have 1 reason to change and that is functionality relating to Cart
+ * OPEN CLOSE: To add functionality just add a method
+ */
+
+/*
  * This class violates common coupling
  * The whole application uses one single global instance of the Cart class
  */
