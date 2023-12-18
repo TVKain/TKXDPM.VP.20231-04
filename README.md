@@ -124,3 +124,57 @@ This is the source code for the AIMS project for the Software Design and Constru
 </details>
 
 </details>
+
+
+<details>
+  <summary>W12: 11/12/2023~18/12/2023 </summary>
+<br>
+<details>
+<summary>Đàm Ngọc Khánh</summary>
+<br>
+
+- Assigned tasks:
+    - Sửa đổi lớp Media
+    - Cài đặt thực thi khi click nút đặt hàng và add to cart
+    - Phân tích cohesion dao
+
+- Implementation details:
+    - Pull Request(s):[#26](https://github.com/TVKain/TKXDPM.VP.20231/pull/26) [#28](https://github.com/TVKain/TKXDPM.VP.20231/pull/28) [#18](https://github.com/TVKain/TKXDPM.VP.20231/pull/18) [#19](https://github.com/TVKain/TKXDPM.VP.20231/pull/19) [#20](https://github.com/TVKain/TKXDPM.VP.20231/pull/20) [#21](https://github.com/TVKain/TKXDPM.VP.20231/pull/21)
+    - Specific implementation details:
+        - Sửa đổi kiểu dữ liệu Media và các lớp liên quan
+        - Cài đặt chức năng đặt hàng và thêm màn hình giỏ hàng
+        - Tạo file FXML và hiển thị các media lên màn hình giỏ hàng
+
+</details>
+
+<details>
+<summary>Trần Vinh Khánh</summary>
+<br>
+
+- Assigned tasks:
+    - Implement Delivery Info screen and part of Place Order Controller
+    - SOLID Analysis for Cart class and AdminLoginController
+- Implementation details:
+    - Pull Request(s): [34](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/34) [33](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/33) [32](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/32)
+    - Specific implementation details:
+        - Add FXML file, DeliveryInfoViewHandler, PlaceOrderController, Factory class for DeliveryInfo and RushDeliveryInfo 
+        - Add Delivery Info Validator factory class 
+        - SOLID Analysis 
+
+</details>
+
+<details>
+<summary>Lê Ngọc Đăng Khoa</summary>
+<br>
+
+- Assigned tasks:
+    - Implement search by title
+
+- Implementation details:
+    - Pull Request(s): [23](https://github.com/TVKain/TKXDPM.VP.20231/pull/23)
+    - Specific implementation details:
+        - Implement search by title
+
+</details>
+
+</details>
