@@ -14,6 +14,14 @@ import javafx.scene.image.ImageView;
 import java.net.URISyntaxException;
 
 public class MediaHomeViewHandler {
+    /**
+     * SOLID analysis
+     * Single responsibility principle: lớp này có nhiệm vụ hiển thị thông tin Media lên màn hình theo format nhất định
+     * Open / CLosed Principle: lớp này không áp dụng kĩ thuật kế thừa
+     * Liskov substitution principle: lớp này không áp dụng kĩ thuật kế thừa
+     * Interface segregation principle: lớp này không áp dụng kĩ thuật implements
+     * Dependency inversion principle: lớp này phụ thuộc vào lớp Media và Cart giao tiếp qua interface (thỏa mãn)
+     */
 
     @FXML
     private Button addToCartBtn;
