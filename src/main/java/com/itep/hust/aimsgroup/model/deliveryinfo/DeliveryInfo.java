@@ -1,7 +1,5 @@
 package com.itep.hust.aimsgroup.model.deliveryinfo;
 
-
-
 public class DeliveryInfo {
     protected String name;
     protected String phone;
