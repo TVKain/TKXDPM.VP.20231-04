@@ -1,8 +1,7 @@
 package com.itep.hust.aimsgroup.model.deliveryinfo;
 
-import lombok.ToString;
 
-@ToString
+
 public class DeliveryInfo {
     protected String name;
     protected String phone;

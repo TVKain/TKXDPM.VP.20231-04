@@ -2,8 +2,6 @@ package com.itep.hust.aimsgroup.view;
 
 import com.itep.hust.aimsgroup.controller.placeorder.PlaceOrderController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
-import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
-import com.itep.hust.aimsgroup.model.deliveryinfo.factory.DeliveryInfoFactory;
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.util.Screen;
@@ -85,9 +83,7 @@ public class DeliveryInfoViewHandler {
                 return;
             }
 
-            DeliveryInfo deliveryInfo = DeliveryInfoFactory
-                    .getDeliveryInfoFactory(deliveryType)
-                    .getDeliveryInfo(deliveryInfoData);
+            placeOrderController.setDeliveryInfo(deliveryType, deliveryInfoData);
 
             // Go to next screen
             System.out.println("Go to next screen");
