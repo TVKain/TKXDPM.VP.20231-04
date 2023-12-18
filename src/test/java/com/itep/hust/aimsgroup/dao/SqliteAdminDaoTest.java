@@ -1,16 +1,16 @@
 package com.itep.hust.aimsgroup.dao;
 
 import com.itep.hust.aimsgroup.model.admin.Admin;
-import com.itep.hust.aimsgroup.service.dao.AdminDao;
+import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteAdminDao;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class AdminDaoTest {
+public class SqliteAdminDaoTest {
     @Test
     public void getTest() {
-        AdminDao adminDao = new AdminDao();
+        SqliteAdminDao sqliteAdminDao = new SqliteAdminDao();
 
-        Admin admin = adminDao.get("khanhtv");
+        Admin admin = sqliteAdminDao.get("khanhtv");
 
         assertEquals("khanhtv", admin.getUsername());
         assertEquals("1", admin.getPassword());

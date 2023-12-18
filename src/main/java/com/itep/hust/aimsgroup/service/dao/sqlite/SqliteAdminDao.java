@@ -1,6 +1,7 @@
-package com.itep.hust.aimsgroup.service.dao;
+package com.itep.hust.aimsgroup.service.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.admin.Admin;
+import com.itep.hust.aimsgroup.service.dao.Dao;
 import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
 
 import java.sql.Connection;
@@ -9,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AdminDao implements Dao<Admin, String> {
+public class SqliteAdminDao implements Dao<Admin, String> {
     @Override
     public List<Admin> getAll() {
         return null;

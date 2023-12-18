@@ -5,7 +5,7 @@ import com.itep.hust.aimsgroup.model.deliveryinfo.RushDeliveryInfo;
 
 import java.util.Map;
 
-public class RushDeliveryInfoFactory extends DeliveryInfoFactory {
+public class RushDeliveryInfoFactory implements DeliveryInfoFactory {
     @Override
     public DeliveryInfo getDeliveryInfo(Map<String, String> input) {
         RushDeliveryInfo rushDeliveryInfo = new RushDeliveryInfo();

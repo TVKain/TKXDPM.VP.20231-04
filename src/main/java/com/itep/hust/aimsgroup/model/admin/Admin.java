@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.model.admin;
 
+
 public class Admin {
     private String username;
     private String password;
