@@ -39,7 +39,7 @@ build/
 
 
 ### CodeMR ###
-codemr
+**/codemr
 
 ### .idea ###
 **/.idea/workspace.xml
@@ -49,5 +49,5 @@ codemr
 **/.idea/jsLibraryMappings.xml
 .idea/
 
-qodana.yaml
+**/qodana.yaml
 
