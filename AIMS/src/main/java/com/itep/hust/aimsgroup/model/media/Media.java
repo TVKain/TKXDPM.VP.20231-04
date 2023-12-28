@@ -15,10 +15,12 @@ public class Media {
     protected boolean rushDelivery;
 
     //Constructor
-    public Media(int id, String title, int price, int quantity, double weight, String imageURL ) {
+    public Media(int id, String title, String category, int price, int value, int quantity, double weight, String imageURL ) {
         this.id = id;
         this.title = title;
+        this.category = category;
         this.price = price;
+        this.value = value;
         this.weight = weight;
         this.quantity = quantity;
         this.imageURL = imageURL;

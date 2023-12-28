@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS "Media"(
   "weight" FLOAT NOT NULL,
   "title" VARCHAR(45) NOT NULL,
   "value" INTEGER NOT NULL,
-  "imageUrl" VARCHAR(45) NOT NULL
+  "imageUrl" VARCHAR(45) NOT NULL,
+  --"rushDelivery" INTEGER NOT NULL
 );
 
 INSERT INTO Media VALUES(38,'book','story',32,12,1.2,'book2',29,'/image/book/book2.jpg');
