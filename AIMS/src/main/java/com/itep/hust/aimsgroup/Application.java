@@ -2,10 +2,7 @@ package com.itep.hust.aimsgroup;
 
 import com.itep.hust.aimsgroup.util.Screen;
 
-import com.itep.hust.aimsgroup.view.DeliveryInfoViewHandler;
-import com.itep.hust.aimsgroup.view.HomeViewHandler;
-import com.itep.hust.aimsgroup.view.LoginViewHandler;
-import com.itep.hust.aimsgroup.view.ManagerViewHandler;
+import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;
