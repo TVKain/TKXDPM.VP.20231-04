@@ -5,6 +5,7 @@ import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.DeliveryInfoViewHandler;
 import com.itep.hust.aimsgroup.view.HomeViewHandler;
 import com.itep.hust.aimsgroup.view.LoginViewHandler;
+import com.itep.hust.aimsgroup.view.ManagerViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,11 +20,11 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         Screen.setMainStage(stage);
-        Screen.setScreen("/fxml/home/home.fxml", new HomeViewHandler());
-
-        stage.setWidth(1280);
-        stage.setHeight(640);
-        stage.setResizable(false);
+//        Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
+        Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+        stage.setWidth(1340);
+        stage.setHeight(760);
+        stage.setResizable(true);
         stage.setTitle("AIMS");
         stage.show();
     }
