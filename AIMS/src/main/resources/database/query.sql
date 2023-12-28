@@ -11,7 +11,7 @@ VALUES
 
 CREATE TABLE IF NOT EXISTS "Media"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "type" VARCHAR(45) NOT NULL,
+  "type" VARCHAR(45),
   "category" VARCHAR(45) NOT NULL,
   "price" INTEGER NOT NULL,
   "quantity" INTEGER NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE "Book" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "author" VARCHAR(45) NOT NULL,
     "publisher" VARCHAR(45) NOT NULL,
-    "publisher_date" DATETIME NOT NULL,
+    "publisher_date" DATE NOT NULL,
     "numer_of_page" INTEGER,
     "book_category" VARCHAR(45),
     "cover_type" VARCHAR(45) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE "CD" (
     "music_type" VARCHAR(45) NOT NULL,
     "record_label" VARCHAR(45) NOT NULL,
     "category_cd" VARCHAR(45) NOT NULL,
-    "release_date" DATETIME,
+    "release_date" DATE,
     FOREIGN KEY("id")
     REFERENCES "Media"("id")
 );
@@ -57,7 +57,7 @@ CREATE TABLE "DVD" (
     "language" VARCHAR(45) NOT NULL,
     "runtime" VARCHAR(45) NOT NULL,
     "director" VARCHAR(45) NOT NULL,
-    "release_date" DATETIME,
+    "release_date" DATE,
     "dvd_category" VARCHAR(45),
     FOREIGN KEY("id")
     REFERENCES "Media"("id")

@@ -2,6 +2,9 @@ package com.itep.hust.aimsgroup.service.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.admin.Admin;
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.model.media.book.Book;
+import com.itep.hust.aimsgroup.model.media.cd.CD;
+import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.Dao;
 import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
 
@@ -29,7 +32,7 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
         String query = "select * from media";
         String query_book = "SELECT * FROM media INNER JOIN book ON media.id = book.id";
         String query_dvd = "SELECT * FROM media INNER JOIN dvd ON media.id = dvd.id";
-        String query_cd = "SELECT * FROM media INNER JOIN book ON media.id = cd.id INNER JOIN track ON cd.id = track.CD_id";
+        //String query_cd = "SELECT * FROM media INNER JOIN book ON media.id = cd.id INNER JOIN track ON cd.id = track.CD_id";
         Connection connection = SqliteDatabase.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -52,10 +55,22 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
     @Override
     public Media insert(Media media) {
         Connection connection = SqliteDatabase.getConnection();
-        String insertQuery = "INSERT INTO media (id, title, category, price, value, quantity, weight, imageURL, rushDelivery) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+        String insertQuery1 = "INSERT INTO media (id, title, category, price, value, quantity, weight, imageURL, rushDelivery) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertQuery2 = "";
+        if (media instanceof Book) {
+            insertQuery2 = "INSERT INTO book (id, title, category, price, value, quantity, weight, imageURL, rushDelivery) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        } else if (media instanceof DVD) {
+
+        } else if (media instanceof CD) {
+
+        }
+
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery1);
             preparedStatement.setInt(1, media.getId());
             preparedStatement.setString(2, media.getTitle());
             preparedStatement.setString(3, media.getCategory());
@@ -65,7 +80,6 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             preparedStatement.setDouble(7, media.getWeight());
             preparedStatement.setString(8, media.getImageURL());
             preparedStatement.setInt(9, media.getRushDelivery());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -80,6 +94,23 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
 
     @Override
     public Media delete(Media media) {
+        Connection connection = SqliteDatabase.getConnection();
+        String typeOfMedia = "";
+        if (media instanceof Book) {
+            typeOfMedia = "book";
+        } else if (media instanceof DVD) {
+            typeOfMedia = "dvd";
+        } else if (media instanceof CD) {
+            typeOfMedia = "cd";
+        }
+        String deleteQuery = "DELETE FROM media, " + typeOfMedia + " WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+            preparedStatement.setInt(1, media.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 }

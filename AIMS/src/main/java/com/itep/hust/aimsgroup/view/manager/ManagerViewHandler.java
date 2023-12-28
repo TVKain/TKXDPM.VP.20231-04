@@ -70,6 +70,10 @@ public class ManagerViewHandler implements Initializable {
         tableMedia.setItems(listMedia);
         tableMedia.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         typeMedia.getItems().addAll("Book", "CD", "DVD");
+
+        tableMedia.setOnMouseClicked(event -> {
+
+        });
     }
 
     @FXML
@@ -88,5 +92,20 @@ public class ManagerViewHandler implements Initializable {
         else if (type == "CD") {
 
         }
+    }
+
+    @FXML
+    void deleteMedia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void editMedia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void viewDetailMedia(ActionEvent event) {
+
     }
 }
