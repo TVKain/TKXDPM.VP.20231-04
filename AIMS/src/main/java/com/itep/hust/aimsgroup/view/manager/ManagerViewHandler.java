@@ -3,7 +3,8 @@ package com.itep.hust.aimsgroup.view.manager;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Screen;
-import com.itep.hust.aimsgroup.view.AdminLoginViewHandler;
+
+import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -74,7 +75,7 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void logout(ActionEvent event) {
-        Screen.setScreen("/fxml/login-admin/login-admin.fxml", new AdminLoginViewHandler());
+        Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
     }
     @FXML
     void addNewMedia(ActionEvent event) throws IOException {

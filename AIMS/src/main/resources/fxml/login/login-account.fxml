@@ -3,7 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,7 +24,7 @@
    <center>
       <VBox alignment="CENTER" spacing="20.0" style="-fx-border-color: black; -fx-border-width: 0.25px; -fx-border-radius: 4px; -fx-padding: 8 16 8 16;" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Admin Login">
+            <Label text="Login">
                <font>
                   <Font size="22.0" />
                </font></Label>
@@ -43,9 +45,10 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="passwordLabel" />
+                  <PasswordField fx:id="passwordLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                </children>
             </VBox>
+            <ComboBox fx:id="roleComboBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
             <Button fx:id="loginButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Log in">
                <font>
                   <Font size="16.0" />
