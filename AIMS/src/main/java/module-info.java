@@ -11,4 +11,5 @@ module com.itep.hust.aimsgroup {
     exports com.itep.hust.aimsgroup.util;
     opens com.itep.hust.aimsgroup.model.media to javafx.base;
     opens com.itep.hust.aimsgroup.view.manager to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.login to javafx.fxml;
 }

@@ -119,7 +119,7 @@ public class Cart {
 
     /**
      * Get the quantity of the specified media in the cart
-     * Return null if the media is not in the cart
+     * Return null.sqlite if the media is not in the cart
      * @param media     the media
      * @return          the quantity of the specified media
      */

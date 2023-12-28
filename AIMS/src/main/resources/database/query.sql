@@ -1,13 +1,32 @@
+CREATE TABLE IF NOT EXISTS Role (
+    id INTEGER PRIMARY KEY,
+    roleName VARCHAR(32) NOT NULL
+);
+
+INSERT INTO Role(id, roleName)
+VALUES
+(1, "admin"),
+(2, "manager");
+
+CREATE TABLE IF NOT EXISTS Account (
+    username VARCHAR(32) PRIMARY KEY,
+    password VARCHAR(32) NOT NULL,
+    roleId INTEGER NOT NULL,
+    FOREIGN KEY (roleId) REFERENCES Role(id)
+);
+
+INSERT INTO Account(username, password, roleId)
+VALUES
+("khanhtv", "1", 1),
+("khanhnd", "1", 2),
+("khoalnd", "1", 1);
+
+
 CREATE TABLE IF NOT EXISTS Admin (
     username VARCHAR(32) PRIMARY KEY,
     password VARCHAR(32) NOT NULL
 );
 
-INSERT INTO Admin (username, password)
-VALUES
-('khanhtv', '1'),
-('khanhnd', '1'),
-('khoalnd', '1');
 
 CREATE TABLE IF NOT EXISTS "Media"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

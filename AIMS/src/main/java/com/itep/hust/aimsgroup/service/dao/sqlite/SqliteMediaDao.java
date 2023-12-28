@@ -1,6 +1,5 @@
 package com.itep.hust.aimsgroup.service.dao.sqlite;
 
-import com.itep.hust.aimsgroup.model.admin.Admin;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.book.Book;
 import com.itep.hust.aimsgroup.model.media.cd.CD;

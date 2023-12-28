@@ -19,9 +19,9 @@ import java.util.List;
  * các function này sẽ được nhóm với nhau thành 1 interface để các entity trong database dùng chỉ cần impliment
  * @author KhanhND
  */
-public interface Dao<T,U> {
+public interface Dao<T,PK> {
     public List<T> getAll();
-    public T get(U id);
+    public T get(PK id);
     public T insert(T t);
     public T update(T t);
     public T delete(T t);
