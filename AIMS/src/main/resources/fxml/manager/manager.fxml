@@ -72,9 +72,9 @@
       </TableView>
       <Button layoutX="1099.0" layoutY="132.0" mnemonicParsing="false" onAction="#addNewMedia" prefHeight="34.0" prefWidth="111.0" text="Add new media" />
       <ComboBox fx:id="typeMedia" layoutX="895.0" layoutY="132.0" prefHeight="34.0" prefWidth="173.0" promptText="Choose a type media" />
-      <Button layoutX="1225.0" layoutY="250.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" text="View detail" />
-      <Button layoutX="1221.0" layoutY="324.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" text="Edit" />
-      <Button layoutX="1219.0" layoutY="404.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" text="Delete" />
+      <Button layoutX="1225.0" layoutY="250.0" mnemonicParsing="false" onAction="#viewDetailMedia" prefHeight="34.0" prefWidth="100.0" text="View detail" />
+      <Button layoutX="1221.0" layoutY="324.0" mnemonicParsing="false" onAction="#editMedia" prefHeight="34.0" prefWidth="100.0" text="Edit" />
+      <Button layoutX="1219.0" layoutY="404.0" mnemonicParsing="false" onAction="#deleteMedia" prefHeight="34.0" prefWidth="100.0" text="Delete" />
 
     </children>
 </AnchorPane>
