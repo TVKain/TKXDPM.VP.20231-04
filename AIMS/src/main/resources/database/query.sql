@@ -1,13 +1,25 @@
+CREATE TABLE IF NOT EXISTS Role (
+    roleId INTEGER PRIMARY KEY,
+    roleName VARCHAR(32) NOT NULL
+);
+
+INSERT INTO Role(roleId, roleName)
+VALUES
+(1, "admin"),
+(2, "manager");
+
+CREATE TABLE IF NOT EXISTS Account (
+    username VARCHAR(32) PRIMARY KEY,
+    password VARCHAR(32) NOT NULL,
+    roleId INTEGER NOT NULL,
+    FOREIGN KEY (roleId) REFERENCES Role(roleId)
+);
+
 CREATE TABLE IF NOT EXISTS Admin (
     username VARCHAR(32) PRIMARY KEY,
     password VARCHAR(32) NOT NULL
 );
 
-INSERT INTO Admin (username, password)
-VALUES
-('khanhtv', '1'),
-('khanhnd', '1'),
-('khoalnd', '1');
 
 CREATE TABLE IF NOT EXISTS "Media"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -20,6 +32,7 @@ CREATE TABLE IF NOT EXISTS "Media"(
   "value" INTEGER NOT NULL,
   "imageUrl" VARCHAR(45) NOT NULL
 );
+
 INSERT INTO Media VALUES(38,'book','story',32,12,1.2,'book2',29,'/image/book/book2.jpg');
 INSERT INTO Media VALUES(39,'book','adventure',21,2,0.8,'book9',20,'/image/book/book9.jpg');
 INSERT INTO Media VALUES(40,'book','adventure',73,11,0.5,'book10',69,'/image/book/book10.jpg');

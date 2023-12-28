@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup;
 
+import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
 import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.DeliveryInfoViewHandler;
@@ -18,8 +19,10 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
+        SqliteDatabase.seed();
         Screen.setMainStage(stage);
         Screen.setScreen("/fxml/home/home.fxml", new HomeViewHandler());
+
 
         stage.setWidth(1280);
         stage.setHeight(640);
