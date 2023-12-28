@@ -13,8 +13,8 @@ public class CD extends Media {
     String CDCategory;
     List<Track> listTrack;
 
-    public CD(int id, String title, String category, int price, int value, int quantity, double weight, String imageURL, String artist, String recordLabel, String musicType, String CDCategory, List<Track> listTrack) {
-        super(id, title, category, price, value, quantity, weight, imageURL);
+    public CD(int id, String title, String category, int price, int value, int quantity, double weight, String imageURL, String artist, String recordLabel, String musicType, String CDCategory, List<Track> listTrack, int rushDelivery) {
+        super(id, title, category, price, value, quantity, weight, imageURL, rushDelivery);
         this.artist = artist;
         this.recordLabel = recordLabel;
         this.musicType = musicType;

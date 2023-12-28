@@ -12,10 +12,10 @@ public class Media {
     protected int quantity;
     protected double weight;
     protected String imageURL;
-    protected boolean rushDelivery;
+    protected int rushDelivery;
 
     //Constructor
-    public Media(int id, String title, String category, int price, int value, int quantity, double weight, String imageURL ) {
+    public Media(int id, String title, String category, int price, int value, int quantity, double weight, String imageURL, int rushDelivery ) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -24,6 +24,7 @@ public class Media {
         this.weight = weight;
         this.quantity = quantity;
         this.imageURL = imageURL;
+        this.rushDelivery = rushDelivery;
     }
 
     public int getId() {
@@ -91,10 +92,16 @@ public class Media {
     }
 
     public boolean isRushDelivery() {
-        return rushDelivery;
-    }
+        if(rushDelivery==1) {
+            return true;
+        } else {
+            return false;
+        }
 
-    public void setRushDelivery(boolean rushDelivery) {
+    }
+    public int getRushDelivery(){return this.rushDelivery;}
+
+    public void setRushDelivery(int rushDelivery) {
         this.rushDelivery = rushDelivery;
     }
 
