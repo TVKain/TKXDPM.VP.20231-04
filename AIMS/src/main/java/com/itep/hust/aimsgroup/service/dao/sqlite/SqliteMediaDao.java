@@ -1,6 +1,5 @@
 package com.itep.hust.aimsgroup.service.dao.sqlite;
 
-import com.itep.hust.aimsgroup.model.admin.Admin;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.service.dao.Dao;
 import com.itep.hust.aimsgroup.service.database.SqliteDatabase;

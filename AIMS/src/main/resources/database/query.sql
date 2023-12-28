@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS Role (
-    roleId INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     roleName VARCHAR(32) NOT NULL
 );
 
-INSERT INTO Role(roleId, roleName)
+INSERT INTO Role(id, roleName)
 VALUES
 (1, "admin"),
 (2, "manager");
@@ -12,8 +12,15 @@ CREATE TABLE IF NOT EXISTS Account (
     username VARCHAR(32) PRIMARY KEY,
     password VARCHAR(32) NOT NULL,
     roleId INTEGER NOT NULL,
-    FOREIGN KEY (roleId) REFERENCES Role(roleId)
+    FOREIGN KEY (roleId) REFERENCES Role(id)
 );
+
+INSERT INTO Account(username, password, roleId)
+VALUES
+("khanhtv", "1", 1),
+("khanhnd", "1", 2),
+("khoalnd", "1", 1);
+
 
 CREATE TABLE IF NOT EXISTS Admin (
     username VARCHAR(32) PRIMARY KEY,
