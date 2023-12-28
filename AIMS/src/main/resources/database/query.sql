@@ -1,25 +1,33 @@
 CREATE TABLE IF NOT EXISTS Role (
-    id INTEGER PRIMARY KEY,
-    roleName VARCHAR(32) NOT NULL
+    roleName VARCHAR(32) PRIMARY KEY
 );
 
-INSERT INTO Role(id, roleName)
+INSERT INTO Role(roleName)
 VALUES
-(1, "admin"),
-(2, "manager");
+("admin"),
+("manager");
 
 CREATE TABLE IF NOT EXISTS Account (
-    username VARCHAR(32) PRIMARY KEY,
-    password VARCHAR(32) NOT NULL,
-    roleId INTEGER NOT NULL,
-    FOREIGN KEY (roleId) REFERENCES Role(id)
+    email VARCHAR(32) PRIMARY KEY,
+    password VARCHAR(32) NOT NULL
 );
 
-INSERT INTO Account(username, password, roleId)
+INSERT INTO Account(email, password)
 VALUES
-("khanhtv", "1", 1),
-("khanhnd", "1", 2),
-("khoalnd", "1", 1);
+("tvkain.it@gmail.com", "1");
+
+CREATE TABLE IF NOT EXISTS AccountRole (
+    email VARCHAR(32),
+    roleName INTEGER,
+    PRIMARY KEY (email, roleName),
+    FOREIGN KEY (roleName) REFERENCES Role(roleName),
+    FOREIGN KEY (email) REFERENCES Account(email)
+);
+
+INSERT INTO AccountRole(email, roleName)
+VALUES
+("tvkain.it@gmail.com", "admin"),
+("tvkain.it@gmail.com", "manager");
 
 
 CREATE TABLE IF NOT EXISTS Admin (

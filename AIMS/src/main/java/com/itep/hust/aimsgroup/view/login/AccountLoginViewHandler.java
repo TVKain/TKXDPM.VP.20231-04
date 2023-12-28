@@ -56,14 +56,15 @@ public class AccountLoginViewHandler {
             String password = passwordLabel.getText();
             Role role = roleComboBox.getValue();
 
-            Account account = new Account(username, password, role);
+            Account account = new Account(username, password);
 
-            if (!accountLoginController.authenticateLogin(account, new SqliteAccountDao())) {
+            if (!accountLoginController.authenticateLogin(account, role,  new SqliteAccountDao())) {
                 Popup.showError("Login fail");
                 return;
             }
 
-            Pair<String, Object> screen = roleScreenMap.get(account.getRole().getRoleName());
+
+            Pair<String, Object> screen = roleScreenMap.get(role.getRoleName());
             Screen.setScreen(screen.getKey(), screen.getValue());
         });
     }

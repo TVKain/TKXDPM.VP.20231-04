@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqliteRoleDao implements Dao<Role, Integer> {
+public class SqliteRoleDao implements Dao<Role, String> {
 
     @Override
     public List<Role> getAll() {
@@ -24,7 +24,6 @@ public class SqliteRoleDao implements Dao<Role, Integer> {
 
             while (resultSet.next()) {
                 Role role = new Role();
-                role.setId(resultSet.getInt("id"));
                 role.setRoleName(resultSet.getString("roleName"));
                 roles.add(role);
             }
@@ -37,20 +36,19 @@ public class SqliteRoleDao implements Dao<Role, Integer> {
     }
 
     @Override
-    public Role get(Integer id) {
+    public Role get(String roleName) {
         Role role = null;
-        String query = "SELECT * FROM Role WHERE id = ?";
+        String query = "SELECT * FROM Role WHERE roleName = ?";
 
         try {
             Connection connection = SqliteDatabase.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, roleName);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 role = new Role();
-                role.setId(resultSet.getInt("id"));
                 role.setRoleName(resultSet.getString("roleName"));
             }
 

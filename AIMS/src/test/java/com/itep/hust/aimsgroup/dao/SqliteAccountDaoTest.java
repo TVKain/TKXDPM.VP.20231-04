@@ -13,8 +13,8 @@ public class SqliteAccountDaoTest {
     public void testGet() {
         Account account = new SqliteAccountDao().get("khanhtv");
 
-        assertEquals("khanhtv", account.getUsername());
+        assertEquals("tvkain.it@gmail.com", account.getEmail());
         assertEquals("1", account.getPassword());
-        assertEquals(account.getRole(), new SqliteRoleDao().get(1));
+        assertEquals(account.getRoles().size(), 2);
     }
 }
