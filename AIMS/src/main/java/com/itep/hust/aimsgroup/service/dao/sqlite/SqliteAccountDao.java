@@ -1,6 +1,7 @@
 package com.itep.hust.aimsgroup.service.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.account.Account;
+import com.itep.hust.aimsgroup.model.account.AccountRole;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.service.dao.Dao;
 import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SqliteAccountDao implements Dao<Account, String> {
 
@@ -18,24 +20,32 @@ public class SqliteAccountDao implements Dao<Account, String> {
     }
 
     @Override
-    public Account get(String username) {
+    public Account get(String email) {
         Account account = null;
 
-        String accountQuery = "SELECT * FROM Account WHERE username = ?";
-        String roleQuery = "SELECT * FROM Role WHERE id = ?";
+        String accountQuery = "SELECT * FROM Account WHERE email = ?";
+
 
         try {
             PreparedStatement preparedStatement = SqliteDatabase.getConnection().prepareStatement(accountQuery);
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 account = new Account();
-                account.setUsername(resultSet.getString("username"));
+                account.setEmail(resultSet.getString("email"));
                 account.setPassword(resultSet.getString("password"));
 
-                Role role = new SqliteRoleDao().get(resultSet.getInt("roleId"));
-                account.setRole(role);
+                List<AccountRole> accountRoles = new SqliteAccountRoleDao().getAll();
+
+                Account finalAccount = account;
+
+                List<Role> roles = accountRoles.stream()
+                        .filter(accountRole -> accountRole.getEmail().equals(finalAccount.getEmail()))
+                        .map(accountRole -> new SqliteRoleDao().get(accountRole.getRoleName()))
+                        .collect(Collectors.toList());
+
+                account.setRoles(roles);
             }
         } catch (SQLException e) {
             e.printStackTrace();

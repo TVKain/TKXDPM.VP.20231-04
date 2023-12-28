@@ -3,11 +3,8 @@ package com.itep.hust.aimsgroup.controller;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.service.dao.Dao;
-import javafx.util.Pair;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /*
  * SOLID ANALYSIS
@@ -17,12 +14,21 @@ import java.util.Map;
 public class AccountLoginController {
 
 
-    public boolean authenticateLogin(Account account, Dao<Account, String> accountDao) {
-        Account accountDb = accountDao.get(account.getUsername());
-        return account.equals(accountDb);
+    public boolean authenticateLogin(Account account, Role role, Dao<Account, String> accountDao) {
+        Account accountDb = accountDao.get(account.getEmail());
+
+        if (accountDb == null) {
+            return false;
+        }
+
+        if (!account.getPassword().equals(accountDb.getPassword())) {
+            return false;
+        }
+
+        return accountDb.getRoles().contains(role);
     }
 
-    public List<Role> getRoles(Dao<Role, Integer> roleDao) {
+    public List<Role> getRoles(Dao<Role, String> roleDao) {
         return roleDao.getAll();
     }
 }

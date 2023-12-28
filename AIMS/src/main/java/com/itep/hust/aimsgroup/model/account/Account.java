@@ -1,28 +1,29 @@
 package com.itep.hust.aimsgroup.model.account;
 
 
+import java.util.List;
 import java.util.Objects;
 
 public class Account {
-    private String username;
+    private String email;
     private String password;
 
-    private Role role;
+    private List<Role> roles;
 
-    public Role getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -33,10 +34,15 @@ public class Account {
         this.password = password;
     }
 
-    public Account(String username, String password, Role role) {
-        this.username = username;
+    public Account(String email, String password, List<Role> roles) {
+        this.email = email;
         this.password = password;
-        this.role = role;
+        this.roles = roles;
+    }
+
+    public Account(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public Account() {
@@ -53,8 +59,8 @@ public class Account {
         }
 
         Account account = (Account) obj;
-        return Objects.equals(username, account.username) &&
+        return Objects.equals(email, account.email) &&
                 Objects.equals(password, account.password) &&
-                role.equals(account.getRole());
+                roles.equals(account.getRoles());
     }
 }

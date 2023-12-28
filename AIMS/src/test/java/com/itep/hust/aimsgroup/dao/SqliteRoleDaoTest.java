@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SqliteRoleDaoTest {
     @Test
     public void testGet() {
-        Dao<Role, Integer> roleDao = new SqliteRoleDao();
-        Role role = roleDao.get(1);
+        Dao<Role, String> roleDao = new SqliteRoleDao();
+        Role role = roleDao.get("admin");
         assertEquals("admin", role.getRoleName());
     }
 }
