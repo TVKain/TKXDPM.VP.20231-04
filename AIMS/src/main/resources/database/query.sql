@@ -111,6 +111,15 @@ INSERT INTO DVD VALUES(58,'studio3','type3','subtitle3', 'language3', '1:30', 'd
 INSERT INTO Media VALUES(59,'action',28,1,0.3,'dvd6',26,'/image/dvd/dvd6.jpg',1);
 INSERT INTO DVD VALUES(59,'studio6','type6','subtitle6', 'language6', '1:30', 'director6', '2023-12-29', 'dvd-category6');
 
+INSERT INTO Media VALUES(55,'pop',74,6,0.4,'cd2',71,'/image/cd/cd2.jpg',0);
+INSERT INTO CD VALUES(55,'artist2','music_type2','record_label2','category_cd2', '2023-12-29');
+INSERT INTO Track VALUES(1,'track1',55);
+INSERT INTO Track VALUES(2,'track2',55);
+INSERT INTO Media VALUES(56,'rock',70,20,0.6,'cd1',60,'/image/cd/cd1.jpg',1);
+INSERT INTO CD VALUES(56,'artist1','music_type1','record_label1','category_cd1', '2023-12-29');
+INSERT INTO Track VALUES(3,'track3',56);
+INSERT INTO Track VALUES(4,'track4',56);
+
 --INSERT INTO Media VALUES(40,'book','adventure',73,11,0.5,'book10',69,'/image/book/book10.jpg',1);
 --INSERT INTO Media VALUES(41,'book','story',66,2,1.1,'book6',62,'/image/book/book6.jpg',1);
 --INSERT INTO Media VALUES(42,'cd','pop',24,6,1.0,'cd7',20,'/image/cd/cd7.jpg',0);
