@@ -9,14 +9,12 @@ import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.detailBookViewHandler;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -57,6 +55,14 @@ public class ManagerViewHandler implements Initializable {
     private ComboBox<String> typeMedia;
     @FXML
     private AnchorPane mainContent;
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private Button viewButton;
 
     private ObservableList<Media> listMedia = FXCollections.observableArrayList();
 
@@ -74,6 +80,26 @@ public class ManagerViewHandler implements Initializable {
         tableMedia.setItems(listMedia);
         tableMedia.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         typeMedia.getItems().addAll("Book", "CD", "DVD");
+
+        tableMedia.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Media>() {
+            @Override
+            public void onChanged(Change<? extends Media> change) {
+                int selectedRowCount = tableMedia.getSelectionModel().getSelectedItems().size();
+                if (selectedRowCount == 1) {
+                    viewButton.setVisible(true);
+                    editButton.setVisible(true);
+                    deleteButton.setVisible(true);
+                } else if (selectedRowCount > 1) {
+                    viewButton.setVisible(false);
+                    editButton.setVisible(false);
+                } else if ( selectedRowCount > 10) {
+                    viewButton.setVisible(false);
+                    editButton.setVisible(false);
+                    deleteButton.setVisible(false);
+                    Popup.showError("Không thể  xóa cùng lúc hơn 10 sản phẩm !");
+                }
+            }
+        });
 
     }
 
