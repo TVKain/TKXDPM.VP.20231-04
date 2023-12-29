@@ -21,8 +21,8 @@ public class Application extends javafx.application.Application {
         SqliteDatabase.seed();
         Screen.setMainStage(stage);
 
-        //Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
-        Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+        Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
+        //Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         stage.setWidth(1340);
         stage.setHeight(760);
         stage.setResizable(true);

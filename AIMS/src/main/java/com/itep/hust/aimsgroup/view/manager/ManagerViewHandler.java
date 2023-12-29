@@ -10,7 +10,7 @@ import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
-import com.itep.hust.aimsgroup.view.manager.view.detailBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -148,7 +148,7 @@ public class ManagerViewHandler implements Initializable {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
         if(media != null) {
             if(media instanceof Book) {
-                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new detailBookViewHandler(media));
+                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler(media));
             } else if (media instanceof DVD) {
 
             } else if (media instanceof CD) {
