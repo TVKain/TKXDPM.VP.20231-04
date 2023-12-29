@@ -3,6 +3,7 @@ package com.itep.hust.aimsgroup.service.dao.sqlite;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.book.Book;
 import com.itep.hust.aimsgroup.model.media.cd.CD;
+import com.itep.hust.aimsgroup.model.media.cd.Track;
 import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.Dao;
 import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
@@ -14,7 +15,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * SqliteMediaDao class implements Dao interface uses sqlite database
@@ -32,7 +35,8 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
         List<Media> listMedia = new ArrayList<>();
         String query_book = "SELECT * FROM media INNER JOIN book ON media.id = book.id";
         String query_dvd = "SELECT * FROM media INNER JOIN dvd ON media.id = dvd.id";
-        //String query_cd = "SELECT * FROM media INNER JOIN book ON media.id = cd.id INNER JOIN track ON cd.id = track.CD_id";
+        String query_cd = "SELECT * FROM media INNER JOIN cd ON media.id = cd.id";
+        String query_track = "SELECT * FROM track";
         Connection connection = SqliteDatabase.getConnection();
         try {
             // Get all book
@@ -50,6 +54,25 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
             }
+            // Get all cd
+            preparedStatement = connection.prepareStatement(query_cd);
+            rs = preparedStatement.executeQuery();
+            Map<Integer,CD> mapCD = new HashMap<Integer,CD>();
+            while (rs.next()) {
+                CD newCD = new CD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("artist"), rs.getString("record_label"), rs.getString("music_type"),   rs.getString("category_cd"), rs.getInt("rushDelivery"));
+                mapCD.put(rs.getInt("id"), newCD);
+            }
+            //Get track
+            preparedStatement = connection.prepareStatement(query_track);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Track track = new Track(rs.getInt("id"), rs.getString("name"));
+                mapCD.get(rs.getInt("CD_id")).addTrack(track);
+            }
+            // Chuyển đổi giá trị từ HashMap thành List
+            List<CD> listCD = new ArrayList<>(mapCD.values());
+            listMedia.addAll(listCD);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
