@@ -176,3 +176,106 @@ This is the source code for the AIMS project for the Software Design and Constru
 </details>
 
 </details>
+
+
+<details>
+  <summary>W13: 18/12/2023~26/12/2023 </summary>
+<br>
+<details>
+<summary>Đàm Ngọc Khánh</summary>
+<br>
+
+- Assigned tasks:
+    - Sửa đổi liên quan đến số lượng và giới hạn số lượng media ở HomeView, CartView,..
+    - Phân tích SOLID DAO và SqliteDatabase
+
+- Implementation details:
+    - Pull Request(s):[#31](https://github.com/TVKain/TKXDPM.VP.20231/pull/31) [#36](https://github.com/TVKain/TKXDPM.VP.20231/pull/36)
+    - Specific implementation details:
+        - Sửa đổi spinner để người dùng có thể sửa số lượng ngay cả trong màn hình giỏ hàng
+        - Phân tích SOLID
+</details>
+
+<details>
+<summary>Trần Vinh Khánh</summary>
+<br>
+
+- Assigned tasks:
+    - Implement Delivery Info screen and part of Place Order Controller
+    - SOLID Analysis for Cart class and AdminLoginController
+- Implementation details:
+    - Pull Request(s): [34](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/34) [33](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/33) [32](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/32)
+    - Specific implementation details:
+        - Add FXML file, DeliveryInfoViewHandler, PlaceOrderController, Factory class for DeliveryInfo and RushDeliveryInfo
+        - Add Delivery Info Validator factory class
+        - SOLID Analysis
+
+</details>
+
+<details>
+<summary>Lê Ngọc Đăng Khoa</summary>
+<br>
+
+- Assigned tasks:
+    - Implement search by title
+    - SOLID Analysis for HomeViewHandler, CartViewHandler, CartMediaViewHandler and MediaHomeViewHandler
+
+- Implementation details:
+    - Pull Request(s): [38](https://github.com/TVKain/TKXDPM.VP.20231/pull/38)
+    - Specific implementation details:
+        - Implement search by title
+
+</details>
+
+</details>
+
+<details>
+  <summary>W14: 26/12/2023~1/1/2023 </summary>
+<br>
+<details>
+<summary>Đàm Ngọc Khánh</summary>
+<br>
+
+- Assigned tasks:
+    - Sửa đổi liên quan đến số lượng và giới hạn số lượng media ở HomeView, CartView,..
+    - Phân tích SOLID DAO và SqliteDatabase
+
+- Implementation details:
+    - Pull Request(s):[#31](https://github.com/TVKain/TKXDPM.VP.20231/pull/31) [#36](https://github.com/TVKain/TKXDPM.VP.20231/pull/36)
+    - Specific implementation details:
+        - Sửa đổi spinner để người dùng có thể sửa số lượng ngay cả trong màn hình giỏ hàng
+        - Phân tích SOLID
+</details>
+
+<details>
+<summary>Trần Vinh Khánh</summary>
+<br>
+
+- Assigned tasks:
+    - Implement Delivery Info screen and part of Place Order Controller
+    - SOLID Analysis for Cart class and AdminLoginController
+- Implementation details:
+    - Pull Request(s): [34](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/34) [33](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/33) [32](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/32)
+    - Specific implementation details:
+        - Add FXML file, DeliveryInfoViewHandler, PlaceOrderController, Factory class for DeliveryInfo and RushDeliveryInfo
+        - Add Delivery Info Validator factory class
+        - SOLID Analysis
+
+</details>
+
+<details>
+<summary>Lê Ngọc Đăng Khoa</summary>
+<br>
+
+- Assigned tasks:
+    - Implement search by title
+    - SOLID Analysis for HomeViewHandler, CartViewHandler, CartMediaViewHandler and MediaHomeViewHandler
+
+- Implementation details:
+    - Pull Request(s): [38](https://github.com/TVKain/TKXDPM.VP.20231/pull/38)
+    - Specific implementation details:
+        - Implement search by title
+
+</details>
+
+</details>
