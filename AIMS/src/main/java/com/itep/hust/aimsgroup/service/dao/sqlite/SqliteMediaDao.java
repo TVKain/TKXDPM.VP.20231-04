@@ -62,15 +62,25 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String insertQuery2 = "";
         if (media instanceof Book) {
-            insertQuery2 = "INSERT INTO book (id, author, cover_type, publisher, publisher_date) " +
+            insertQuery2 = "INSERT INTO book (id, author, cover_type, publisher, publish_date) " +
                     "VALUES (?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery2);
+                Book book = (Book) media;
+                preparedStatement.setInt(1, book.getId());
+                preparedStatement.setString(2, book.getAuthor());
+                preparedStatement.setString(3, book.getCoverType());
+                preparedStatement.setString(4, book.getPublisher());
+                preparedStatement.setString(5, book.getPublishDate().toString());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else if (media instanceof DVD) {
 
         } else if (media instanceof CD) {
 
         }
-
-
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery1);
             preparedStatement.setInt(1, media.getId());

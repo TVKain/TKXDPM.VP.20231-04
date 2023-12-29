@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -99,7 +98,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <DatePicker fx:id="publishDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="12" />
             <Label text="Rush delivery" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />
@@ -117,6 +115,7 @@
             <Label fx:id="author" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label fx:id="type" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label fx:id="publisher" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label fx:id="publishDate" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12" />
          </children>
       </GridPane>
       <Button layoutX="389.0" layoutY="572.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="105.0" text="OK" />
