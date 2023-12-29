@@ -8,13 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class detailBookViewHandler implements Initializable {
+public class DetailBookViewHandler implements Initializable {
     @FXML
     private Label author;
 
@@ -55,7 +54,7 @@ public class detailBookViewHandler implements Initializable {
     private Label weight;
     private Media media;
 
-    public detailBookViewHandler(Media media) {
+    public DetailBookViewHandler(Media media) {
         this.media = media;
     }
 

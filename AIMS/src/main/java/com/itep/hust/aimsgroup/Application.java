@@ -22,9 +22,7 @@ public class Application extends javafx.application.Application {
         SqliteDatabase.seed();
         Screen.setMainStage(stage);
 
-      
         Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
-
 
         stage.setWidth(1340);
         stage.setHeight(760);
