@@ -1,19 +1,23 @@
 package com.itep.hust.aimsgroup.view.manager;
 
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.model.media.book.Book;
+import com.itep.hust.aimsgroup.model.media.cd.CD;
+import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.detailBookViewHandler;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -54,6 +58,14 @@ public class ManagerViewHandler implements Initializable {
     private ComboBox<String> typeMedia;
     @FXML
     private AnchorPane mainContent;
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private Button viewButton;
 
     private ObservableList<Media> listMedia = FXCollections.observableArrayList();
 
@@ -72,9 +84,26 @@ public class ManagerViewHandler implements Initializable {
         tableMedia.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         typeMedia.getItems().addAll("Book", "CD", "DVD");
 
-        tableMedia.setOnMouseClicked(event -> {
-
+        tableMedia.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Media>() {
+            @Override
+            public void onChanged(Change<? extends Media> change) {
+                int selectedRowCount = tableMedia.getSelectionModel().getSelectedItems().size();
+                if (selectedRowCount == 1) {
+                    viewButton.setVisible(true);
+                    editButton.setVisible(true);
+                    deleteButton.setVisible(true);
+                } else if (selectedRowCount > 1) {
+                    viewButton.setVisible(false);
+                    editButton.setVisible(false);
+                } else if ( selectedRowCount > 10) {
+                    viewButton.setVisible(false);
+                    editButton.setVisible(false);
+                    deleteButton.setVisible(false);
+                    Popup.showError("Không thể  xóa cùng lúc hơn 10 sản phẩm !");
+                }
+            }
         });
+
     }
 
     @FXML
@@ -85,7 +114,7 @@ public class ManagerViewHandler implements Initializable {
     void addNewMedia(ActionEvent event) throws IOException {
         String type = typeMedia.getSelectionModel().getSelectedItem();
         if (type == "Book") {
-            Screen.setScreen("/fxml/manager/add_new_book.fxml", new AddBookViewHandler());
+            Screen.setScreen("/fxml/manager/add/add_new_book.fxml", new AddBookViewHandler());
         }
         else if (type == "DVD") {
 
@@ -97,7 +126,16 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void deleteMedia(ActionEvent event) {
-
+        ObservableList<Media> listDelete =  tableMedia.getSelectionModel().getSelectedItems();
+        if(listDelete.size() <= 10) {
+            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
+            for(Media media: listDelete) {
+                sqliteMediaDao.delete(media);
+            }
+            listMedia.removeAll(listDelete);
+        } else {
+            Popup.showError("Không thể xóa hơn 10 media cùng lúc!");
+        }
     }
 
     @FXML
@@ -107,6 +145,14 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void viewDetailMedia(ActionEvent event) {
+        Media media = tableMedia.getSelectionModel().getSelectedItem();
+        if(media != null) {
+            if(media instanceof Book) {
+                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new detailBookViewHandler(media));
+            } else if (media instanceof DVD) {
 
+            } else if (media instanceof CD) {
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.admin.AdminViewHandler;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
+import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,10 +21,11 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         SqliteDatabase.seed();
         Screen.setMainStage(stage);
+
       
-        // Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
-        // Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
-        Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
+        Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
+
+
         stage.setWidth(1340);
         stage.setHeight(760);
         stage.setResizable(true);

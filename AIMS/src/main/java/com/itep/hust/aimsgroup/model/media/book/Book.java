@@ -22,4 +22,31 @@ public class Book extends Media {
         this.publishDate = publishDate;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getCoverType() {
+        return coverType;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public int getNumOfPages() {
+        return numOfPages;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getBookCategory() {
+        return bookCategory;
+    }
 }
