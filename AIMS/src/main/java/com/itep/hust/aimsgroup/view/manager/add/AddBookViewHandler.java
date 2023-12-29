@@ -1,9 +1,10 @@
-package com.itep.hust.aimsgroup.view.manager;
+package com.itep.hust.aimsgroup.view.manager.add;
 
 import com.itep.hust.aimsgroup.model.media.book.Book;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;

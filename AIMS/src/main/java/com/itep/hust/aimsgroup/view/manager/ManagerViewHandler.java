@@ -2,9 +2,12 @@ package com.itep.hust.aimsgroup.view.manager;
 
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.detailBookViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,9 +75,6 @@ public class ManagerViewHandler implements Initializable {
         tableMedia.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         typeMedia.getItems().addAll("Book", "CD", "DVD");
 
-        tableMedia.setOnMouseClicked(event -> {
-
-        });
     }
 
     @FXML
@@ -85,7 +85,7 @@ public class ManagerViewHandler implements Initializable {
     void addNewMedia(ActionEvent event) throws IOException {
         String type = typeMedia.getSelectionModel().getSelectedItem();
         if (type == "Book") {
-            Screen.setScreen("/fxml/manager/add_new_book.fxml", new AddBookViewHandler());
+            Screen.setScreen("/fxml/manager/add/add_new_book.fxml", new AddBookViewHandler());
         }
         else if (type == "DVD") {
 
@@ -97,7 +97,16 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void deleteMedia(ActionEvent event) {
-
+        ObservableList<Media> listDelete =  tableMedia.getSelectionModel().getSelectedItems();
+        if(listDelete.size() <= 10) {
+            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
+            for(Media media: listDelete) {
+                sqliteMediaDao.delete(media);
+            }
+            listMedia.removeAll(listDelete);
+        } else {
+            Popup.showError("Không thể xóa hơn 10 media cùng lúc!");
+        }
     }
 
     @FXML
@@ -107,6 +116,9 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void viewDetailMedia(ActionEvent event) {
-
+        Media media = tableMedia.getSelectionModel().getSelectedItem();
+        if(media != null) {
+            Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new detailBookViewHandler(media));
+        }
     }
 }

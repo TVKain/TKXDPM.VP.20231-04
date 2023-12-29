@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +36,12 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
         //String query_cd = "SELECT * FROM media INNER JOIN book ON media.id = cd.id INNER JOIN track ON cd.id = track.CD_id";
         Connection connection = SqliteDatabase.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query_book);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                listMedia.add(new Media(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
-                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getInt("rushDelivery")));
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                listMedia.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("author"), rs.getString("cover_type"), rs.getString("publisher"),  LocalDate.parse(rs.getString("publish_date"), formatter), rs.getInt("rushDelivery")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -59,15 +62,25 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String insertQuery2 = "";
         if (media instanceof Book) {
-            insertQuery2 = "INSERT INTO book (id, title, category, price, value, quantity, weight, imageURL, rushDelivery) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            insertQuery2 = "INSERT INTO book (id, author, cover_type, publisher, publish_date) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery2);
+                Book book = (Book) media;
+                preparedStatement.setInt(1, book.getId());
+                preparedStatement.setString(2, book.getAuthor());
+                preparedStatement.setString(3, book.getCoverType());
+                preparedStatement.setString(4, book.getPublisher());
+                preparedStatement.setString(5, book.getPublishDate().toString());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else if (media instanceof DVD) {
 
         } else if (media instanceof CD) {
 
         }
-
-
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery1);
             preparedStatement.setInt(1, media.getId());
@@ -102,14 +115,19 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
         } else if (media instanceof CD) {
             typeOfMedia = "cd";
         }
-        String deleteQuery = "DELETE FROM media, " + typeOfMedia + " WHERE id = ?";
+        String deleteQuery1 = "DELETE FROM media WHERE id = ?";
+        String deleteQuery2 = "DELETE FROM " + typeOfMedia + " WHERE id = ?";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
-            preparedStatement.setInt(1, media.getId());
-            preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(deleteQuery1);
+            PreparedStatement preparedStatement2 = connection.prepareStatement(deleteQuery2);
+            preparedStatement1.setInt(1, media.getId());
+            preparedStatement2.setInt(1, media.getId());
+            preparedStatement1.executeUpdate();
+            preparedStatement2.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
     }
+
 }
