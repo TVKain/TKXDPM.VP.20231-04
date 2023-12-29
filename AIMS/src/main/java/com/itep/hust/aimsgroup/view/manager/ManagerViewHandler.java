@@ -1,6 +1,9 @@
 package com.itep.hust.aimsgroup.view.manager;
 
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.model.media.book.Book;
+import com.itep.hust.aimsgroup.model.media.cd.CD;
+import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
@@ -144,7 +147,12 @@ public class ManagerViewHandler implements Initializable {
     void viewDetailMedia(ActionEvent event) {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
         if(media != null) {
-            Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new detailBookViewHandler(media));
+            if(media instanceof Book) {
+                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new detailBookViewHandler(media));
+            } else if (media instanceof DVD) {
+
+            } else if (media instanceof CD) {
+            }
         }
     }
 }

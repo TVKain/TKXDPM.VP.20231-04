@@ -103,9 +103,14 @@ CREATE TABLE "Track" (
 
 INSERT INTO Media VALUES(38,'story',32,12,1.2,'book2',29,'/image/book/book2.jpg',1);
 INSERT INTO Book VALUES(38,'author2','publisher2','2023-12-29',300, 'category2', 'covertype2', 'english');
-
 INSERT INTO Media VALUES(39,'adventure',21,2,0.8,'book9',20,'/image/book/book9.jpg',0);
 INSERT INTO Book VALUES(39,'author9','publisher9','2023-12-29',300, 'category9', 'covertype9', 'english');
+
+INSERT INTO Media VALUES(58,'cartoon',55,13,0.3,'dvd3',51,'/image/dvd/dvd3.jpg',1);
+INSERT INTO DVD VALUES(58,'studio3','type3','subtitle3', 'language3', '1:30', 'director3', '2023-12-29', 'dvd-category3');
+INSERT INTO Media VALUES(59,'action',28,1,0.3,'dvd6',26,'/image/dvd/dvd6.jpg',1);
+INSERT INTO DVD VALUES(59,'studio6','type6','subtitle6', 'language6', '1:30', 'director6', '2023-12-29', 'dvd-category6');
+
 --INSERT INTO Media VALUES(40,'book','adventure',73,11,0.5,'book10',69,'/image/book/book10.jpg',1);
 --INSERT INTO Media VALUES(41,'book','story',66,2,1.1,'book6',62,'/image/book/book6.jpg',1);
 --INSERT INTO Media VALUES(42,'cd','pop',24,6,1.0,'cd7',20,'/image/cd/cd7.jpg',0);
