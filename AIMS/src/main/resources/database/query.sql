@@ -8,32 +8,30 @@ VALUES
 ("manager");
 
 CREATE TABLE IF NOT EXISTS Account (
-    email VARCHAR(32) PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email VARCHAR(32),
     password VARCHAR(32) NOT NULL
 );
 
 INSERT INTO Account(email, password)
 VALUES
-("tvkain.it@gmail.com", "1");
+("tvkain.it@gmail.com", "1"),
+("vinhkhanh2611@gmail.com", "1");
+
 
 CREATE TABLE IF NOT EXISTS AccountRole (
-    email VARCHAR(32),
-    roleName INTEGER,
-    PRIMARY KEY (email, roleName),
+    accountId INTEGER,
+    roleName VARCHAR(32),
+    PRIMARY KEY (accountId, roleName),
     FOREIGN KEY (roleName) REFERENCES Role(roleName),
-    FOREIGN KEY (email) REFERENCES Account(email)
+    FOREIGN KEY (accountId) REFERENCES Account(id)
 );
 
-INSERT INTO AccountRole(email, roleName)
+INSERT INTO AccountRole(accountId, roleName)
 VALUES
-("tvkain.it@gmail.com", "admin"),
-("tvkain.it@gmail.com", "manager");
-
-
-CREATE TABLE IF NOT EXISTS Admin (
-    username VARCHAR(32) PRIMARY KEY,
-    password VARCHAR(32) NOT NULL
-);
+(1, "admin"),
+(1, "manager"),
+(2, "manager");
 
 
 CREATE TABLE IF NOT EXISTS "Media"(
