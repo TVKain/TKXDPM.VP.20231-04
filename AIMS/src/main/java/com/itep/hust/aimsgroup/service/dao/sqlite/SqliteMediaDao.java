@@ -30,18 +30,25 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
     @Override
     public List<Media> getAll() {
         List<Media> listMedia = new ArrayList<>();
-        String query = "select * from media";
         String query_book = "SELECT * FROM media INNER JOIN book ON media.id = book.id";
         String query_dvd = "SELECT * FROM media INNER JOIN dvd ON media.id = dvd.id";
         //String query_cd = "SELECT * FROM media INNER JOIN book ON media.id = cd.id INNER JOIN track ON cd.id = track.CD_id";
         Connection connection = SqliteDatabase.getConnection();
         try {
+            // Get all book
             PreparedStatement preparedStatement = connection.prepareStatement(query_book);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 listMedia.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("author"), rs.getString("cover_type"), rs.getString("publisher"),  LocalDate.parse(rs.getString("publish_date"), formatter), rs.getInt("rushDelivery")));
+            }
+            // Get all dvd
+            preparedStatement = connection.prepareStatement(query_dvd);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
