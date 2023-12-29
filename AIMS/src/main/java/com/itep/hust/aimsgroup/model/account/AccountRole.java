@@ -1,15 +1,15 @@
 package com.itep.hust.aimsgroup.model.account;
 
 public class AccountRole {
-    private String email;
+    private Integer accountId;
     private String roleName;
 
-    public String getEmail() {
-        return email;
+    public Integer getAccountId() {
+        return accountId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 
     public String getRoleName() {

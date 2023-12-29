@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
-public class MediaDaoTest {
+public class AccountDaoTest {
     @Test
     public void testGetAll() {
         Dao<Media, Integer> mediaIntegerDao =  new SqliteMediaDao();

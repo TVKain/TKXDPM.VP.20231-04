@@ -1,6 +1,6 @@
 package com.itep.hust.aimsgroup.view.login;
 
-import com.itep.hust.aimsgroup.controller.AccountLoginController;
+import com.itep.hust.aimsgroup.controller.login.AccountLoginController;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteAccountDao;
@@ -9,7 +9,6 @@ import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.admin.AdminViewHandler;
 import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

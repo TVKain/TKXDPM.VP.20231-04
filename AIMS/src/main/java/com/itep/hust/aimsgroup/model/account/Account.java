@@ -5,10 +5,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class Account {
+    private Integer id;
     private String email;
     private String password;
 
     private List<Role> roles;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public List<Role> getRoles() {
         return roles;

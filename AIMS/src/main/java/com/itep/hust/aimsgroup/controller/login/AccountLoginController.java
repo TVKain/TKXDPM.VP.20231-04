@@ -1,7 +1,8 @@
-package com.itep.hust.aimsgroup.controller;
+package com.itep.hust.aimsgroup.controller.login;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
+import com.itep.hust.aimsgroup.service.dao.AccountDao;
 import com.itep.hust.aimsgroup.service.dao.Dao;
 
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
 public class AccountLoginController {
 
 
-    public boolean authenticateLogin(Account account, Role role, Dao<Account, String> accountDao) {
-        Account accountDb = accountDao.get(account.getEmail());
+    public boolean authenticateLogin(Account account, Role role, AccountDao accountDao) {
+        Account accountDb = accountDao.getAccountByEmail(account.getEmail());
 
         if (accountDb == null) {
             return false;

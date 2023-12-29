@@ -14,6 +14,7 @@ import java.io.IOException;
 public class Screen {
     private static Stage  mainStage = null;
 
+
     /**
      * Set up the main stage should only be called once in Application.java
      * @param mainStage     the main stage of the application

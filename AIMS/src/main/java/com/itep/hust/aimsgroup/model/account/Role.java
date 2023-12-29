@@ -23,4 +23,9 @@ public class Role {
         Role role = (Role) o;
         return Objects.equals(roleName, role.roleName);
     }
+
+    @Override
+    public String toString() {
+        return this.getRoleName();
+    }
 }
