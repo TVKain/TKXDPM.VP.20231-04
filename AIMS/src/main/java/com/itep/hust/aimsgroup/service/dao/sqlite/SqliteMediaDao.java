@@ -52,7 +52,7 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
-                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
+                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("language"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
             }
             // Get all cd
             preparedStatement = connection.prepareStatement(query_cd);
@@ -107,7 +107,22 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 throw new RuntimeException(e);
             }
         } else if (media instanceof DVD) {
-
+            insertQuery2 = "INSERT INTO dvd (id, disc_type, director, runtime, studio, language, subtitle) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery2);
+                DVD dvd= (DVD) media;
+                preparedStatement.setInt(1, dvd.getId());
+                preparedStatement.setString(2, dvd.getDiscType());
+                preparedStatement.setString(3, dvd.getDirector());
+                preparedStatement.setString(4, dvd.getRuntime());
+                preparedStatement.setString(5, dvd.getStudio());
+                preparedStatement.setString(6, dvd.getLanguage());
+                preparedStatement.setString(7, dvd.getSubtitles());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else if (media instanceof CD) {
 
         }

@@ -10,6 +10,7 @@ import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddDVDViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -117,7 +118,7 @@ public class ManagerViewHandler implements Initializable {
             Screen.setScreen("/fxml/manager/add/add_new_book.fxml", new AddBookViewHandler());
         }
         else if (type == "DVD") {
-
+            Screen.setScreen("/fxml/manager/add/add_new_dvd.fxml", new AddDVDViewHandler());
         }
         else if (type == "CD") {
 

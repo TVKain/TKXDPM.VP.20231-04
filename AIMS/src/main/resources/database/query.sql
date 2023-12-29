@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Account (
 INSERT INTO Account(email, password)
 VALUES
 ("tvkain.it@gmail.com", "1"),
-("vinhkhanh2611@gmail.com", "1");
+("vinhkhanh2611@gmail.com", "1"),
 ("khanhngocdam@gmail.com", "1");
 
 CREATE TABLE IF NOT EXISTS AccountRole (
@@ -31,7 +31,9 @@ INSERT INTO AccountRole(accountId, roleName)
 VALUES
 (1, "admin"),
 (1, "manager"),
-(2, "manager");
+(2, "manager"),
+(3, "admin"),
+(3, "manager");
 
 
 

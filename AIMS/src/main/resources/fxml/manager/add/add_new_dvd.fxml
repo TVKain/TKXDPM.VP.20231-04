@@ -37,6 +37,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="ID">
@@ -93,7 +94,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="author" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="discType" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label text="Director" GridPane.rowIndex="10">
                <font>
                   <Font size="14.0" />
@@ -109,21 +110,27 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="publisher" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <TextField fx:id="coverType" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="runtime" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="director" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label text="Rush delivery" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <CheckBox fx:id="rushDelivery" mnemonicParsing="false" prefHeight="22.0" prefWidth="28.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label text="Subtitle" GridPane.rowIndex="13">
+            <Label text="Subtitle" GridPane.rowIndex="14">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <TextField fx:id="studio" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <TextField fx:id="subtitle" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <TextField fx:id="subtitle" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <Label text="Language" GridPane.rowIndex="13">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="language" GridPane.columnIndex="1" GridPane.rowIndex="13" />
          </children>
       </GridPane>
       <Button layoutX="331.0" layoutY="576.0" mnemonicParsing="false" onAction="#confirm" prefHeight="34.0" prefWidth="105.0" text="Confirm" />
