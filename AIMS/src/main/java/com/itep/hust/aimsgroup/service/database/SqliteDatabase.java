@@ -72,7 +72,7 @@ public class SqliteDatabase {
         }
 
 
-        String sqlFilePath = SqliteDatabase.class.getResource("/database/query.sql").getPath();
+        String sqlFilePath = SqliteDatabase.class.getResource("/database/query_2.sql").getPath();
 
         try {
             Connection connection = SqliteDatabase.getConnection();

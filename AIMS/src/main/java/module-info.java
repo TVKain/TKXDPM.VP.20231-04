@@ -6,10 +6,11 @@ module com.itep.hust.aimsgroup {
     requires java.sql;
     requires javafx.graphics;
     requires org.controlsfx.controls;
-    requires org.apache.commons.lang3;
     requires org.apache.commons.validator;
     requires static lombok;
     requires servlet.api;
+    requires javax.servlet.api;
+    requires com.google.gson;
 
     opens com.itep.hust.aimsgroup to javafx.fxml;
     opens com.itep.hust.aimsgroup.view to javafx.fxml;
