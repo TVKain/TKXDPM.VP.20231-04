@@ -13,6 +13,7 @@ import com.itep.hust.aimsgroup.view.manager.add.AddGenenalInfomation;
 import com.itep.hust.aimsgroup.view.manager.edit.EditGeneralViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailDVDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.DetailGeneralViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -137,13 +138,6 @@ public class ManagerViewHandler implements Initializable {
     @FXML
     void viewDetailMedia(ActionEvent event) {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
-        if(media != null) {
-            if(media instanceof Book) {
-                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler((Book)media));
-            } else if (media instanceof DVD) {
-                Screen.setScreen("/fxml/manager/view/view_detail_dvd.fxml", new DetailDVDViewHandler((DVD)media));
-            } else if (media instanceof CD) {
-            }
-        }
+        Screen.setScreen("/fxml/manager/view/view_detail_media.fxml", new DetailGeneralViewHandler(media));
     }
 }
