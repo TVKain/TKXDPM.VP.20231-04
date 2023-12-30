@@ -9,8 +9,7 @@ import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
-import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
-import com.itep.hust.aimsgroup.view.manager.add.AddDVDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddGerenalInfomation;
 import com.itep.hust.aimsgroup.view.manager.edit.EditBookViewHandler;
 import com.itep.hust.aimsgroup.view.manager.edit.EditDVDViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
@@ -59,8 +58,6 @@ public class ManagerViewHandler implements Initializable {
     @FXML
     private TableView<Media> tableMedia;
     @FXML
-    private ComboBox<String> typeMedia;
-    @FXML
     private AnchorPane mainContent;
     @FXML
     private Button deleteButton;
@@ -86,7 +83,6 @@ public class ManagerViewHandler implements Initializable {
         rushDelivery.setCellValueFactory(new PropertyValueFactory<Media, Integer>("rushDelivery"));
         tableMedia.setItems(listMedia);
         tableMedia.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        typeMedia.getItems().addAll("Book", "CD", "DVD");
 
         tableMedia.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Media>() {
             @Override
@@ -116,16 +112,7 @@ public class ManagerViewHandler implements Initializable {
     }
     @FXML
     void addNewMedia(ActionEvent event) throws IOException {
-        String type = typeMedia.getSelectionModel().getSelectedItem();
-        if (type == "Book") {
-            Screen.setScreen("/fxml/manager/add/add_new_book.fxml", new AddBookViewHandler());
-        }
-        else if (type == "DVD") {
-            Screen.setScreen("/fxml/manager/add/add_new_dvd.fxml", new AddDVDViewHandler());
-        }
-        else if (type == "CD") {
-
-        }
+        Screen.setScreen("/fxml/manager/add/add_media.fxml", new AddGerenalInfomation());
     }
 
     @FXML
