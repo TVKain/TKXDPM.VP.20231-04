@@ -1,3 +1,21 @@
+-- Delivery Info
+CREATE TABLE IF NOT EXISTS DeliveryInfo (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" VARCHAR(64),
+    phone VARCHAR(20),
+    city VARCHAR(64),
+    email VARCHAR(64),
+    address VARCHAR(64),
+    instruction VARCHAR(32)
+);
+
+CREATE TABLE IF NOT EXISTS RushDeliveryInfo (
+    id INTEGER PRIMARY KEY,
+    rushInstruction VARCHAR(64),
+    rushTime INTEGER,
+    FOREIGN KEY (id) REFERENCES DeliveryInfo(id)
+);
+
 
 -- Role
 CREATE TABLE IF NOT EXISTS Role (

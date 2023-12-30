@@ -20,7 +20,7 @@ public class AdminUpdateController {
         }
         accountDao.update(account);
 
-        Popup.showSuccess("Update media success");
+        Popup.showSuccess("Update account success");
         return true;
     }
 
