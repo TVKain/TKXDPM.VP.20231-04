@@ -1,20 +1,24 @@
-package com.itep.hust.aimsgroup.view;
+package com.itep.hust.aimsgroup.view.deliveryinfo;
 
 import com.itep.hust.aimsgroup.controller.placeorder.PlaceOrderController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.CartViewHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class DeliveryInfoViewHandler {
+public class OldDeliveryInfoViewHandler {
     private final PlaceOrderController placeOrderController = new PlaceOrderController();
     @FXML
     private GridPane mediaGrid;
@@ -40,7 +44,7 @@ public class DeliveryInfoViewHandler {
     private TextField phoneTextField;
 
     @FXML
-    private CheckBox rushOrderCheckBox;
+    private ComboBox<DeliveryType> deliveryTypeComboBox;
 
     @FXML
     private TextField shippingInstructionTextField;
@@ -59,7 +63,7 @@ public class DeliveryInfoViewHandler {
 
     @FXML
     public void initialize() {
-        initializeRushOrderCheckbox();
+        initializeDeliveryTypeComboBox();
         hideRushOrderFields();
         initializeMediaGrid();
         initializeBackButton();
@@ -76,7 +80,7 @@ public class DeliveryInfoViewHandler {
     public void initializeConfirmDeliveryButton() {
         confirmDeliveryButton.setOnMouseClicked(e -> {
             Map<String, String> deliveryInfoData = this.getFormData();
-            DeliveryType deliveryType = this.getDeliveryType();
+            DeliveryType deliveryType = deliveryTypeComboBox.getValue();
 
             placeOrderController.setDeliveryInfoValidator(deliveryType);
             if (!placeOrderController.validateDeliveryInfo(deliveryInfoData)) {
@@ -90,12 +94,16 @@ public class DeliveryInfoViewHandler {
         });
     }
 
-    private DeliveryType getDeliveryType() {
-        if (rushOrderCheckBox.isSelected()) {
-            return DeliveryType.RUSH;
-        } else {
-            return DeliveryType.NORMAL;
-        }
+    private void initializeDeliveryTypeComboBox() {
+        deliveryTypeComboBox.getItems().addAll(DeliveryType.values());
+        deliveryTypeComboBox.getSelectionModel().select(DeliveryType.NORMAL);
+
+        deliveryTypeComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            switch (newValue) {
+                case NORMAL -> hideRushOrderFields();
+                case RUSH -> showRushOrderFields();
+            }
+        });
     }
 
     private Map<String, String> getFormData() {
@@ -141,15 +149,7 @@ public class DeliveryInfoViewHandler {
         }
     }
 
-    public void initializeRushOrderCheckbox() {
-        rushOrderCheckBox.selectedProperty().addListener(e -> {
-            if (rushOrderCheckBox.isSelected()) {
-                showRushOrderFields();
-            } else {
-                hideRushOrderFields();
-            }
-        });
-    }
+
 
     public void showRushOrderFields() {
         formGrid.addRow(6, rushInstructionLabel, rushInstructionTextField);
