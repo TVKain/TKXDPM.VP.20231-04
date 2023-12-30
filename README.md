@@ -268,13 +268,14 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Implement search by title
-    - SOLID Analysis for HomeViewHandler, CartViewHandler, CartMediaViewHandler and MediaHomeViewHandler
+    - Implement advanced searches and sorting options
+    - Implement checkout and refund
 
 - Implementation details:
-    - Pull Request(s): [38](https://github.com/TVKain/TKXDPM.VP.20231/pull/38)
+    - Pull Request(s): [62](https://github.com/TVKain/TKXDPM.VP.20231/pull/62)
     - Specific implementation details:
-        - Implement search by title
+        - Implement advanced searches and sorting options
+        - Implement checkout and refund
 
 </details>
 
