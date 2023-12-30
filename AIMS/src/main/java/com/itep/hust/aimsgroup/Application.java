@@ -4,7 +4,9 @@ import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
 import com.itep.hust.aimsgroup.util.Screen;
 
 
-import com.itep.hust.aimsgroup.view.deliveryinfo.DeliveryInfoViewHandler;
+import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddGerenalInfomation;
+import com.itep.hust.aimsgroup.view.manager.add.cd.AddCDViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,8 +23,11 @@ public class Application extends javafx.application.Application {
         SqliteDatabase.seed();
         Screen.setMainStage(stage);
 
-        Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
+
+//        Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
         // Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
+        Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+
 
         stage.setWidth(1340);
         stage.setHeight(760);
