@@ -1,20 +1,23 @@
-package com.itep.hust.aimsgroup.view;
+package com.itep.hust.aimsgroup.view.login;
 
 import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.HomeViewHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class LoginViewHandler {
-    @FXML
-    private Button adminButton;
 
     @FXML
     private Button customerButton;
 
     @FXML
+    private Button loginButton;
+
+
+    @FXML
     public void initialize() {
-        adminButton.setOnMouseClicked(e -> {
-            Screen.setScreen("/fxml/login-admin/login-admin.fxml", new AdminLoginViewHandler());
+        loginButton.setOnMouseClicked(e -> {
+            Screen.setScreen("/fxml/login/login-account.fxml", new AccountLoginViewHandler());
         });
 
         customerButton.setOnMouseClicked(e -> {
