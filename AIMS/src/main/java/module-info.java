@@ -21,5 +21,8 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.manager.view to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.deliveryinfo to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.edit to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.add.book to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.add.dvd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.add.cd to javafx.fxml;
 
 }

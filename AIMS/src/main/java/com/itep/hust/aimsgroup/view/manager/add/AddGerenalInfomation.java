@@ -3,6 +3,9 @@ package com.itep.hust.aimsgroup.view.manager.add;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Popup;
+import com.itep.hust.aimsgroup.view.manager.add.book.AddBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.cd.AddCDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.dvd.AddDVDViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -71,7 +74,7 @@ public class AddGerenalInfomation implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        typeOfMedia.getItems().addAll("Book", "CD", "DVD");
+        typeOfMedia.getItems().addAll("Book", "DVD", "CD");
         typeOfMedia.setOnAction(e -> handleComboBoxSelection());
     }
     private void handleComboBoxSelection() {
@@ -79,12 +82,19 @@ public class AddGerenalInfomation implements Initializable {
         // Thực hiện các hành động khi ComboBox được chọn ở đây
         String selectedType = typeOfMedia.getValue();
         if(selectedType=="Book") {
+            vbox.getChildren().clear();
             this.addMediaViewHandler =  new AddBookViewHandler();
+            vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/add/add_new_book.fxml", addMediaViewHandler));
         } else if (selectedType=="DVD") {
-            
+            vbox.getChildren().clear();
+            this.addMediaViewHandler = new AddDVDViewHandler();
+            vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/add/add_new_dvd.fxml", addMediaViewHandler));
         } else if (selectedType=="CD") {
-            
+            vbox.getChildren().clear();
+            this.addMediaViewHandler = new AddCDViewHandler();
+            System.out.println(addMediaViewHandler);
+            vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/add/add_new_cd.fxml", addMediaViewHandler));
         }
-        vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/add/add_new_book.fxml", addMediaViewHandler));
+
     }
 }

@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.view.manager.add;
+package com.itep.hust.aimsgroup.view.manager.add.book;
 
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.book.Book;
@@ -6,6 +6,7 @@ import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddMediaViewHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
