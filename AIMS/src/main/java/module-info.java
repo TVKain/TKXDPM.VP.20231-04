@@ -19,5 +19,6 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.model.account to javafx.base;
     opens com.itep.hust.aimsgroup.view.manager.add to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.view to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.edit to javafx.fxml;
 
 }
