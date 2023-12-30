@@ -1,24 +1,30 @@
+
+-- Role
 CREATE TABLE IF NOT EXISTS Role (
     roleName VARCHAR(32) PRIMARY KEY
 );
 
+-- Data Role
 INSERT INTO Role(roleName)
 VALUES
 ("admin"),
 ("manager");
 
+-- Account
 CREATE TABLE IF NOT EXISTS Account (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email VARCHAR(32),
     password VARCHAR(32) NOT NULL
 );
 
+-- Account Data
 INSERT INTO Account(email, password)
 VALUES
 ("tvkain.it@gmail.com", "1"),
 ("vinhkhanh2611@gmail.com", "1"),
 ("khanhngocdam@gmail.com", "1");
 
+-- Account Role (many to many)
 CREATE TABLE IF NOT EXISTS AccountRole (
     accountId INTEGER,
     roleName VARCHAR(32),
@@ -27,6 +33,7 @@ CREATE TABLE IF NOT EXISTS AccountRole (
     FOREIGN KEY (accountId) REFERENCES Account(id)
 );
 
+-- Account Role data
 INSERT INTO AccountRole(accountId, roleName)
 VALUES
 (1, "admin"),
@@ -34,7 +41,6 @@ VALUES
 (2, "manager"),
 (3, "admin"),
 (3, "manager");
-
 
 
 CREATE TABLE IF NOT EXISTS "Media"(
@@ -99,21 +105,21 @@ CREATE TABLE "Track" (
 
 
 --DATA Book
-INSERT INTO Media VALUES(38,'story',32,12,1.2,'book2',29,'/image/book/book2.jpg',1);
+INSERT INTO Media VALUES(38,'story',32000,12,1.2,'book2',29000,'/image/book/book2.jpg',1);
 INSERT INTO Book VALUES(38,'author2','publisher2','2023-12-29',300, 'category2', 'covertype2', 'english');
-INSERT INTO Media VALUES(39,'adventure',21,2,0.8,'book9',20,'/image/book/book9.jpg',0);
+INSERT INTO Media VALUES(39,'adventure',21000,2,0.8,'book9',20000,'/image/book/book9.jpg',0);
 INSERT INTO Book VALUES(39,'author9','publisher9','2023-12-29',300, 'category9', 'covertype9', 'english');
 --Data DVD
-INSERT INTO Media VALUES(58,'cartoon',55,13,0.3,'dvd3',51,'/image/dvd/dvd3.jpg',1);
+INSERT INTO Media VALUES(58,'cartoon',55000,13,0.3,'dvd3',51000,'/image/dvd/dvd3.jpg',1);
 INSERT INTO DVD VALUES(58,'studio3','type3','subtitle3', 'language3', '1:30', 'director3', '2023-12-29', 'dvd-category3');
-INSERT INTO Media VALUES(59,'action',28,1,0.3,'dvd6',26,'/image/dvd/dvd6.jpg',1);
+INSERT INTO Media VALUES(59,'action',28000,1,0.3,'dvd6',26000,'/image/dvd/dvd6.jpg',1);
 INSERT INTO DVD VALUES(59,'studio6','type6','subtitle6', 'language6', '1:30', 'director6', '2023-12-29', 'dvd-category6');
 -- Data CD
-INSERT INTO Media VALUES(55,'pop',74,6,0.4,'cd2',71,'/image/cd/cd2.jpg',0);
+INSERT INTO Media VALUES(55,'pop',74000,6,0.4,'cd2',71000,'/image/cd/cd2.jpg',0);
 INSERT INTO CD VALUES(55,'artist2','music_type2','record_label2','category_cd2', '2023-12-29');
 INSERT INTO Track VALUES(1,'track1',55);
 INSERT INTO Track VALUES(2,'track2',55);
-INSERT INTO Media VALUES(56,'rock',70,20,0.6,'cd1',60,'/image/cd/cd1.jpg',1);
+INSERT INTO Media VALUES(56,'rock',70000,20,0.6,'cd1',60000,'/image/cd/cd1.jpg',1);
 INSERT INTO CD VALUES(56,'artist1','music_type1','record_label1','category_cd1', '2023-12-29');
 INSERT INTO Track VALUES(3,'track3',56);
 INSERT INTO Track VALUES(4,'track4',56);

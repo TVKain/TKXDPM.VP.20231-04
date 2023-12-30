@@ -101,9 +101,10 @@ public class AdminViewHandler {
             deleteButton.setOnAction(event -> {
                 Account account = getTableView().getItems().get(getIndex());
 
-                Popup.showConfirmationDialog("Do you want to delete this account ?", () -> {
-                    adminController.deleteAccount(account);
-                    Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
+                Popup.showConfirmationDialog("Do you want to delete this account ?",
+                        () -> {
+                            adminController.deleteAccount(account);
+                            Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
                 }, null);
             });
         }
