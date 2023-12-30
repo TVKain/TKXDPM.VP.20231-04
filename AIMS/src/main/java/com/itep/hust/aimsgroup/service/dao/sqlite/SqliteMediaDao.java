@@ -140,9 +140,7 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 preparedStatement.setString(5, cd.getCDCategory());
                 preparedStatement.executeUpdate();
                 List<Track> listTrack = cd.getListTrack();
-                System.out.println(listTrack.size());
                 for (Track track : listTrack) {
-                    System.out.println("ok");
                     String insertQuery3 = "INSERT INTO track (name, CD_id) VALUES ( ?, ?)";
                     preparedStatement = connection.prepareStatement(insertQuery3);
                     preparedStatement.setString(1, track.getName());
@@ -213,6 +211,28 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 throw new RuntimeException(e);
             }
         } else if (media instanceof CD) {
+            updateQuery2 = "UPDATE cd SET artist = ?, music_type = ?, record_label = ?, category_cd = ? WHERE id = ? ";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2);
+                CD cd= (CD) media;
+                preparedStatement.setInt(5, cd.getId());
+                preparedStatement.setString(1, cd.getArtist());
+                preparedStatement.setString(2, cd.getMusicType());
+                preparedStatement.setString(3, cd.getRecordLabel());
+                preparedStatement.setString(4, cd.getCDCategory());
+                preparedStatement.executeUpdate();
+                List<Track> listTrack = cd.getListTrack();
+                for (Track track : listTrack) {
+                    String insertQuery3 = "INSERT INTO track (name, CD_id) VALUES ( ?, ?)";
+                    preparedStatement = connection.prepareStatement(insertQuery3);
+                    preparedStatement.setString(1, track.getName());
+                    preparedStatement.setInt(2, cd.getId());
+                    preparedStatement.executeUpdate();
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
         }
         try {
@@ -231,6 +251,20 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public void deleteTrack(List<Track> listTrack) {
+        Connection connection = SqliteDatabase.getConnection();
+        String deleteQuery = "DELETE FROM track where id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+            for (Track track: listTrack) {
+                preparedStatement.setInt(1,track.getId());
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw  new RuntimeException();
+        }
     }
 
     @Override
