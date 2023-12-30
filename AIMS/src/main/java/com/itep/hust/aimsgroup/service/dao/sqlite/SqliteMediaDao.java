@@ -224,6 +224,7 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(query_delete_track);
                 preparedStatement.setInt(1, media.getId());
+                preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
