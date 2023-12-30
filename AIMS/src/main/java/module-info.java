@@ -7,7 +7,6 @@ module com.itep.hust.aimsgroup {
     requires org.apache.commons.validator;
     requires static lombok;
 
-
     opens com.itep.hust.aimsgroup to javafx.fxml;
     opens com.itep.hust.aimsgroup.view to javafx.fxml;
     exports com.itep.hust.aimsgroup;
