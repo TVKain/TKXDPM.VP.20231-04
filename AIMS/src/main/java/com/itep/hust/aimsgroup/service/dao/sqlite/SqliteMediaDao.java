@@ -44,35 +44,39 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                listMedia.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                listMedia.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") , rs.getInt("value") ,
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("author"), rs.getString("cover_type"), rs.getString("publisher"),  LocalDate.parse(rs.getString("publish_date"), formatter), rs.getInt("rushDelivery")));
             }
             // Get all dvd
             preparedStatement = connection.prepareStatement(query_dvd);
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
-                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
+                listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") , rs.getInt("value") ,
+                        rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("language"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
             }
             // Get all cd
             preparedStatement = connection.prepareStatement(query_cd);
             rs = preparedStatement.executeQuery();
             Map<Integer,CD> mapCD = new HashMap<Integer,CD>();
             while (rs.next()) {
-                CD newCD = new CD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                CD newCD = new CD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") , rs.getInt("value") ,
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("artist"), rs.getString("record_label"), rs.getString("music_type"),   rs.getString("category_cd"), rs.getInt("rushDelivery"));
                 mapCD.put(rs.getInt("id"), newCD);
             }
-            //Get track
-            preparedStatement = connection.prepareStatement(query_track);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                Track track = new Track(rs.getInt("id"), rs.getString("name"));
-                mapCD.get(rs.getInt("CD_id")).addTrack(track);
+
+            if(mapCD.size() > 0) {
+                //Get track
+                preparedStatement = connection.prepareStatement(query_track);
+                rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    Track track = new Track(rs.getInt("id"), rs.getString("name"));
+                    mapCD.get(rs.getInt("CD_id")).addTrack(track);
+                }
+                // Chuyển đổi giá trị từ HashMap thành List
+                List<CD> listCD = new ArrayList<>(mapCD.values());
+                listMedia.addAll(listCD);
             }
-            // Chuyển đổi giá trị từ HashMap thành List
-            List<CD> listCD = new ArrayList<>(mapCD.values());
-            listMedia.addAll(listCD);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -107,7 +111,22 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 throw new RuntimeException(e);
             }
         } else if (media instanceof DVD) {
-
+            insertQuery2 = "INSERT INTO dvd (id, disc_type, director, runtime, studio, language, subtitle) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery2);
+                DVD dvd= (DVD) media;
+                preparedStatement.setInt(1, dvd.getId());
+                preparedStatement.setString(2, dvd.getDiscType());
+                preparedStatement.setString(3, dvd.getDirector());
+                preparedStatement.setString(4, dvd.getRuntime());
+                preparedStatement.setString(5, dvd.getStudio());
+                preparedStatement.setString(6, dvd.getLanguage());
+                preparedStatement.setString(7, dvd.getSubtitles());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else if (media instanceof CD) {
 
         }
@@ -131,6 +150,63 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
 
     @Override
     public Media update(Media media) {
+
+        Connection connection = SqliteDatabase.getConnection();
+
+        String updateQuery1 = "UPDATE media SET title = ?, category = ?, price = ?, value = ?, quantity = ?, weight = ?, " +
+                "imageURL = ?, rushDelivery = ? WHERE id = ?";
+        String updateQuery2 = "";
+        if (media instanceof Book) {
+            updateQuery2 = "UPDATE book " +
+                    "SET author = ?, cover_type = ?, publisher = ?, publish_date = ? " +
+                    "WHERE id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2);
+                Book book = (Book) media;
+                preparedStatement.setInt(5, book.getId());
+                preparedStatement.setString(1, book.getAuthor());
+                preparedStatement.setString(2, book.getCoverType());
+                preparedStatement.setString(3, book.getPublisher());
+                preparedStatement.setString(4, book.getPublishDate().toString());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (media instanceof DVD) {
+            updateQuery2 = "UPDATE dvd SET disc_type = ?, director = ?, runtime = ?, studio = ?, language = ?, subtitle = ? " +
+                    "WHERE id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2);
+                DVD dvd= (DVD) media;
+                preparedStatement.setInt(7, dvd.getId());
+                preparedStatement.setString(1, dvd.getDiscType());
+                preparedStatement.setString(2, dvd.getDirector());
+                preparedStatement.setString(3, dvd.getRuntime());
+                preparedStatement.setString(4, dvd.getStudio());
+                preparedStatement.setString(5, dvd.getLanguage());
+                preparedStatement.setString(6, dvd.getSubtitles());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (media instanceof CD) {
+
+        }
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery1);
+            preparedStatement.setInt(9, media.getId());
+            preparedStatement.setString(1, media.getTitle());
+            preparedStatement.setString(2, media.getCategory());
+            preparedStatement.setInt(3, media.getPrice());
+            preparedStatement.setInt(4, media.getValue());
+            preparedStatement.setInt(5, media.getQuantity());
+            preparedStatement.setDouble(6, media.getWeight());
+            preparedStatement.setString(7, media.getImageURL());
+            preparedStatement.setInt(8, media.getRushDelivery());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
@@ -144,6 +220,15 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             typeOfMedia = "dvd";
         } else if (media instanceof CD) {
             typeOfMedia = "cd";
+            String query_delete_track = "DELETE FROM track WHERE CD_id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(query_delete_track);
+                preparedStatement.setInt(1, media.getId());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         }
         String deleteQuery1 = "DELETE FROM media WHERE id = ?";
         String deleteQuery2 = "DELETE FROM " + typeOfMedia + " WHERE id = ?";

@@ -21,6 +21,7 @@ public class Application extends javafx.application.Application {
         SqliteDatabase.seed();
         Screen.setMainStage(stage);
 
+
         Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
         // Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
 

@@ -10,7 +10,11 @@ import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddDVDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.edit.EditBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.edit.EditDVDViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.DetailDVDViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -117,7 +121,7 @@ public class ManagerViewHandler implements Initializable {
             Screen.setScreen("/fxml/manager/add/add_new_book.fxml", new AddBookViewHandler());
         }
         else if (type == "DVD") {
-
+            Screen.setScreen("/fxml/manager/add/add_new_dvd.fxml", new AddDVDViewHandler());
         }
         else if (type == "CD") {
 
@@ -140,7 +144,15 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void editMedia(ActionEvent event) {
-
+        Media media = tableMedia.getSelectionModel().getSelectedItem();
+        if(media != null) {
+            if(media instanceof Book) {
+                Screen.setScreen("/fxml/manager/edit/edit_book.fxml", new EditBookViewHandler((Book)media));
+            } else if (media instanceof DVD) {
+                Screen.setScreen("/fxml/manager/edit/edit_dvd.fxml", new EditDVDViewHandler((DVD) media));
+            } else if (media instanceof CD) {
+            }
+        }
     }
 
     @FXML
@@ -148,9 +160,9 @@ public class ManagerViewHandler implements Initializable {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
         if(media != null) {
             if(media instanceof Book) {
-                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler(media));
+                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler((Book)media));
             } else if (media instanceof DVD) {
-
+                Screen.setScreen("/fxml/manager/view/view_detail_dvd.fxml", new DetailDVDViewHandler((DVD)media));
             } else if (media instanceof CD) {
             }
         }
