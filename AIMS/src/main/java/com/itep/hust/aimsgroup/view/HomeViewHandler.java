@@ -11,10 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,6 +20,8 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class HomeViewHandler {
@@ -52,7 +51,7 @@ public class HomeViewHandler {
     private Label numMediaInCart;
 
     @FXML
-    private SplitMenuButton splitMenuBtnSearch;
+    private Button splitMenuBtnSearch;
 
     @FXML
     private VBox vboxMedia1;
@@ -68,6 +67,12 @@ public class HomeViewHandler {
 
     @FXML
     private VBox vboxMedia4;
+
+    @FXML
+    private ChoiceBox<String> attribute;
+
+    @FXML
+    private MenuButton sort;
 
     private HomeController homeController = new HomeController();
 
@@ -116,11 +121,112 @@ public class HomeViewHandler {
         });
         numMediaInCart.setText(Cart.getInstance().getSize() + " media");
 
+        MenuItem menuItem0 = new MenuItem("Default");
+        MenuItem menuItem1 = new MenuItem("Price lowest first");
+        MenuItem menuItem2 = new MenuItem("Price highest first");
+        MenuItem menuItem3 = new MenuItem("A to Z");
+        MenuItem menuItem4 = new MenuItem("Z to A");
+
+        sort.getItems().add(menuItem0);
+        sort.getItems().add(menuItem1);
+        sort.getItems().add(menuItem2);
+        sort.getItems().add(menuItem3);
+        sort.getItems().add(menuItem4);
+        sort.setText("Sorting");
+
+        attribute.getItems().add("Title");
+        attribute.getItems().add("Price");
+        attribute.getItems().add("Amount");
+        attribute.setValue("Title");
+
         // Nếu searchbox trống và danh sách đang được hiển thị là Filtered thì chuyển về danh sách ban đầu
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             if ((newValue.isEmpty()) && (currentList==1)) {
                 refresh(lstMedia, vboxColumns);
                 currentList=0;
+            }
+        });
+        menuItem0.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (currentList == 1){
+                    filtered.sort(Comparator.comparing(Media::getId));
+                    refresh(filtered, vboxColumns);
+                    sort.setText("Default");
+
+                }
+                else {
+                    lstMedia.sort(Comparator.comparing(Media::getId));
+                    refresh(lstMedia, vboxColumns);
+                    sort.setText("Default");
+                }
+            }
+        });
+        menuItem1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (currentList == 1){
+                    filtered.sort(Comparator.comparing(Media::getPrice));
+                    refresh(filtered, vboxColumns);
+                    sort.setText("Price lowest first");
+
+                }
+                else {
+                    lstMedia.sort(Comparator.comparing(Media::getPrice));
+                    refresh(lstMedia, vboxColumns);
+                    sort.setText("Price lowest first");
+                }
+            }
+        });
+
+        menuItem2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (currentList == 1){
+                    filtered.sort(Comparator.comparing(Media::getPrice).reversed());
+                    refresh(filtered, vboxColumns);
+                    sort.setText("Price highest first");
+
+                }
+                else {
+                    lstMedia.sort(Comparator.comparing(Media::getPrice).reversed());
+                    refresh(lstMedia, vboxColumns);
+                    sort.setText("Price highest first");
+                }
+            }
+        });
+
+        menuItem3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (currentList == 1){
+                    filtered.sort(Comparator.comparing(Media::getTitle));
+                    refresh(filtered, vboxColumns);
+                    sort.setText("A to Z");
+
+                }
+                else {
+                    lstMedia.sort(Comparator.comparing(Media::getTitle));
+                    refresh(lstMedia, vboxColumns);
+                    sort.setText("A to Z");
+                }
+            }
+        });
+
+        menuItem4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (currentList == 1){
+                    filtered.sort(Comparator.comparing(Media::getTitle).reversed());
+                    refresh(filtered, vboxColumns);
+                    sort.setText("Z to A");
+
+                }
+                else {
+                    lstMedia.sort(Comparator.comparing(Media::getTitle).reversed());
+                    refresh(lstMedia, vboxColumns);
+                    sort.setText("Z to A");
+                }
             }
         });
         splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
@@ -133,7 +239,11 @@ public class HomeViewHandler {
                     int i = 0;
                     while (i< lstMedia.size()){
                         // tìm kiếm dựa theo tên sản phẩm
-                        if ( lstMedia.get(i).getTitle().contains(searchBox.getCharacters())){
+                        if  ( (attribute.getValue().equals("Title")) &&  ( lstMedia.get(i).getTitle().contains(searchBox.getCharacters())) ){
+                            // thêm sản phẩm trùng khớp vào list filtered
+                            filtered.add(lstMedia.get(i));
+                        }
+                        if  ( (attribute.getValue().equals("Price")) &&  ( compare( lstMedia.get(i).getPrice() , searchBox.getCharacters().toString()) ) ){
                             // thêm sản phẩm trùng khớp vào list filtered
                             filtered.add(lstMedia.get(i));
                         }
@@ -192,5 +302,55 @@ public class HomeViewHandler {
     @FXML
     void viewCart(MouseEvent event) {
         Screen.setScreen("/fxml/cart/cart.fxml", new CartViewHandler());
+    }
+
+    boolean compare(int number, String input){
+        int number2;
+        String input2 = input.replaceAll("\\s", "");
+
+        if (isNumeric(input2)){
+            if (number == tryParse(input2))
+                return true;
+        }
+
+         if ( (input2.substring(0,2).matches("<=")) || (input2.substring(0,2).matches("=<")) ) {
+             input2 = input2.replace("<","");
+             input2 = input2.replace("=","");
+             number2 = tryParse(input2);
+             if (number <= number2) return true;
+         }
+
+        if ( (input2.substring(0,2).matches(">=")) || (input2.substring(0,2).matches("=>")) ) {
+            input2 = input2.replace(">","");
+            input2 = input2.replace("=","");
+            number2 = tryParse(input2);
+            if (number >= number2) return true;
+        }
+
+        switch (input2.charAt(0)){
+            case '<':
+                input2 = input2.replace("<","");
+                number2 = tryParse(input2);
+                if (number < number2) return true;
+                break;
+            case '>':
+                input2 = input2.replace(">","");
+                number2 = tryParse(input2);
+                if (number > number2) return true;
+                break;
+        }
+        return false;
+    }
+
+    boolean isNumeric(String str){
+        return str != null && str.matches("[0-9.]+");
+    }
+
+    Integer tryParse(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 2147000000;
+        }
     }
 }

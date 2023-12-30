@@ -52,10 +52,10 @@ public class DetailBookViewHandler implements Initializable {
 
     @FXML
     private Label weight;
-    private Media media;
+    private Book book;
 
-    public DetailBookViewHandler(Media media) {
-        this.media = media;
+    public DetailBookViewHandler(Book book) {
+        this.book = book;
     }
 
     @FXML
@@ -65,19 +65,18 @@ public class DetailBookViewHandler implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        id.setText(media.getId() + "");
-        title.setText(media.getTitle());
-        category.setText(media.getCategory());
-        price.setText(media.getPrice()+"");
-        value.setText(media.getValue()+"");
-        weight.setText(media.getWeight()+"");
-        quantity.setText(media.getQuantity()+"");
-        imageURL.setText(media.getImageURL());
-        rushDelivery.setSelected(media.isRushDelivery());
-        Book book = (Book) media;
+        id.setText(book.getId() + "");
+        title.setText(book.getTitle());
+        category.setText(book.getCategory());
+        price.setText(book.getPrice()+"");
+        value.setText(book.getValue()+"");
+        weight.setText(book.getWeight()+"");
+        quantity.setText(book.getQuantity()+"");
+        imageURL.setText(book.getImageURL());
+        rushDelivery.setSelected(book.isRushDelivery());
         author.setText(book.getAuthor());
         type.setText(book.getCoverType());
-        publisher.setText(((Book) media).getPublisher());
+        publisher.setText(book.getPublisher());
         publishDate.setText(book.getPublishDate().toString());
     }
 }
