@@ -44,14 +44,14 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                listMedia.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                listMedia.add(new Book(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price"), rs.getInt("value"),
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("author"), rs.getString("cover_type"), rs.getString("publisher"),  LocalDate.parse(rs.getString("publish_date"), formatter), rs.getInt("rushDelivery")));
             }
             // Get all dvd
             preparedStatement = connection.prepareStatement(query_dvd);
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                listMedia.add(new DVD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price"), rs.getInt("value"),
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("disc_type"), rs.getString("director"), rs.getString("runtime"),  rs.getString("studio"), rs.getString("language"), rs.getString("subtitle"), rs.getInt("rushDelivery") ));
             }
             // Get all cd
@@ -59,7 +59,7 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             rs = preparedStatement.executeQuery();
             Map<Integer,CD> mapCD = new HashMap<Integer,CD>();
             while (rs.next()) {
-                CD newCD = new CD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price") * 1000, rs.getInt("value") * 1000,
+                CD newCD = new CD(rs.getInt("id"), rs.getString("title"), rs.getString("category") ,rs.getInt("price"), rs.getInt("value"),
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("artist"), rs.getString("record_label"), rs.getString("music_type"),   rs.getString("category_cd"), rs.getInt("rushDelivery"));
                 mapCD.put(rs.getInt("id"), newCD);
             }

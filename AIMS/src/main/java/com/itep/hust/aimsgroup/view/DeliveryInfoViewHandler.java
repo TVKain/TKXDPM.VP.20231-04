@@ -14,7 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class DeliveryInfoViewHandler {
+public class
+DeliveryInfoViewHandler {
     private final PlaceOrderController placeOrderController = new PlaceOrderController();
     @FXML
     private GridPane mediaGrid;

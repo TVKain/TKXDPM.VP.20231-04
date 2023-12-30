@@ -305,8 +305,15 @@ public class HomeViewHandler {
     }
 
     boolean compare(int number, String input){
-        int number2;
+        int number2, number3;
         String input2 = input.replaceAll("\\s", "");
+
+        if (input2.contains("-")){
+            String[] parts = input2.split("-");
+            number2 = tryParse(parts[0]);
+            number3 = tryParse(parts[1]);
+            if ((number2 <= number) && (number <= number3)) return true;
+        }
 
         if (isNumeric(input2)){
             if (number == tryParse(input2))
