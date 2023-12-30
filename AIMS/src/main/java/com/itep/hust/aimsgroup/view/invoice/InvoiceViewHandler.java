@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.invoice;
 
+import com.itep.hust.aimsgroup.controller.placeorder.PlaceOrderController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.media.Media;
@@ -17,6 +18,8 @@ import java.util.Map;
 
 public class InvoiceViewHandler {
     private final Invoice invoice;
+
+    private final PlaceOrderController placeOrderController = new PlaceOrderController();
 
     public InvoiceViewHandler(Invoice invoice) {
         this.invoice = invoice;
@@ -51,6 +54,13 @@ public class InvoiceViewHandler {
         initializeBackButton();
         initializeMediaTable();
         initializeLabels();
+        initializePaymentButton();
+    }
+
+    private void initializePaymentButton() {
+        paymentButton.setOnMouseClicked(e -> {
+            placeOrderController.redirectToPayment(invoice);
+        });
     }
 
     private void initializeLabels() {
