@@ -1,11 +1,14 @@
 module com.itep.hust.aimsgroup {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
+    requires javafx.web;
     requires java.sql;
     requires javafx.graphics;
     requires org.controlsfx.controls;
     requires org.apache.commons.validator;
     requires static lombok;
+    requires servlet.api;
     requires javax.servlet.api;
     requires com.google.gson;
 
@@ -23,9 +26,9 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.deliveryinfo to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.deliveryinfo.form to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.invoice to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.payment to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.edit to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.book to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.dvd to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.cd to javafx.fxml;
-
 }
