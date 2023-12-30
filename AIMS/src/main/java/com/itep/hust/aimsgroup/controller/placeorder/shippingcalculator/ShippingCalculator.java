@@ -20,7 +20,7 @@ public abstract class ShippingCalculator {
         startCities.add("ha noi");
         startCities.add("tp. hcm");
 
-        int startPrice;
+        double startPrice;
         double startWeight;
         if (startCities.contains(deliveryInfo.getCity().toLowerCase())) {
             startPrice = 22000;
@@ -32,10 +32,12 @@ public abstract class ShippingCalculator {
 
         Map.Entry<Media, Integer> heaviestMedia = Cart.getInstance().getHeaviestMedia();
 
-        double remainingWeight = heaviestMedia.getValue() * heaviestMedia.getKey().getWeight() - startWeight;
+        double totalWeight = heaviestMedia.getValue() * heaviestMedia.getKey().getWeight();
+        double remainingWeight =  totalWeight - startWeight;
+
 
         if (remainingWeight < 0) {
-            return recalculateShip(remainingWeight * startPrice / startWeight);
+            return recalculateShip(totalWeight * startPrice / startWeight);
         }
 
         return recalculateShip(startPrice + 5000 * remainingWeight);
