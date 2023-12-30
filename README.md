@@ -272,7 +272,7 @@ This is the source code for the AIMS project for the Software Design and Constru
     - Implement checkout and refund
 
 - Implementation details:
-    - Pull Request(s): [64](https://github.com/TVKain/TKXDPM.VP.20231/pull/64)
+    - Pull Request(s): [65](https://github.com/TVKain/TKXDPM.VP.20231/pull/65)
     - Specific implementation details:
         - Implement advanced searches and sorting options
         - Implement checkout and refund
