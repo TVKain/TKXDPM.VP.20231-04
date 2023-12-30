@@ -1,0 +1,27 @@
+package com.itep.hust.aimsgroup.controller.placeorder.invoice;
+
+import com.itep.hust.aimsgroup.model.cart.Cart;
+import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
+import com.itep.hust.aimsgroup.model.invoice.Invoice;
+import com.itep.hust.aimsgroup.subsystem.Banking;
+import com.itep.hust.aimsgroup.subsystem.vnpay.VNPaySubsystem;
+
+public class InvoiceController {
+    public Invoice createInvoice(DeliveryInfo deliveryInfo, double shippingFee) {
+        Invoice invoice = new Invoice();
+        invoice.setVat(10);
+        invoice.setShippingFee(shippingFee);
+
+        invoice.setMediaSubtotal(Cart.getInstance().getTotalPrice());
+        invoice.setMediaTotal(invoice.getMediaSubtotal() * (1 + invoice.getVat() / 100));
+        invoice.setTotal(invoice.getMediaTotal() + invoice.getShippingFee());
+
+        invoice.setDeliveryInfo(deliveryInfo);
+
+        // Todo create order
+
+        return invoice;
+    }
+
+
+}

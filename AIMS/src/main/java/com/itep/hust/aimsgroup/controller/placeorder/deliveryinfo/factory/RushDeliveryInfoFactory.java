@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.model.deliveryinfo.factory;
+package com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.RushDeliveryInfo;
@@ -12,6 +12,7 @@ public class RushDeliveryInfoFactory implements DeliveryInfoFactory {
 
         rushDeliveryInfo.setName(input.get("name"));
         rushDeliveryInfo.setAddress(input.get("address"));
+        rushDeliveryInfo.setEmail(input.get("email"));
         rushDeliveryInfo.setCity(input.get("city"));
         rushDeliveryInfo.setInstruction(input.get("instruction"));
         rushDeliveryInfo.setPhone(input.get("phone"));

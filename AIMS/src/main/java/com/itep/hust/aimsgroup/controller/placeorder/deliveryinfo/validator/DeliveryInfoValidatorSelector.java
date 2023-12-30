@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.controller.placeorder.validator;
+package com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
 
