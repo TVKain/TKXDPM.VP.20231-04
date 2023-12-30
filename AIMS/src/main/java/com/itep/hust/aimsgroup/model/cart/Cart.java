@@ -106,6 +106,21 @@ public class Cart {
     }
 
     /**
+     * Get number of medias that support rush order in the cart
+     * @return          the number of supported medias
+     */
+    public int getRushSupportedMediasCount() {
+        Map<Media, Integer> supportMedias = getRushSupportedMedias();
+
+        int count = 0;
+        for (Map.Entry<Media, Integer> entry : supportMedias.entrySet()) {
+            count += entry.getValue();
+        }
+
+        return count;
+    }
+
+    /**
      * Calculate the total price in the cart
      * @return          the total price
      */
