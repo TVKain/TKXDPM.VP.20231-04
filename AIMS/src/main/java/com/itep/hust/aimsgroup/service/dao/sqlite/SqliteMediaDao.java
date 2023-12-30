@@ -63,16 +63,20 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                         rs.getInt("quantity"), rs.getDouble("weight"), rs.getString("imageURL"), rs.getString("artist"), rs.getString("record_label"), rs.getString("music_type"),   rs.getString("category_cd"), rs.getInt("rushDelivery"));
                 mapCD.put(rs.getInt("id"), newCD);
             }
-            //Get track
-            preparedStatement = connection.prepareStatement(query_track);
-            rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                Track track = new Track(rs.getInt("id"), rs.getString("name"));
-                mapCD.get(rs.getInt("CD_id")).addTrack(track);
+
+            if(mapCD.size() > 0) {
+                //Get track
+                preparedStatement = connection.prepareStatement(query_track);
+                rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    Track track = new Track(rs.getInt("id"), rs.getString("name"));
+                    mapCD.get(rs.getInt("CD_id")).addTrack(track);
+                }
+                // Chuyển đổi giá trị từ HashMap thành List
+                List<CD> listCD = new ArrayList<>(mapCD.values());
+                listMedia.addAll(listCD);
             }
-            // Chuyển đổi giá trị từ HashMap thành List
-            List<CD> listCD = new ArrayList<>(mapCD.values());
-            listMedia.addAll(listCD);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -216,6 +220,14 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
             typeOfMedia = "dvd";
         } else if (media instanceof CD) {
             typeOfMedia = "cd";
+            String query_delete_track = "DELETE FROM track WHERE CD_id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(query_delete_track);
+                preparedStatement.setInt(1, media.getId());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
         }
         String deleteQuery1 = "DELETE FROM media WHERE id = ?";
         String deleteQuery2 = "DELETE FROM " + typeOfMedia + " WHERE id = ?";
