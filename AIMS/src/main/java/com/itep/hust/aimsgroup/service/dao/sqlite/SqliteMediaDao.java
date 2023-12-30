@@ -128,7 +128,30 @@ public class SqliteMediaDao implements Dao<Media, Integer> {
                 throw new RuntimeException(e);
             }
         } else if (media instanceof CD) {
-
+            insertQuery2 = "INSERT INTO cd (id, artist, music_type, record_label, category_cd) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery2);
+                CD cd= (CD) media;
+                preparedStatement.setInt(1, cd.getId());
+                preparedStatement.setString(2, cd.getArtist());
+                preparedStatement.setString(3, cd.getMusicType());
+                preparedStatement.setString(4, cd.getRecordLabel());
+                preparedStatement.setString(5, cd.getCDCategory());
+                preparedStatement.executeUpdate();
+                List<Track> listTrack = cd.getListTrack();
+                System.out.println(listTrack.size());
+                for (Track track : listTrack) {
+                    System.out.println("ok");
+                    String insertQuery3 = "INSERT INTO track (name, CD_id) VALUES ( ?, ?)";
+                    preparedStatement = connection.prepareStatement(insertQuery3);
+                    preparedStatement.setString(1, track.getName());
+                    preparedStatement.setInt(2, cd.getId());
+                    preparedStatement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery1);
