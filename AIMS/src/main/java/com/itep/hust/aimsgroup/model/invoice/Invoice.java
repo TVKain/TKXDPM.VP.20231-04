@@ -4,6 +4,21 @@ import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.order.Order;
 
 public class Invoice {
+    private double mediaTotal;
+    private double mediaSubtotal;
+    private double vat;
+    private double shippingFee;
+
+    private double total;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     private DeliveryInfo deliveryInfo;
     private Order order;
 
@@ -30,6 +45,38 @@ public class Invoice {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public double getMediaTotal() {
+        return mediaTotal;
+    }
+
+    public void setMediaTotal(double mediaTotal) {
+        this.mediaTotal = mediaTotal;
+    }
+
+    public double getMediaSubtotal() {
+        return mediaSubtotal;
+    }
+
+    public void setMediaSubtotal(double mediaSubtotal) {
+        this.mediaSubtotal = mediaSubtotal;
+    }
+
+    public double getVat() {
+        return vat;
+    }
+
+    public void setVat(double vat) {
+        this.vat = vat;
+    }
+
+    public double getShippingFee() {
+        return shippingFee;
+    }
+
+    public void setShippingFee(double shippingFee) {
+        this.shippingFee = shippingFee;
     }
 }
 

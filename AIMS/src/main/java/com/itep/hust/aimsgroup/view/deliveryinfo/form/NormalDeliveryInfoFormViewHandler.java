@@ -59,5 +59,4 @@ public class NormalDeliveryInfoFormViewHandler extends  DeliveryInfoFormViewHand
     public ShippingCalculator getShippingFeeCalculator() {
         return new NormalShippingCalculator();
     }
-
 }

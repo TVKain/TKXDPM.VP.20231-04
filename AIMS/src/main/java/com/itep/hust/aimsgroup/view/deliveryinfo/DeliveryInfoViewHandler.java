@@ -1,10 +1,12 @@
 package com.itep.hust.aimsgroup.view.deliveryinfo;
 
+import com.itep.hust.aimsgroup.controller.placeorder.invoice.InvoiceController;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.RushDeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
+import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Popup;
@@ -13,6 +15,7 @@ import com.itep.hust.aimsgroup.view.CartViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.form.DeliveryInfoFormViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.form.NormalDeliveryInfoFormViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.form.RushDeliveryInfoFormViewHandler;
+import com.itep.hust.aimsgroup.view.invoice.InvoiceViewHandler;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -41,6 +44,7 @@ public class DeliveryInfoViewHandler {
     TableView<Map.Entry<Media, Integer>> mediaTable;
     private DeliveryInfoFormViewHandler deliveryInfoFormViewHandler = new NormalDeliveryInfoFormViewHandler();
 
+    private InvoiceController invoiceController = new InvoiceController();
     @FXML
     public void initialize() {
         initializeFormContainer();
@@ -98,8 +102,10 @@ public class DeliveryInfoViewHandler {
 
             System.out.println(shippingFee);
             System.out.println(deliveryInfo);
-            // Todo move to next screen
-            // Create Invoice here
+
+            Invoice invoice = invoiceController.createInvoice(deliveryInfo, shippingFee);
+
+            Screen.setScreen("/fxml/invoice/invoice.fxml", new InvoiceViewHandler(invoice));
         });
     }
 
