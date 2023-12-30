@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.model.deliveryinfo.factory;
+package com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
 

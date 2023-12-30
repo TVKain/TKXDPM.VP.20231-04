@@ -1,24 +1,30 @@
+
+-- Role
 CREATE TABLE IF NOT EXISTS Role (
     roleName VARCHAR(32) PRIMARY KEY
 );
 
+-- Data Role
 INSERT INTO Role(roleName)
 VALUES
 ("admin"),
 ("manager");
 
+-- Account
 CREATE TABLE IF NOT EXISTS Account (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email VARCHAR(32),
     password VARCHAR(32) NOT NULL
 );
 
+-- Account Data
 INSERT INTO Account(email, password)
 VALUES
 ("tvkain.it@gmail.com", "1"),
 ("vinhkhanh2611@gmail.com", "1"),
 ("khanhngocdam@gmail.com", "1");
 
+-- Account Role (many to many)
 CREATE TABLE IF NOT EXISTS AccountRole (
     accountId INTEGER,
     roleName VARCHAR(32),
@@ -27,6 +33,7 @@ CREATE TABLE IF NOT EXISTS AccountRole (
     FOREIGN KEY (accountId) REFERENCES Account(id)
 );
 
+-- Account Role data
 INSERT INTO AccountRole(accountId, roleName)
 VALUES
 (1, "admin"),
