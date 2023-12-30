@@ -9,8 +9,11 @@ import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
-import com.itep.hust.aimsgroup.view.manager.add.AddBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddGerenalInfomation;
+import com.itep.hust.aimsgroup.view.manager.edit.EditBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.edit.EditDVDViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.DetailDVDViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -55,8 +58,6 @@ public class ManagerViewHandler implements Initializable {
     @FXML
     private TableView<Media> tableMedia;
     @FXML
-    private ComboBox<String> typeMedia;
-    @FXML
     private AnchorPane mainContent;
     @FXML
     private Button deleteButton;
@@ -82,7 +83,6 @@ public class ManagerViewHandler implements Initializable {
         rushDelivery.setCellValueFactory(new PropertyValueFactory<Media, Integer>("rushDelivery"));
         tableMedia.setItems(listMedia);
         tableMedia.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        typeMedia.getItems().addAll("Book", "CD", "DVD");
 
         tableMedia.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Media>() {
             @Override
@@ -112,16 +112,7 @@ public class ManagerViewHandler implements Initializable {
     }
     @FXML
     void addNewMedia(ActionEvent event) throws IOException {
-        String type = typeMedia.getSelectionModel().getSelectedItem();
-        if (type == "Book") {
-            Screen.setScreen("/fxml/manager/add/add_new_book.fxml", new AddBookViewHandler());
-        }
-        else if (type == "DVD") {
-
-        }
-        else if (type == "CD") {
-
-        }
+        Screen.setScreen("/fxml/manager/add/add_media.fxml", new AddGerenalInfomation());
     }
 
     @FXML
@@ -140,7 +131,15 @@ public class ManagerViewHandler implements Initializable {
 
     @FXML
     void editMedia(ActionEvent event) {
-
+        Media media = tableMedia.getSelectionModel().getSelectedItem();
+        if(media != null) {
+            if(media instanceof Book) {
+                Screen.setScreen("/fxml/manager/edit/edit_book.fxml", new EditBookViewHandler((Book)media));
+            } else if (media instanceof DVD) {
+                Screen.setScreen("/fxml/manager/edit/edit_dvd.fxml", new EditDVDViewHandler((DVD) media));
+            } else if (media instanceof CD) {
+            }
+        }
     }
 
     @FXML
@@ -148,9 +147,9 @@ public class ManagerViewHandler implements Initializable {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
         if(media != null) {
             if(media instanceof Book) {
-                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler(media));
+                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler((Book)media));
             } else if (media instanceof DVD) {
-
+                Screen.setScreen("/fxml/manager/view/view_detail_dvd.fxml", new DetailDVDViewHandler((DVD)media));
             } else if (media instanceof CD) {
             }
         }
