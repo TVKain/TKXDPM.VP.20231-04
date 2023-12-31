@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.view.manager.view;
+package com.itep.hust.aimsgroup.view.manager.view.book;
 import com.itep.hust.aimsgroup.model.media.book.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
