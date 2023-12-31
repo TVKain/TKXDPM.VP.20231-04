@@ -4,7 +4,7 @@ import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.cd.CD;
 import com.itep.hust.aimsgroup.model.media.cd.Track;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;

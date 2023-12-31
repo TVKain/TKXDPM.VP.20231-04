@@ -1,7 +1,7 @@
 package com.itep.hust.aimsgroup.controller.admin.validator;
 
 import com.itep.hust.aimsgroup.model.account.Account;
-import com.itep.hust.aimsgroup.service.dao.AccountDao;
+import com.itep.hust.aimsgroup.persistence.dao.AccountDao;
 
 public class AccountUpdateValidator extends AccountValidator {
     public AccountUpdateValidator(AccountDao accountDao) {

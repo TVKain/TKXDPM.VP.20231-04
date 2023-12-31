@@ -1,13 +1,10 @@
 package com.itep.hust.aimsgroup;
 
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 import com.itep.hust.aimsgroup.util.Screen;
 
 
 import com.itep.hust.aimsgroup.view.admin.AdminViewHandler;
-import com.itep.hust.aimsgroup.view.deliveryinfo.DeliveryInfoViewHandler;
-import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
-import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;

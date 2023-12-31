@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.service.email;
+package com.itep.hust.aimsgroup.subsystem.email;
 
 public abstract class EmailService {
     public void sendMail(String recipient, String subject, String content) {

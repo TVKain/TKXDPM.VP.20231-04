@@ -1,8 +1,8 @@
-package com.itep.hust.aimsgroup.service.dao.sqlite;
+package com.itep.hust.aimsgroup.persistence.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.order.OrderMedia;
-import com.itep.hust.aimsgroup.service.dao.OrderMediaDao;
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.dao.OrderMediaDao;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 import javafx.util.Pair;
 
 import java.sql.Connection;

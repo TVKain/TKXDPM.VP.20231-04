@@ -1,14 +1,12 @@
-package com.itep.hust.aimsgroup.service.dao.sqlite;
+package com.itep.hust.aimsgroup.persistence.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.AccountRole;
 import com.itep.hust.aimsgroup.model.account.AccountStatus;
 import com.itep.hust.aimsgroup.model.account.Role;
-import com.itep.hust.aimsgroup.service.dao.AccountDao;
-import com.itep.hust.aimsgroup.service.dao.Dao;
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.dao.AccountDao;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

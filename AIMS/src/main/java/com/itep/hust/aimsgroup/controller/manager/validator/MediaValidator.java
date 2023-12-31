@@ -1,7 +1,6 @@
 package com.itep.hust.aimsgroup.controller.manager.validator;
 
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 
 public class MediaValidator {
     private Media media;

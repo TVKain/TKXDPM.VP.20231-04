@@ -1,6 +1,6 @@
-package com.itep.hust.aimsgroup.service.email.javax;
+package com.itep.hust.aimsgroup.subsystem.email.javax;
 
-import com.itep.hust.aimsgroup.service.email.EmailService;
+import com.itep.hust.aimsgroup.subsystem.email.EmailService;
 
 import javax.mail.*;
 import java.util.Properties;

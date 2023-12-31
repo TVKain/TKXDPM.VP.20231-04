@@ -1,11 +1,11 @@
 package com.itep.hust.aimsgroup.controller.placeorder;
 
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteInvoiceDao;
-import com.itep.hust.aimsgroup.service.email.EmailService;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteInvoiceDao;
+import com.itep.hust.aimsgroup.subsystem.email.EmailService;
 import com.itep.hust.aimsgroup.controller.placeorder.mail.InvoiceMail;
-import com.itep.hust.aimsgroup.subsystem.Banking;
-import com.itep.hust.aimsgroup.subsystem.vnpay.VNPaySubsystem;
+import com.itep.hust.aimsgroup.subsystem.banking.Banking;
+import com.itep.hust.aimsgroup.subsystem.banking.vnpay.VNPaySubsystem;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.payment.PaymentViewHandler;
 

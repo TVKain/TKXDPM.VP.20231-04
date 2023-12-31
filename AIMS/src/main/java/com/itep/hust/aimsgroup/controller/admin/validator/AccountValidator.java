@@ -2,7 +2,7 @@ package com.itep.hust.aimsgroup.controller.admin.validator;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
-import com.itep.hust.aimsgroup.service.dao.AccountDao;
+import com.itep.hust.aimsgroup.persistence.dao.AccountDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import org.apache.commons.validator.routines.EmailValidator;
 
