@@ -11,6 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 public class JavaMailUtil {
     public static void sendMail(String recepient, String content) throws Exception {
         System.out.println("Preparing to send email");

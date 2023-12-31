@@ -10,7 +10,7 @@ module com.itep.hust.aimsgroup {
     requires static lombok;
 
     requires servlet.api;
-    requires java.mail;
+    requires javax.mail.api;
 
     opens com.itep.hust.aimsgroup to javafx.fxml;
     opens com.itep.hust.aimsgroup.view to javafx.fxml;
