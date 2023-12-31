@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager.edit.dvd;
 
+import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
@@ -57,9 +58,11 @@ public class EditDVDViewHandler extends EditMediaViewHandler implements Initiali
             Popup.showError("Vui nhập nhập đủ trường thông tin !");
         } else {
             DVD newDVD = new DVD(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
-                    media.getWeight(), media.getImageURL(), discType.getText(), director.getText(), runtime.getText(), studio.getText(), language.getText(),  subtitle.getText(), dvd.getRushDelivery());
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
-            sqliteMediaDao.update(newDVD);
+                    media.getWeight(), media.getImageURL(), discType.getText(), director.getText(), runtime.getText(), studio.getText(), language.getText(),  subtitle.getText(), media.getRushDelivery());
+//            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
+//            sqliteMediaDao.update(newDVD);
+            ManagerController managerController = new ManagerController(new SqliteMediaDao());
+            managerController.updateMedia(newDVD);
             Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         }
     }

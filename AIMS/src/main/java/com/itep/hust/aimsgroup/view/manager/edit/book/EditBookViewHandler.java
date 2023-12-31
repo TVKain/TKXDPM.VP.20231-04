@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager.edit.book;
 
+import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.book.Book;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
@@ -52,9 +53,9 @@ public class EditBookViewHandler extends EditMediaViewHandler implements Initial
             Popup.showError("Vui nhập nhập đủ trường thông tin !");
         } else {
             Book newBook = new Book(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
-                    media.getWeight(), media.getImageURL(), author.getText(), coverType.getText(), publisher.getText(), publishDate.getValue(), book.getRushDelivery());
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
-            sqliteMediaDao.update(newBook);
+                    media.getWeight(), media.getImageURL(), author.getText(), coverType.getText(), publisher.getText(), publishDate.getValue(), media.getRushDelivery());
+            ManagerController managerController = new ManagerController(new SqliteMediaDao());
+            managerController.updateMedia(newBook);
             Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         }
     }

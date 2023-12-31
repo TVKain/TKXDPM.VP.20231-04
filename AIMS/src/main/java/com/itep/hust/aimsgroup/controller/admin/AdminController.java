@@ -16,7 +16,6 @@ import com.itep.hust.aimsgroup.service.dao.RoleDao;
 import com.itep.hust.aimsgroup.service.email.EmailService;
 
 import java.util.List;
-
 public class AdminController {
     private final AccountDao accountDao;
     private final RoleDao roleDao;
