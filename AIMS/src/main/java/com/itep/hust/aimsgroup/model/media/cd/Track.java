@@ -8,4 +8,15 @@ public class Track {
         this.id = id;
         this.name = name;
     }
+    public Track( String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

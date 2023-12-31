@@ -11,10 +11,10 @@ public class SqliteAccountDaoTest {
 
     @Test
     public void testGet() {
-        //Account account = new SqliteAccountDao().get("khanhtv");
+        Account account = new SqliteAccountDao().get(1);
 
-        //assertEquals("tvkain.it@gmail.com", account.getEmail());
-        //assertEquals("1", account.getPassword());
-        //assertEquals(account.getRoles().size(), 2);
+        assertEquals("tvkain.it@gmail.com", account.getEmail());
+        assertEquals("1", account.getPassword());
+        assertEquals(account.getRoles().size(), 2);
     }
 }
