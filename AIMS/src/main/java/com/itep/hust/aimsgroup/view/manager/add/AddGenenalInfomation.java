@@ -3,6 +3,8 @@ package com.itep.hust.aimsgroup.view.manager.add;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Popup;
+import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.book.AddBookViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.cd.AddCDViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.dvd.AddDVDViewHandler;
@@ -18,7 +20,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddGerenalInfomation implements Initializable {
+public class AddGenenalInfomation implements Initializable {
     @FXML
     private TextField category;
     @FXML
@@ -56,7 +58,7 @@ public class AddGerenalInfomation implements Initializable {
 
     @FXML
     void cancel(ActionEvent event) {
-
+        Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
     }
 
     @FXML

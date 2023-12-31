@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.view.manager.add.cd;
+package com.itep.hust.aimsgroup.view.manager.edit.cd;
 
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.cd.CD;
@@ -8,8 +8,8 @@ import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
-import com.itep.hust.aimsgroup.view.manager.add.AddMediaViewHandler;
-import javafx.collections.ObservableList;
+import com.itep.hust.aimsgroup.view.manager.add.cd.AddNewTrackViewHandler;
+import com.itep.hust.aimsgroup.view.manager.edit.EditMediaViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddCDViewHandler extends AddMediaViewHandler implements Initializable {
+public class EditCDViewHandler extends EditMediaViewHandler implements Initializable {
     @FXML
     private TextField artist;
 
@@ -37,14 +37,33 @@ public class AddCDViewHandler extends AddMediaViewHandler implements Initializab
     private TextField recordLabel;
     @FXML
     private VBox boxTrack;
+    private CD cd;
+
+    public EditCDViewHandler(CD cd) {
+        this.cd = cd;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        artist.setText(cd.getArtist());
+        musicType.setText(cd.getMusicType());
+        recordLabel.setText(cd.getRecordLabel());
+        categoryCD.setText(cd.getCDCategory());
+
+        for(Track track: cd.getListTrack()) {
+            HBox hbox = (HBox) ComponentLoader.getComponent("/fxml/manager/edit/cd/edit_track.fxml", new EditTrackViewHandler(track));
+            boxTrack.getChildren().add(hbox);
+        }
+    }
 
     @FXML
     void addNewTrack(ActionEvent event) {
         boxTrack.getChildren().add(ComponentLoader.getComponent("/fxml/manager/add/add_new_track.fxml", new AddNewTrackViewHandler()));
     }
     @Override
-    public void add(Media media) {
-
+    public void update(Media media) {
+        SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
+        sqliteMediaDao.deleteTrack(cd.getListTrack());
         if(artist.getText().isEmpty() || musicType.getText().isEmpty()||recordLabel.getText().isEmpty()||categoryCD.getText().isEmpty()) {
             Popup.showError("Vui lòng nhập đủ thông tin CD");
         } else if (boxTrack.getChildren().size() < 1) {
@@ -55,18 +74,13 @@ public class AddCDViewHandler extends AddMediaViewHandler implements Initializab
             CD newCD = new CD(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
                     media.getWeight(), media.getImageURL(), artist.getText(), recordLabel.getText(), musicType.getText(), categoryCD.getText(), media.getRushDelivery());
             for(Track track: getListTrack()) {
+                System.out.println(track.getName());
                 newCD.addTrack(track);
             }
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
-            sqliteMediaDao.insert(newCD);
+
+            sqliteMediaDao.update(newCD);
             Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         }
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        boxTrack.getChildren().add(ComponentLoader.getComponent("/fxml/manager/add/add_new_track.fxml", new AddNewTrackViewHandler()));
     }
 
     public List<Track> getListTrack() {
@@ -85,6 +99,4 @@ public class AddCDViewHandler extends AddMediaViewHandler implements Initializab
         }
         return listTrack;
     }
-
-
 }

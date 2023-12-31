@@ -269,13 +269,16 @@ This is the source code for the AIMS project for the Software Design and Constru
 
 - Assigned tasks:
     - Implement advanced searches and sorting options
-    - Implement checkout and refund
+    - Implement email receipt and refund
 
 - Implementation details:
-    - Pull Request(s): [65](https://github.com/TVKain/TKXDPM.VP.20231/pull/65)
+    - Pull Request(s): [55](https://github.com/TVKain/TKXDPM.VP.20231/pull/55)
     - Specific implementation details:
         - Implement advanced searches and sorting options
-        - Implement checkout and refund
+    
+    - Pull Request(s): [69](https://github.com/TVKain/TKXDPM.VP.20231/pull/69)
+    - Specific implementation details:
+        - Implement email receipt
 
 </details>
 

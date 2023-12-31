@@ -10,6 +10,7 @@ module com.itep.hust.aimsgroup {
     requires static lombok;
 
     requires servlet.api;
+    requires java.mail;
 
     opens com.itep.hust.aimsgroup to javafx.fxml;
     opens com.itep.hust.aimsgroup.view to javafx.fxml;
@@ -30,4 +31,10 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.manager.add.book to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.dvd to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.cd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.edit.book to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.edit.dvd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.edit.cd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.view.dvd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.view.book to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.manager.view.cd to javafx.fxml;
 }

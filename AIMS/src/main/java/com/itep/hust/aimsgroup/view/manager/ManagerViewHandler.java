@@ -1,19 +1,14 @@
 package com.itep.hust.aimsgroup.view.manager;
 
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.model.media.book.Book;
-import com.itep.hust.aimsgroup.model.media.cd.CD;
-import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
-import com.itep.hust.aimsgroup.view.manager.add.AddGerenalInfomation;
-import com.itep.hust.aimsgroup.view.manager.edit.EditBookViewHandler;
-import com.itep.hust.aimsgroup.view.manager.edit.EditDVDViewHandler;
-import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
-import com.itep.hust.aimsgroup.view.manager.view.DetailDVDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.add.AddGenenalInfomation;
+import com.itep.hust.aimsgroup.view.manager.edit.EditGeneralViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.DetailGeneralViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -112,7 +107,7 @@ public class ManagerViewHandler implements Initializable {
     }
     @FXML
     void addNewMedia(ActionEvent event) throws IOException {
-        Screen.setScreen("/fxml/manager/add/add_media.fxml", new AddGerenalInfomation());
+        Screen.setScreen("/fxml/manager/add/add_media.fxml", new AddGenenalInfomation());
     }
 
     @FXML
@@ -132,26 +127,12 @@ public class ManagerViewHandler implements Initializable {
     @FXML
     void editMedia(ActionEvent event) {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
-        if(media != null) {
-            if(media instanceof Book) {
-                Screen.setScreen("/fxml/manager/edit/edit_book.fxml", new EditBookViewHandler((Book)media));
-            } else if (media instanceof DVD) {
-                Screen.setScreen("/fxml/manager/edit/edit_dvd.fxml", new EditDVDViewHandler((DVD) media));
-            } else if (media instanceof CD) {
-            }
-        }
+        Screen.setScreen("/fxml/manager/edit/edit_media.fxml", new EditGeneralViewHandler(media));
     }
 
     @FXML
     void viewDetailMedia(ActionEvent event) {
         Media media = tableMedia.getSelectionModel().getSelectedItem();
-        if(media != null) {
-            if(media instanceof Book) {
-                Screen.setScreen("/fxml/manager/view/view_detail_book.fxml", new DetailBookViewHandler((Book)media));
-            } else if (media instanceof DVD) {
-                Screen.setScreen("/fxml/manager/view/view_detail_dvd.fxml", new DetailDVDViewHandler((DVD)media));
-            } else if (media instanceof CD) {
-            }
-        }
+        Screen.setScreen("/fxml/manager/view/view_detail_media.fxml", new DetailGeneralViewHandler(media));
     }
 }

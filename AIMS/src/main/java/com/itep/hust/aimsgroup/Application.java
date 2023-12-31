@@ -5,8 +5,6 @@ import com.itep.hust.aimsgroup.util.Screen;
 
 
 import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
-import com.itep.hust.aimsgroup.view.manager.add.AddGerenalInfomation;
-import com.itep.hust.aimsgroup.view.manager.add.cd.AddCDViewHandler;
 import javafx.stage.Stage;
 
 import java.io.IOException;

@@ -27,4 +27,28 @@ public class CD extends Media {
             this.listTrack.add(track);
         }
     }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public String getRecordLabel() {
+        return recordLabel;
+    }
+
+    public String getMusicType() {
+        return musicType;
+    }
+
+    public Date getReleasedDate() {
+        return releasedDate;
+    }
+
+    public String getCDCategory() {
+        return CDCategory;
+    }
+
+    public List<Track> getListTrack() {
+        return listTrack;
+    }
 }
