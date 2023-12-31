@@ -1,12 +1,7 @@
 package com.itep.hust.aimsgroup.view.admin;
 
-import com.itep.hust.aimsgroup.controller.admin.AdminAddController;
 import com.itep.hust.aimsgroup.controller.admin.AdminController;
-import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
-import com.itep.hust.aimsgroup.service.dao.AccountDao;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteRoleDao;
-import com.itep.hust.aimsgroup.service.email.EmailService;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
