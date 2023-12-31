@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager.add.dvd;
 
+import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
@@ -37,8 +38,8 @@ public class AddDVDViewHandler extends AddMediaViewHandler {
         } else {
             DVD newDVD = new DVD(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
                     media.getWeight(), media.getImageURL(), discType.getText(), director.getText(), runtime.getText(), studio.getText(), language.getText(),  subtitle.getText(), media.getRushDelivery());
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
-            sqliteMediaDao.insert(newDVD);
+            ManagerController managerController = new ManagerController(new SqliteMediaDao());
+            managerController.addMedia(newDVD);
             Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         }
     }
