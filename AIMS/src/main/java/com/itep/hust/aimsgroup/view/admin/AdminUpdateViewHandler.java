@@ -1,10 +1,10 @@
 package com.itep.hust.aimsgroup.view.admin;
 
-import com.itep.hust.aimsgroup.controller.admin.AdminUpdateController;
+import com.itep.hust.aimsgroup.controller.admin.AdminController;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteAccountDao;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteRoleDao;
+import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import javafx.collections.FXCollections;
@@ -37,9 +37,10 @@ public class AdminUpdateViewHandler {
 
     private final Account account;
 
-    private AdminUpdateController adminUpdateController = new AdminUpdateController(new SqliteAccountDao());
-    public AdminUpdateViewHandler(Account account) {
+    private final AdminController adminController;
+    public AdminUpdateViewHandler(Account account, AdminController adminController) {
         this.account = account;
+        this.adminController = adminController;
     }
 
     @FXML
@@ -68,10 +69,12 @@ public class AdminUpdateViewHandler {
             String password = passwordTextField.getText();
             List<Role> roles = roleCheckList.getCheckModel().getCheckedItems().stream().toList();
 
-            Account toUpdate = new Account(email, password, roles);
+            Account toUpdate = new Account(email, password, roles, account.getStatus());
             toUpdate.setId(this.account.getId());
 
-            adminUpdateController.updateAccount(toUpdate);
+            if (adminController.updateAccount(toUpdate)) {
+                Popup.showSuccess("Update account success");
+            }
         });
     }
 

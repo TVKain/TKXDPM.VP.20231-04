@@ -1,9 +1,11 @@
 package com.itep.hust.aimsgroup.controller.login;
 
 import com.itep.hust.aimsgroup.model.account.Account;
+import com.itep.hust.aimsgroup.model.account.AccountStatus;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.service.dao.AccountDao;
 import com.itep.hust.aimsgroup.service.dao.Dao;
+import com.itep.hust.aimsgroup.service.dao.RoleDao;
 
 import java.util.List;
 
@@ -26,10 +28,14 @@ public class AccountLoginController {
             return false;
         }
 
+        if (accountDb.getStatus().equals(AccountStatus.BLOCK)) {
+            return false;
+        }
+
         return accountDb.getRoles().contains(role);
     }
 
-    public List<Role> getRoles(Dao<Role, String> roleDao) {
+    public List<Role> getRoles(RoleDao roleDao) {
         return roleDao.getAll();
     }
 }

@@ -9,7 +9,17 @@ public class Account {
     private String email;
     private String password;
 
+    private AccountStatus status;
+
     private List<Role> roles;
+
+    public AccountStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AccountStatus status) {
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;
@@ -43,10 +53,11 @@ public class Account {
         this.password = password;
     }
 
-    public Account(String email, String password, List<Role> roles) {
+    public Account(String email, String password, List<Role> roles, AccountStatus status) {
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.status = status;
     }
 
     public Account(String email, String password) {

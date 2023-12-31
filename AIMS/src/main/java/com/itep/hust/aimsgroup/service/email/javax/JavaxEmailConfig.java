@@ -1,10 +1,14 @@
-package com.itep.hust.aimsgroup.service.email;
+package com.itep.hust.aimsgroup.service.email.javax;
 
-public class Sender {
-    private final static Sender sender = new Sender();
+public class JavaxEmailConfig {
+    private final static JavaxEmailConfig JAVAX_MAIL_CONFIG = new JavaxEmailConfig();
 
-    public static Sender getInstance() {
-        return sender;
+    private JavaxEmailConfig() {
+
+    }
+
+    public static synchronized JavaxEmailConfig getInstance() {
+        return JAVAX_MAIL_CONFIG;
     }
 
     private boolean Auth = true;
