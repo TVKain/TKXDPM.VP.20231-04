@@ -3,6 +3,7 @@ package com.itep.hust.aimsgroup.controller.placeorder.invoice;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
+import com.itep.hust.aimsgroup.model.order.Order;
 import com.itep.hust.aimsgroup.subsystem.Banking;
 import com.itep.hust.aimsgroup.subsystem.vnpay.VNPaySubsystem;
 
@@ -18,10 +19,13 @@ public class InvoiceController {
 
         invoice.setDeliveryInfo(deliveryInfo);
 
-        // Todo create order
+        Order order = new Order();
+        order.setStatus("processing");
+        order.setMedias(Cart.getInstance().getMedias());
+
+        invoice.setOrder(order);
 
         return invoice;
     }
-
 
 }

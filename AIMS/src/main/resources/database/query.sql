@@ -1,22 +1,3 @@
--- Delivery Info
-CREATE TABLE IF NOT EXISTS DeliveryInfo (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    "name" VARCHAR(64),
-    phone VARCHAR(20),
-    city VARCHAR(64),
-    email VARCHAR(64),
-    address VARCHAR(64),
-    instruction VARCHAR(32)
-);
-
-CREATE TABLE IF NOT EXISTS RushDeliveryInfo (
-    id INTEGER PRIMARY KEY,
-    rushInstruction VARCHAR(64),
-    rushTime INTEGER,
-    FOREIGN KEY (id) REFERENCES DeliveryInfo(id)
-);
-
-
 -- Role
 CREATE TABLE IF NOT EXISTS Role (
     roleName VARCHAR(32) PRIMARY KEY
@@ -73,6 +54,58 @@ CREATE TABLE IF NOT EXISTS "Media"(
   "rushDelivery" INTEGER NOT NULL
 );
 
+
+-- Order
+CREATE TABLE IF NOT EXISTS "Order" (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    status VARCHAR(16)
+);
+
+
+CREATE TABLE IF NOT EXISTS OrderMedia (
+    orderId INTEGER,
+    mediaId INTEGER,
+    quantity INTEGER,
+    PRIMARY KEY (orderId, mediaId),
+    FOREIGN KEY (orderId) REFERENCES "Order"(id),
+    FOREIGN KEY (mediaId) REFERENCES Media(id)
+);
+
+-- Delivery Info
+CREATE TABLE IF NOT EXISTS DeliveryInfo (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" VARCHAR(64),
+    phone VARCHAR(20),
+    city VARCHAR(64),
+    email VARCHAR(64),
+    address VARCHAR(64),
+    instruction VARCHAR(32),
+    FOREIGN KEY (id) REFERENCES Invoice(id)
+);
+
+CREATE TABLE IF NOT EXISTS RushDeliveryInfo (
+    id INTEGER PRIMARY KEY,
+    rushInstruction VARCHAR(64),
+    rushTime INTEGER,
+    FOREIGN KEY (id) REFERENCES DeliveryInfo(id)
+);
+
+
+-- Invoice
+CREATE TABLE IF NOT EXISTS Invoice (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    mediaTotal DOUBLE,
+    mediaSubtotal DOUBLE,
+    vat DOUBLE,
+    shippingFee DOUBLE,
+    total DOUBLE,
+    orderId INTEGER,
+    deliveryInfoId INTEGER,
+    FOREIGN KEY (orderId) REFERENCES "Order"(id),
+    FOREIGN KEY (deliveryInfoId) REFERENCES DeliveryInfo(id)
+);
+
+
 -- Table: "Book"
 CREATE TABLE "Book" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -83,8 +116,7 @@ CREATE TABLE "Book" (
     "book_category" VARCHAR(45),
     "cover_type" VARCHAR(45) NOT NULL,
     "language" VARCHAR(45),
-    FOREIGN KEY("id")
-    REFERENCES "Media"("id")
+    FOREIGN KEY("id") REFERENCES "Media"("id")
 );
 
 -- Table: "CD"

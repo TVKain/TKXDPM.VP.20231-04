@@ -40,13 +40,17 @@ public class SqliteDeliveryInfoDao implements DeliveryInfoDao {
                 deliveryInfoStatement.executeUpdate();
             }
 
+            Integer lastInsertRowId = connection.prepareStatement("SELECT last_insert_rowid()").executeQuery().getInt(1);
+            deliveryInfo.setId(lastInsertRowId);
+
             if (deliveryInfo instanceof RushDeliveryInfo rushDeliveryInfo) {
                 String insertRushDeliveryInfoSql = "INSERT INTO RushDeliveryInfo (id, rushInstruction, rushTime) " +
-                        "VALUES (last_insert_rowid(), ?, ?)";
+                        "VALUES (?, ?, ?)";
 
                 try (PreparedStatement rushDeliveryInfoStatement = connection.prepareStatement(insertRushDeliveryInfoSql)) {
-                    rushDeliveryInfoStatement.setString(1, rushDeliveryInfo.getRushInstruction());
-                    rushDeliveryInfoStatement.setInt(2, rushDeliveryInfo.getRushTime());
+                    rushDeliveryInfoStatement.setInt(1, lastInsertRowId);
+                    rushDeliveryInfoStatement.setString(2, rushDeliveryInfo.getRushInstruction());
+                    rushDeliveryInfoStatement.setInt(3, rushDeliveryInfo.getRushTime());
 
                     rushDeliveryInfoStatement.executeUpdate();
                 }

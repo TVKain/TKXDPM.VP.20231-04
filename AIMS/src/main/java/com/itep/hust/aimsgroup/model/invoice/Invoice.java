@@ -4,12 +4,21 @@ import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.order.Order;
 
 public class Invoice {
+    private Integer id;
     private double mediaTotal;
     private double mediaSubtotal;
     private double vat;
     private double shippingFee;
 
     private double total;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public double getTotal() {
         return total;
