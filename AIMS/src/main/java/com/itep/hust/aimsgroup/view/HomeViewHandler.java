@@ -3,7 +3,7 @@ package com.itep.hust.aimsgroup.view;
 import com.itep.hust.aimsgroup.controller.HomeController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Screen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +20,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 

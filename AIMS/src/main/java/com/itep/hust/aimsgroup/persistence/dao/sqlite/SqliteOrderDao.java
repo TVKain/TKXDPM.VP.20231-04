@@ -1,11 +1,10 @@
-package com.itep.hust.aimsgroup.service.dao.sqlite;
+package com.itep.hust.aimsgroup.persistence.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.order.Order;
 import com.itep.hust.aimsgroup.model.order.OrderMedia;
-import com.itep.hust.aimsgroup.service.dao.OrderDao;
-import com.itep.hust.aimsgroup.service.dao.OrderMediaDao;
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.dao.OrderDao;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

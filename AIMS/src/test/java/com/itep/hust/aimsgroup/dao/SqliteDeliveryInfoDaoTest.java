@@ -1,8 +1,8 @@
 package com.itep.hust.aimsgroup.dao;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.RushDeliveryInfo;
-import com.itep.hust.aimsgroup.service.dao.DeliveryInfoDao;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteDeliveryInfoDao;
+import com.itep.hust.aimsgroup.persistence.dao.DeliveryInfoDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteDeliveryInfoDao;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

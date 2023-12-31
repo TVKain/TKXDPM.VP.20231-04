@@ -1,8 +1,7 @@
 package com.itep.hust.aimsgroup.dao;
 
 import com.itep.hust.aimsgroup.model.account.Account;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteAccountDao;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteRoleDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteAccountDao;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

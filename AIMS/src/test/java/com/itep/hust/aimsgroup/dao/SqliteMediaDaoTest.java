@@ -1,8 +1,8 @@
 package com.itep.hust.aimsgroup.dao;
 
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.service.dao.Dao;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.persistence.dao.Dao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;

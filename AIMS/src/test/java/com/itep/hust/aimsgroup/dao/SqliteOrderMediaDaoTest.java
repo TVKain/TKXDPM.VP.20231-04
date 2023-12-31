@@ -1,7 +1,7 @@
 package com.itep.hust.aimsgroup.dao;
 
 import com.itep.hust.aimsgroup.model.order.OrderMedia;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteOrderMediaDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteOrderMediaDao;
 import org.junit.jupiter.api.Test;
 
 public class SqliteOrderMediaDaoTest {

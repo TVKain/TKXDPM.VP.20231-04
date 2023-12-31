@@ -4,7 +4,7 @@ import com.itep.hust.aimsgroup.controller.placeorder.PlaceOrderController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.service.email.javax.JavaxEmailService;
+import com.itep.hust.aimsgroup.subsystem.email.javax.JavaxEmailService;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.deliveryinfo.DeliveryInfoViewHandler;
 import javafx.beans.property.ReadOnlyObjectWrapper;

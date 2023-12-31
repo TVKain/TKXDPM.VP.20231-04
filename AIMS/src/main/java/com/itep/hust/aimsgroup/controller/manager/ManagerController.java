@@ -1,8 +1,7 @@
 package com.itep.hust.aimsgroup.controller.manager;
 
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
-import javafx.scene.control.Label;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 
 import java.util.List;
 

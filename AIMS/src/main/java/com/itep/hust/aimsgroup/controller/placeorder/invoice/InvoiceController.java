@@ -4,8 +4,6 @@ import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.order.Order;
-import com.itep.hust.aimsgroup.subsystem.Banking;
-import com.itep.hust.aimsgroup.subsystem.vnpay.VNPaySubsystem;
 
 public class InvoiceController {
     public Invoice createInvoice(DeliveryInfo deliveryInfo, double shippingFee) {

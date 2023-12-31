@@ -1,6 +1,6 @@
 package com.itep.hust.aimsgroup.subsystem.email;
 
-import com.itep.hust.aimsgroup.service.email.javax.JavaxEmailService;
+import com.itep.hust.aimsgroup.subsystem.email.javax.JavaxEmailService;
 import org.junit.jupiter.api.Test;
 
 class JavaxEmailServiceTest {

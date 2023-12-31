@@ -1,9 +1,9 @@
-package com.itep.hust.aimsgroup.service.dao.sqlite;
+package com.itep.hust.aimsgroup.persistence.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.RushDeliveryInfo;
-import com.itep.hust.aimsgroup.service.dao.DeliveryInfoDao;
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.dao.DeliveryInfoDao;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

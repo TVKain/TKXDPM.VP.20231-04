@@ -2,7 +2,7 @@ package com.itep.hust.aimsgroup.dao;
 
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.order.Order;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteOrderDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteOrderDao;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

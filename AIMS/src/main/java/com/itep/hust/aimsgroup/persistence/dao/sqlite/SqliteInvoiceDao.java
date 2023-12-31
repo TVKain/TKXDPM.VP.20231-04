@@ -1,10 +1,10 @@
-package com.itep.hust.aimsgroup.service.dao.sqlite;
+package com.itep.hust.aimsgroup.persistence.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.order.Order;
-import com.itep.hust.aimsgroup.service.dao.InvoiceDao;
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.dao.InvoiceDao;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 
 import java.sql.*;
 import java.util.List;

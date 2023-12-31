@@ -3,7 +3,7 @@ package com.itep.hust.aimsgroup.view.manager.add.dvd;
 import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.dvd.DVD;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;

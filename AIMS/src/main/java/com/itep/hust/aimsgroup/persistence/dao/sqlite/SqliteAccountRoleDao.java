@@ -1,8 +1,8 @@
-package com.itep.hust.aimsgroup.service.dao.sqlite;
+package com.itep.hust.aimsgroup.persistence.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.account.AccountRole;
-import com.itep.hust.aimsgroup.service.dao.AccountRoleDao;
-import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
+import com.itep.hust.aimsgroup.persistence.dao.AccountRoleDao;
+import com.itep.hust.aimsgroup.persistence.database.SqliteDatabase;
 import javafx.util.Pair;
 
 import java.sql.Connection;

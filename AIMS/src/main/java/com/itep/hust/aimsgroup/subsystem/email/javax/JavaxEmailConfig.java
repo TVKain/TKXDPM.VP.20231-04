@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.service.email.javax;
+package com.itep.hust.aimsgroup.subsystem.email.javax;
 
 public class JavaxEmailConfig {
     private final static JavaxEmailConfig JAVAX_MAIL_CONFIG = new JavaxEmailConfig();

@@ -1,6 +1,6 @@
-package com.itep.hust.aimsgroup.subsystem.vnpay;
+package com.itep.hust.aimsgroup.subsystem.banking.vnpay;
 
-import com.itep.hust.aimsgroup.subsystem.Banking;
+import com.itep.hust.aimsgroup.subsystem.banking.Banking;
 import com.itep.hust.aimsgroup.util.Screen;
 import javafx.concurrent.Worker;
 import javafx.scene.web.WebEngine;

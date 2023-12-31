@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.service.dao;
+package com.itep.hust.aimsgroup.persistence.dao;
 
 import com.itep.hust.aimsgroup.model.account.AccountRole;
 import javafx.util.Pair;

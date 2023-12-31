@@ -4,8 +4,8 @@ import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.order.Order;
-import com.itep.hust.aimsgroup.service.dao.InvoiceDao;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteInvoiceDao;
+import com.itep.hust.aimsgroup.persistence.dao.InvoiceDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteInvoiceDao;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

@@ -2,7 +2,7 @@ package com.itep.hust.aimsgroup.controller.manager.validator;
 
 import com.itep.hust.aimsgroup.controller.manager.validator.detail_infor.InforBookValidator;
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 
 import java.time.LocalDate;
 
