@@ -1,30 +1,20 @@
 package com.itep.hust.aimsgroup.controller.placeorder;
 
-import com.itep.hust.aimsgroup.controller.placeorder.validator.DeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.validator.DeliveryInfoValidatorSelector;
-import com.itep.hust.aimsgroup.controller.placeorder.validator.NormalDeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.validator.RushDeliveryInfoValidator;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
-import com.itep.hust.aimsgroup.model.deliveryinfo.factory.DeliveryInfoFactorySelector;
-import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
-
-import java.util.Map;
+import com.itep.hust.aimsgroup.model.invoice.Invoice;
+import com.itep.hust.aimsgroup.subsystem.Banking;
+import com.itep.hust.aimsgroup.subsystem.vnpay.VNPaySubsystem;
+import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.payment.PaymentViewHandler;
 
 public class PlaceOrderController {
-    private DeliveryInfoValidator deliveryInfoValidator;
+    public void redirectToPayment(Invoice invoice) {
+        Banking banking = new VNPaySubsystem();
 
-    private DeliveryInfo deliveryInfo;
-    public void setDeliveryInfoValidator(DeliveryType deliveryType) {
-        this.deliveryInfoValidator = DeliveryInfoValidatorSelector.getDeliveryInfoValidator(deliveryType);
-    }
-
-    public void setDeliveryInfo(DeliveryType deliveryType, Map<String, String> deliveryInfoData) {
-        this.deliveryInfo = DeliveryInfoFactorySelector
-                .getDeliveryInfoFactory(deliveryType)
-                .getDeliveryInfo(deliveryInfoData);
-    }
-
-    public boolean validateDeliveryInfo(Map<String, String> deliveryInfoData) {
-        return deliveryInfoValidator.validate(deliveryInfoData);
+        banking.processTransaction(invoice.getTotal(), () -> {
+            Screen.setScreen("/fxml/payment/payment-success.fxml", new PaymentViewHandler());
+        }, () -> {
+            Screen.setScreen("/fxml/payment/payment-failure.fxml", new PaymentViewHandler());
+        });
     }
 }

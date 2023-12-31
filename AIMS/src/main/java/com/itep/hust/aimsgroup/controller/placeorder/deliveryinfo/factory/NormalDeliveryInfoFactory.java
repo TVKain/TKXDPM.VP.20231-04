@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.model.deliveryinfo.factory;
+package com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 
@@ -9,6 +9,7 @@ public class NormalDeliveryInfoFactory implements DeliveryInfoFactory {
     public DeliveryInfo getDeliveryInfo(Map<String, String> input) {
         DeliveryInfo deliveryInfo = new DeliveryInfo();
 
+        deliveryInfo.setEmail(input.get("email"));
         deliveryInfo.setName(input.get("name"));
         deliveryInfo.setAddress(input.get("address"));
         deliveryInfo.setCity(input.get("city"));

@@ -1,12 +1,15 @@
 module com.itep.hust.aimsgroup {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
+    requires javafx.web;
     requires java.sql;
     requires javafx.graphics;
     requires org.controlsfx.controls;
-    requires org.apache.commons.lang3;
     requires org.apache.commons.validator;
     requires static lombok;
+
+    requires servlet.api;
 
     opens com.itep.hust.aimsgroup to javafx.fxml;
     opens com.itep.hust.aimsgroup.view to javafx.fxml;
@@ -20,6 +23,9 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.manager.add to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.view to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.deliveryinfo to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.deliveryinfo.form to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.invoice to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.payment to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.edit to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.book to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.add.dvd to javafx.fxml;
@@ -30,5 +36,4 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.manager.view.dvd to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.view.book to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.view.cd to javafx.fxml;
-
 }
