@@ -18,18 +18,18 @@ public class JavaMailUtil {
         Properties properties = new Properties();
 
         //Enable authentication
-        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.auth", String.valueOf(Sender.getInstance().isAuth()));
         //Set TLS encryption enabled
-        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.starttls.enable", String.valueOf(Sender.getInstance().isTLS()));
         //Set SMTP host
-        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.host", Sender.getInstance().getEmail());
         //Set smtp port
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.port", Sender.getInstance().getPort());
 
         //Your gmail address
-        String myAccountEmail = "lethanhbinhkts@gmail.com";
+        String myAccountEmail = Sender.getInstance().getEmail();
         //Your gmail password
-        String password = "eeodnbsgxjeznklz";
+        String password = Sender.getInstance().getPassword();
 
         //Create a session with account credentials
         Session session = Session.getInstance(properties, new Authenticator() {
