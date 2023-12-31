@@ -27,6 +27,10 @@ public class Media {
         this.rushDelivery = rushDelivery;
     }
 
+    public Media() {
+
+    }
+
     public int getId() {
         return id;
     }

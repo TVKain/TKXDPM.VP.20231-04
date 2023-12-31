@@ -4,6 +4,7 @@ import lombok.ToString;
 
 @ToString
 public class DeliveryInfo {
+    protected Integer id;
     protected String name;
     protected String phone;
     protected String city;
@@ -14,6 +15,14 @@ public class DeliveryInfo {
 
     public DeliveryInfo() {
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public DeliveryInfo(String name, String phone, String city, String email, String address, String instruction) {
