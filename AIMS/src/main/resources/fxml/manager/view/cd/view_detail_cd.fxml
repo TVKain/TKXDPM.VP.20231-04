@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="44.0" layoutY="21.0" prefWidth="786.0">
         <columnConstraints>
@@ -53,6 +53,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <VBox fx:id="boxTrack" layoutX="187.0" layoutY="169.0" prefHeight="75.0" prefWidth="637.0" />
+      <VBox fx:id="boxTrack" layoutX="187.0" layoutY="169.0" />
    </children>
 </AnchorPane>

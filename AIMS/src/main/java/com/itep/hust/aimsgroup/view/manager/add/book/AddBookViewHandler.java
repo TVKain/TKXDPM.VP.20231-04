@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager.add.book;
 
+import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.book.Book;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
@@ -32,8 +33,8 @@ public class AddBookViewHandler extends AddMediaViewHandler {
         } else {
             Book newBook = new Book(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
                     media.getWeight(), media.getImageURL(), author.getText(), coverType.getText(), publisher.getText(), publishDate.getValue(), media.getRushDelivery());
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
-            sqliteMediaDao.insert(newBook);
+            ManagerController managerController = new ManagerController(new SqliteMediaDao());
+            managerController.addMedia(newBook);
             Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         }
     }

@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager.add.cd;
 
+import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.model.media.cd.CD;
 import com.itep.hust.aimsgroup.model.media.cd.Track;
@@ -57,8 +58,8 @@ public class AddCDViewHandler extends AddMediaViewHandler implements Initializab
             for(Track track: getListTrack()) {
                 newCD.addTrack(track);
             }
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
-            sqliteMediaDao.insert(newCD);
+            ManagerController managerController = new ManagerController(new SqliteMediaDao());
+            managerController.addMedia(newCD);
             Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
         }
 

@@ -5,7 +5,6 @@ import com.itep.hust.aimsgroup.service.dao.AccountDao;
 import com.itep.hust.aimsgroup.service.dao.Dao;
 
 import java.util.List;
-
 public class AdminController {
     private final AccountDao accountDao;
     public AdminController(AccountDao accountDao) {
