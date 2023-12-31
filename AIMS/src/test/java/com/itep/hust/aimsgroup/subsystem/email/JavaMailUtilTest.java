@@ -8,6 +8,6 @@ class JavaMailUtilTest {
     @Test
     void sendMail() throws Exception {
         String htmlCode = "";
-        JavaMailUtil.sendMail("videco99@gmail.com",htmlCode);
+        JavaMailUtil.sendMail("tvkain.it@gmail.com",htmlCode);
     }
 }
