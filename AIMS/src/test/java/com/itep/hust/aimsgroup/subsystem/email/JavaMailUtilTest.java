@@ -1,12 +1,13 @@
 package com.itep.hust.aimsgroup.subsystem.email;
 
+import com.itep.hust.aimsgroup.service.email.JavaMailUtil;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class EmailTest {
+class JavaMailUtilTest {
 
     @Test
-    void sendMail() {
+    void sendMail() throws Exception {
+        String htmlCode = "";
+        JavaMailUtil.sendMail("videco99@gmail.com",htmlCode);
     }
 }

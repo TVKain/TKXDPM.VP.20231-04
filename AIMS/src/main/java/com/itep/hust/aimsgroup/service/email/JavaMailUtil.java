@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.subsystem.email;
+package com.itep.hust.aimsgroup.service.email;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
