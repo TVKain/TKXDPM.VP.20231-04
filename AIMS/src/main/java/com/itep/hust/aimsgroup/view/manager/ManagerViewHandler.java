@@ -1,9 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager;
 
 import com.itep.hust.aimsgroup.model.media.Media;
-import com.itep.hust.aimsgroup.model.media.book.Book;
-import com.itep.hust.aimsgroup.model.media.cd.CD;
-import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
@@ -11,8 +8,6 @@ import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import com.itep.hust.aimsgroup.view.manager.add.AddGenenalInfomation;
 import com.itep.hust.aimsgroup.view.manager.edit.EditGeneralViewHandler;
-import com.itep.hust.aimsgroup.view.manager.view.DetailBookViewHandler;
-import com.itep.hust.aimsgroup.view.manager.view.DetailDVDViewHandler;
 import com.itep.hust.aimsgroup.view.manager.view.DetailGeneralViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;

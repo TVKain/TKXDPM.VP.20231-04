@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.view.manager.view;
+package com.itep.hust.aimsgroup.view.manager.view.dvd;
 
 import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.util.Screen;

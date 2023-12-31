@@ -7,9 +7,9 @@ import com.itep.hust.aimsgroup.model.media.dvd.DVD;
 import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.manager.ManagerViewHandler;
-import com.itep.hust.aimsgroup.view.manager.edit.book.EditBookViewHandler;
-import com.itep.hust.aimsgroup.view.manager.edit.cd.EditCDViewHandler;
-import com.itep.hust.aimsgroup.view.manager.edit.dvd.EditDVDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.book.DetailBookViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.cd.DetailCDViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.dvd.DetailDVDViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -78,7 +78,7 @@ public class DetailGeneralViewHandler implements Initializable {
             vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/view/dvd/view_detail_dvd.fxml", new DetailDVDViewHandler(dvd)));
         } else if (media instanceof CD) {
             CD cd = (CD) media;
-            vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/view/cd/view_detail_book.fxml", new DetailCDViewHandler(cd)));
+            vbox.getChildren().add(ComponentLoader.getComponent("/fxml/manager/view/cd/view_detail_cd.fxml", new DetailCDViewHandler(cd)));
         }
     }
 }
