@@ -1,10 +1,13 @@
 package com.itep.hust.aimsgroup.view.admin;
 
 import com.itep.hust.aimsgroup.controller.admin.AdminAddController;
+import com.itep.hust.aimsgroup.controller.admin.AdminController;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
-import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteAccountDao;
+import com.itep.hust.aimsgroup.service.dao.AccountDao;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteRoleDao;
+import com.itep.hust.aimsgroup.service.email.EmailService;
+import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
 import javafx.collections.FXCollections;
@@ -37,7 +40,12 @@ public class AdminAddViewHandler {
     @FXML
     private PasswordField passwordTextField;
 
-    private final AdminAddController adminAddController = new AdminAddController(new SqliteAccountDao());
+    private final AdminController adminController;
+
+    public AdminAddViewHandler(AdminController adminController) {
+
+        this.adminController = adminController;
+    }
 
     @FXML
     public void initialize() {
@@ -59,18 +67,18 @@ public class AdminAddViewHandler {
             String password = passwordTextField.getText();
             List<Role> roles = roleCheckList.getCheckModel().getCheckedItems().stream().toList();
 
-            Account account = new Account(email, password, roles);
-
-            if (!adminAddController.createAccount(account)) {
+            if (!adminController.createAccount(email, password, roles)) {
                 return;
             }
 
-            Screen.setScreen("/fxml/admin/admin-add.fxml", new AdminAddViewHandler());
+            Popup.showSuccess("Account created successfully");
+
+            Screen.setScreen("/fxml/admin/admin-add.fxml", new AdminAddViewHandler(adminController));
         });
     }
 
     public void initializeRoleCheckList() {
-        List<Role> roles = new SqliteRoleDao().getAll();
+        List<Role> roles = adminController.getAllRoles();
 
         roleCheckList.setItems(FXCollections.observableArrayList(roles));
         roleCheckList.setSelectionModel(null);

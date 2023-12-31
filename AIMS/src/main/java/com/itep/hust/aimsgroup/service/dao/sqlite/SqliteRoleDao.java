@@ -2,6 +2,7 @@ package com.itep.hust.aimsgroup.service.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.service.dao.Dao;
+import com.itep.hust.aimsgroup.service.dao.RoleDao;
 import com.itep.hust.aimsgroup.service.database.SqliteDatabase;
 
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqliteRoleDao implements Dao<Role, String> {
+public class SqliteRoleDao implements RoleDao {
 
     @Override
     public List<Role> getAll() {

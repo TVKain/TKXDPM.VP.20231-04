@@ -2,6 +2,7 @@ package com.itep.hust.aimsgroup.service.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.AccountRole;
+import com.itep.hust.aimsgroup.model.account.AccountStatus;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.service.dao.AccountDao;
 import com.itep.hust.aimsgroup.service.dao.Dao;
@@ -34,6 +35,7 @@ public class SqliteAccountDao implements AccountDao {
                 account.setId(resultSet.getInt("id"));
                 account.setEmail(resultSet.getString("email"));
                 account.setPassword(resultSet.getString("password"));
+                account.setStatus(AccountStatus.valueOf(resultSet.getString("status")));
 
                 List<AccountRole> accountRoles = new SqliteAccountRoleDao().getAll();
 
@@ -74,6 +76,8 @@ public class SqliteAccountDao implements AccountDao {
                 account.setId(resultSet.getInt("id"));
                 account.setEmail(resultSet.getString("email"));
                 account.setPassword(resultSet.getString("password"));
+                account.setStatus(AccountStatus.valueOf(resultSet.getString("status")));
+
 
                 List<AccountRole> accountRoles = new SqliteAccountRoleDao().getAll();
 
@@ -95,12 +99,13 @@ public class SqliteAccountDao implements AccountDao {
 
     @Override
     public Account insert(Account account) {
-        String query = "INSERT INTO Account (email, password) VALUES (?, ?)";
+        String query = "INSERT INTO Account (email, password, status) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = SqliteDatabase.getConnection().prepareStatement(query);
             preparedStatement.setString(1, account.getEmail());
             preparedStatement.setString(2, account.getPassword());
+            preparedStatement.setString(3, account.getStatus().name());
 
             int affectedRows = preparedStatement.executeUpdate();
 
@@ -134,13 +139,14 @@ public class SqliteAccountDao implements AccountDao {
     @Override
     public Account update(Account account) {
 
-        String updateAccountQuery = "UPDATE Account SET email = ?, password = ? WHERE id = ?";
+        String updateAccountQuery = "UPDATE Account SET email = ?, password = ?, status = ? WHERE id = ?";
 
         try {
             PreparedStatement updateAccountStatement = SqliteDatabase.getConnection().prepareStatement(updateAccountQuery);
             updateAccountStatement.setString(1, account.getEmail());
             updateAccountStatement.setString(2, account.getPassword());
-            updateAccountStatement.setInt(3, account.getId());
+            updateAccountStatement.setString(3, account.getStatus().name());
+            updateAccountStatement.setInt(4, account.getId());
 
             int accountRowsAffected = updateAccountStatement.executeUpdate();
 

@@ -5,15 +5,16 @@ import com.itep.hust.aimsgroup.controller.admin.validator.AccountAddValidator;
 import com.itep.hust.aimsgroup.controller.admin.validator.AccountValidator;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.service.dao.AccountDao;
-import com.itep.hust.aimsgroup.service.email.JavaMailUtil;
-import com.itep.hust.aimsgroup.util.Popup;
+import com.itep.hust.aimsgroup.service.email.EmailService;
 
 public class AdminAddController {
     AccountDao accountDao;
 
+    EmailService emailService;
     AccountValidator accountValidator;
-    public AdminAddController(AccountDao accountDao) {
+    public AdminAddController(AccountDao accountDao, EmailService emailService) {
         this.accountDao = accountDao;
+        this.emailService = emailService;
         this.accountValidator = new AccountAddValidator(accountDao);
     }
     public boolean createAccount(Account account) {
@@ -22,17 +23,10 @@ public class AdminAddController {
         }
 
         accountDao.insert(account);
-        Popup.showSuccess("Account created successfully");
 
         String content = AdminCreateMail.getContent(account);
 
-        try {
-            JavaMailUtil.sendMail(account.getEmail(), content);
-        } catch (Exception e) {
-            System.out.println("Send mail fail");
-            System.out.println(e.getMessage());
-        }
-
+        emailService.sendMail(account.getEmail(), "AIMS ADMIN", content);
 
         return true;
     }

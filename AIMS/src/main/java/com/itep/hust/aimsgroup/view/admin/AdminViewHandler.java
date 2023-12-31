@@ -2,8 +2,14 @@ package com.itep.hust.aimsgroup.view.admin;
 
 import com.itep.hust.aimsgroup.controller.admin.AdminController;
 import com.itep.hust.aimsgroup.model.account.Account;
+import com.itep.hust.aimsgroup.model.account.AccountStatus;
 import com.itep.hust.aimsgroup.model.account.Role;
+import com.itep.hust.aimsgroup.service.dao.AccountDao;
+import com.itep.hust.aimsgroup.service.dao.RoleDao;
 import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteAccountDao;
+import com.itep.hust.aimsgroup.service.dao.sqlite.SqliteRoleDao;
+import com.itep.hust.aimsgroup.service.email.EmailService;
+import com.itep.hust.aimsgroup.service.email.javax.JavaxEmailService;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
@@ -33,7 +39,18 @@ public class AdminViewHandler {
     @FXML
     private Button logoutButton;
 
-    private final AdminController adminController = new AdminController(new SqliteAccountDao());
+    private final AccountDao accountDao;
+    private final EmailService emailService;
+
+    private final RoleDao roleDao;
+    private final AdminController adminController;
+    public AdminViewHandler() {
+        this.accountDao = new SqliteAccountDao();
+        this.emailService = new JavaxEmailService();
+        this.roleDao = new SqliteRoleDao();
+        this.adminController = new AdminController(accountDao, emailService, roleDao);
+    }
+
     @FXML
     public void initialize() {
         initializeButtons();
@@ -41,9 +58,12 @@ public class AdminViewHandler {
     }
 
     public void initializeButtons() {
-        logoutButton.setOnMouseClicked(e -> Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler()));
+        logoutButton.setOnMouseClicked(e ->
+                Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler()));
 
-        createAccountButton.setOnMouseClicked(e -> Screen.setScreen("/fxml/admin/admin-add.fxml", new AdminAddViewHandler()));
+        createAccountButton.setOnMouseClicked(e ->
+                Screen.setScreen("/fxml/admin/admin-add.fxml",
+                        new AdminAddViewHandler(adminController)));
     }
 
     public void initializeTable() {
@@ -57,6 +77,10 @@ public class AdminViewHandler {
         TableColumn<Account, String> passwordColumn = new TableColumn<>("Password");
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
 
+        TableColumn<Account, String> statusColumn = new TableColumn<>("Status");
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        statusColumn.setStyle("-fx-alignment: CENTER;");
+
         TableColumn<Account, String> rolesColumn = new TableColumn<>("Roles");
         rolesColumn.setCellValueFactory(cellData -> {
            List<String> roleNames =
@@ -64,13 +88,18 @@ public class AdminViewHandler {
            return new ReadOnlyObjectWrapper<>(String.join(",", roleNames));
         });
 
-        TableColumn<Account, Void> buttonsColumn = new TableColumn<>("");
+        TableColumn<Account, Void> buttonsColumn = new TableColumn<>();
         buttonsColumn.setSortable(false);
-        buttonsColumn.setCellFactory(param -> new AccountButtonCell(adminController));
+        buttonsColumn.setCellFactory(param -> new AccountButtonCell(adminController, accountDao, emailService));
+
+        TableColumn<Account, Void> statusButtonColumn = new TableColumn<>();
+        statusButtonColumn.setSortable(false);
+        statusButtonColumn.setCellFactory(param -> new StatusButtonCell(adminController));
+        statusButtonColumn.setStyle("-fx-alignment: CENTER;");
 
         accountTable.setSelectionModel(null);
 
-        accountTable.getColumns().addAll(idColumn, emailColumn, passwordColumn, rolesColumn ,buttonsColumn);
+        accountTable.getColumns().addAll(idColumn, emailColumn, passwordColumn, statusColumn, rolesColumn ,buttonsColumn, statusButtonColumn);
 
         // Populate the table with data
         List<Account> accountList = adminController.getAccounts();
@@ -79,13 +108,58 @@ public class AdminViewHandler {
         accountTable.setItems(data);
     }
 
-    private static class AccountButtonCell extends TableCell<Account, Void> {
+    private class StatusButtonCell extends TableCell<Account, Void> {
+        private final AdminController adminController;
+
+        private final Button statusButton;
+        public StatusButtonCell(AdminController adminController) {
+            this.statusButton = new Button();
+            this.adminController = adminController;
+        }
+
+        @Override
+        protected void updateItem(Void item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty) {
+                setGraphic(null);
+            } else {
+                Account account = getTableView().getItems().get(getIndex());
+                statusButton.setCursor(Cursor.HAND);
+                switch (account.getStatus()) {
+                    case BLOCK -> {
+                        String statusButtonText = "Unblock";
+                        statusButton.setText(statusButtonText);
+                        statusButton.setOnMouseClicked(e -> {
+                            Popup.showConfirmationDialog("Do you want to unblock this account", () -> {
+                                adminController.unblockAccount(account);
+                                Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
+                            }, null);
+                        });
+                    }
+                    case ACTIVE -> {
+                        String statusButtonText = "Block";
+                        statusButton.setText(statusButtonText);
+                        statusButton.setOnMouseClicked(e -> {
+                            Popup.showConfirmationDialog("Do you want to block this account", () -> {
+                                adminController.blockAccount(account);
+                                Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
+                            }, null);
+                        });
+                    }
+                }
+                setGraphic(statusButton);
+            }
+        }
+    }
+
+    private class AccountButtonCell extends TableCell<Account, Void> {
         private final Button updateButton;
         private final Button deleteButton;
 
         private final AdminController adminController;
 
-        public AccountButtonCell(AdminController adminController) {
+        public AccountButtonCell(AdminController adminController, AccountDao accountDao, EmailService emailService) {
             this.updateButton = new Button("Update");
             this.updateButton.setCursor(Cursor.HAND);
             this.deleteButton = new Button("Delete");
@@ -95,7 +169,8 @@ public class AdminViewHandler {
 
             updateButton.setOnAction(event -> {
                 Account account = getTableView().getItems().get(getIndex());
-                Screen.setScreen("/fxml/admin/admin-update.fxml", new AdminUpdateViewHandler(account));
+                Screen.setScreen("/fxml/admin/admin-update.fxml",
+                        new AdminUpdateViewHandler(account, adminController));
             });
 
             deleteButton.setOnAction(event -> {
@@ -118,6 +193,7 @@ public class AdminViewHandler {
             } else {
                 HBox hBox = new HBox();
                 hBox.setSpacing(4);
+
                 hBox.getChildren().addAll(updateButton, deleteButton);
                 hBox.setAlignment(Pos.CENTER);
                 setGraphic(hBox);

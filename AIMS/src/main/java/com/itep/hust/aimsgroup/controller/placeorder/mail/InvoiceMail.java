@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.service.html;
+package com.itep.hust.aimsgroup.controller.placeorder.mail;
 
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
@@ -7,8 +7,8 @@ import com.itep.hust.aimsgroup.model.media.Media;
 import java.text.DecimalFormat;
 import java.util.Map;
 
-public class HTMLParse {
-    public static String InvoiceParse(Invoice invoice){
+public class InvoiceMail {
+    public static String getContent(Invoice invoice){
         DecimalFormat format = new DecimalFormat("0.#");
         StringBuilder htmlCode = new StringBuilder("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +

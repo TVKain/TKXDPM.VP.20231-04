@@ -13,15 +13,16 @@ VALUES
 CREATE TABLE IF NOT EXISTS Account (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email VARCHAR(32),
-    password VARCHAR(32) NOT NULL
+    password VARCHAR(32) NOT NULL,
+    status VARCHAR(32) NOT NULL
 );
 
 -- Account Data
-INSERT INTO Account(email, password)
+INSERT INTO Account(email, password, status)
 VALUES
-("tvkain.it@gmail.com", "1"),
-("vinhkhanh2611@gmail.com", "1"),
-("khanhngocdam@gmail.com", "1");
+("tvkain.it@gmail.com", "1", "ACTIVE"),
+("vinhkhanh2611@gmail.com", "1", "ACTIVE"),
+("khanhngocdam@gmail.com", "1", "ACTIVE");
 
 -- Account Role (many to many)
 CREATE TABLE IF NOT EXISTS AccountRole (
