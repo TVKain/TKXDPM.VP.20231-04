@@ -16,18 +16,21 @@ public class ManagerController {
         return sqliteMediaDao.getAll();
     }
 
-    public void deleteMedia(Media media){
+    public boolean deleteMedia(Media media){
 //        if gọi validator check thao tác
         sqliteMediaDao.delete(media);
+        return true;
     }
 
-    public void updateMedia(Media media) {
+    public boolean updateMedia(Media media) {
 //        gọi check validator thao tác -> gọi tiếp validator info nhập vào
         sqliteMediaDao.update(media);
+        return true;
     }
 
-    public void addMedia(Media media) {
+    public boolean addMedia(Media media) {
 //        gọi validator info nhập
         sqliteMediaDao.insert(media);
+        return true;
     }
 }

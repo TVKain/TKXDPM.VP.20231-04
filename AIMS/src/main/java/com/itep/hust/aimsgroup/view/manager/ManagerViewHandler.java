@@ -1,5 +1,6 @@
 package com.itep.hust.aimsgroup.view.manager;
 
+import com.itep.hust.aimsgroup.controller.manager.ManagerController;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Popup;
@@ -113,10 +114,10 @@ public class ManagerViewHandler implements Initializable {
     @FXML
     void deleteMedia(ActionEvent event) {
         ObservableList<Media> listDelete =  tableMedia.getSelectionModel().getSelectedItems();
+        ManagerController managerController = new ManagerController(new SqliteMediaDao());
         if(listDelete.size() <= 10) {
-            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
             for(Media media: listDelete) {
-                sqliteMediaDao.delete(media);
+                managerController.deleteMedia(media);
             }
             listMedia.removeAll(listDelete);
         } else {

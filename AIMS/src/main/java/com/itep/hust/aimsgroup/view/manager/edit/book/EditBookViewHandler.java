@@ -53,8 +53,12 @@ public class EditBookViewHandler extends EditMediaViewHandler implements Initial
             Book newBook = new Book(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
                     media.getWeight(), media.getImageURL(), author.getText(), coverType.getText(), publisher.getText(), publishDate.getValue(), media.getRushDelivery());
             ManagerController managerController = new ManagerController(new SqliteMediaDao());
-            managerController.updateMedia(newBook);
-            Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            if(managerController.updateMedia(newBook)) {
+                Popup.showSuccess("Cập nhật thông tin thành công !");
+                Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            } else {
+                Popup.showError("Thông tin không hợp lệ");
+            }
         }
     }
 }

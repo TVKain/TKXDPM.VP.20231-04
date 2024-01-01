@@ -80,8 +80,14 @@ public class EditCDViewHandler extends EditMediaViewHandler implements Initializ
             }
 
             ManagerController managerController = new ManagerController(new SqliteMediaDao());
-            managerController.updateMedia(newCD);
-            Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+
+            if(managerController.updateMedia(newCD)) {
+                Popup.showSuccess("Cập nhật thông tin thành công !");
+                Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            } else {
+                Popup.showError("Thông tin không hợp lệ");
+            }
+
         }
     }
 

@@ -62,8 +62,12 @@ public class EditDVDViewHandler extends EditMediaViewHandler implements Initiali
 //            SqliteMediaDao sqliteMediaDao = new SqliteMediaDao();
 //            sqliteMediaDao.update(newDVD);
             ManagerController managerController = new ManagerController(new SqliteMediaDao());
-            managerController.updateMedia(newDVD);
-            Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            if(managerController.updateMedia(newDVD)) {
+                Popup.showSuccess("Cập nhật thông tin thành công !");
+                Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            } else {
+                Popup.showError("Thông tin không hợp lệ");
+            }
         }
     }
 }
