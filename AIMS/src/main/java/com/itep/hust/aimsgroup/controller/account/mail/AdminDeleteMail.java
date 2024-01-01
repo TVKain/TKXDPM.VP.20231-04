@@ -1,8 +1,8 @@
-package com.itep.hust.aimsgroup.controller.admin.mail;
+package com.itep.hust.aimsgroup.controller.account.mail;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 
-public class AdminUnblockMail {
+public class AdminDeleteMail {
     public static String getContent(Account account) {
         String htmlPayload = """
                 <!DOCTYPE html>
@@ -23,9 +23,8 @@ public class AdminUnblockMail {
 
                 <main>
                     <div class="container">
-                        <h2>Your account was unblocked</h2>
-                        <p>Welcome back</p>
-                        <p>Account details</p>
+                        <h2>Your account has been deleted from our system</h2>
+                        <p>Deleted account details</p>
                         <ul>
                             <li>Email: [email]</li>
                             <li>Password: [password]</li>

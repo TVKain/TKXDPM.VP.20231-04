@@ -1,8 +1,8 @@
-package com.itep.hust.aimsgroup.controller.admin.mail;
+package com.itep.hust.aimsgroup.controller.account.mail;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 
-public class AdminUpdateMail {
+public class AdminCreateMail {
     public static String getContent(Account account) {
         String htmlPayload = """
                 <!DOCTYPE html>
@@ -23,8 +23,9 @@ public class AdminUpdateMail {
 
                 <main>
                     <div class="container">
-                        <h2>Your account information has been updated</h2>
-                        <p>Current account details</p>
+                        <h2>Account created</h2>
+                        <p>Welcome to aims</p>
+                        <p>Account details</p>
                         <ul>
                             <li>Email: [email]</li>
                             <li>Password: [password]</li>

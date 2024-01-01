@@ -1,8 +1,8 @@
-package com.itep.hust.aimsgroup.controller.admin.mail;
+package com.itep.hust.aimsgroup.controller.account.mail;
 
 import com.itep.hust.aimsgroup.model.account.Account;
 
-public class AdminCreateMail {
+public class AdminBlockMail {
     public static String getContent(Account account) {
         String htmlPayload = """
                 <!DOCTYPE html>
@@ -23,8 +23,8 @@ public class AdminCreateMail {
 
                 <main>
                     <div class="container">
-                        <h2>Account created</h2>
-                        <p>Welcome to aims</p>
+                        <h2>Your account was blocked</h2>
+                        <p>Please contact admin if you want to appeal</p>
                         <p>Account details</p>
                         <ul>
                             <li>Email: [email]</li>

@@ -55,7 +55,39 @@ public class SqliteAccountDao implements AccountDao {
 
     @Override
     public Account get(Integer id) {
-        return null;
+        Account account = null;
+
+        String accountQuery = "SELECT * FROM Account WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = SqliteDatabase.getConnection().prepareStatement(accountQuery);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                account = new Account();
+                account.setId(resultSet.getInt("id"));
+                account.setEmail(resultSet.getString("email"));
+                account.setPassword(resultSet.getString("password"));
+                account.setStatus(AccountStatus.valueOf(resultSet.getString("status")));
+
+
+                List<AccountRole> accountRoles = new SqliteAccountRoleDao().getAll();
+
+                Account finalAccount = account;
+
+                List<Role> roles = accountRoles.stream()
+                        .filter(accountRole -> accountRole.getAccountId().equals(finalAccount.getId()))
+                        .map(accountRole -> new SqliteRoleDao().get(accountRole.getRoleName()))
+                        .collect(Collectors.toList());
+
+                account.setRoles(roles);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return account;
     }
 
     @Override
