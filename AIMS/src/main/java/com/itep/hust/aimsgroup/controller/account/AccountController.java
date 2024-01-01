@@ -13,16 +13,16 @@ import com.itep.hust.aimsgroup.model.account.AccountStatus;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.persistence.dao.AccountDao;
 import com.itep.hust.aimsgroup.persistence.dao.RoleDao;
-import com.itep.hust.aimsgroup.subsystem.email.EmailService;
+import com.itep.hust.aimsgroup.subsystem.email.EmailSubsystem;
 
 import java.util.List;
 public class AccountController {
     private final AccountDao accountDao;
     private final RoleDao roleDao;
-    private final EmailService emailService;
-    public AccountController(AccountDao accountDao, EmailService emailService, RoleDao roleDao) {
+    private final EmailSubsystem emailSubsystem;
+    public AccountController(AccountDao accountDao, EmailSubsystem emailSubsystem, RoleDao roleDao) {
         this.accountDao = accountDao;
-        this.emailService = emailService;
+        this.emailSubsystem = emailSubsystem;
         this.roleDao = roleDao;
     }
     public List<Account> getAccounts() {
@@ -43,7 +43,7 @@ public class AccountController {
 
         String content = AdminCreateMail.getContent(account);
 
-        emailService.sendMail(account.getEmail(), "AIMS ADMIN", content);
+        emailSubsystem.sendMail(account.getEmail(), "AIMS ADMIN", content);
 
     }
 
@@ -59,24 +59,24 @@ public class AccountController {
 
         accountDao.update(account);
 
-        emailService.sendMail(account.getEmail(), "AIMS Admin", AdminUpdateMail.getContent(account));
+        emailSubsystem.sendMail(account.getEmail(), "AIMS Admin", AdminUpdateMail.getContent(account));
     }
 
     public void deleteAccount(Account account) {
         accountDao.delete(account);
-        emailService.sendMail(account.getEmail(), "AIMs Admin", AdminDeleteMail.getContent(account));
+        emailSubsystem.sendMail(account.getEmail(), "AIMs Admin", AdminDeleteMail.getContent(account));
     }
 
     public void blockAccount(Account account) {
         account.setStatus(AccountStatus.BLOCK);
         accountDao.update(account);
-        emailService.sendMail(account.getEmail(), "AIMs Admin", AdminBlockMail.getContent(account));
+        emailSubsystem.sendMail(account.getEmail(), "AIMs Admin", AdminBlockMail.getContent(account));
     }
 
     public void unblockAccount(Account account) {
         account.setStatus(AccountStatus.ACTIVE);
         accountDao.update(account);
-        emailService.sendMail(account.getEmail(), "AIMs Admin", AdminBlockMail.getContent(account));
+        emailSubsystem.sendMail(account.getEmail(), "AIMs Admin", AdminBlockMail.getContent(account));
     }
 
     public List<Role> getAllRoles() {

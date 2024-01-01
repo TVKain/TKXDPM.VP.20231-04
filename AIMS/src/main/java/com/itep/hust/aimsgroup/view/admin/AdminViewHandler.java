@@ -7,8 +7,8 @@ import com.itep.hust.aimsgroup.persistence.dao.AccountDao;
 import com.itep.hust.aimsgroup.persistence.dao.RoleDao;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteAccountDao;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteRoleDao;
-import com.itep.hust.aimsgroup.subsystem.email.EmailService;
-import com.itep.hust.aimsgroup.subsystem.email.javax.JavaxEmailService;
+import com.itep.hust.aimsgroup.subsystem.email.EmailSubsystem;
+import com.itep.hust.aimsgroup.subsystem.email.javax.JavaxEmailSubsystem;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
@@ -41,9 +41,9 @@ public class AdminViewHandler {
     private final AccountController accountController;
     public AdminViewHandler() {
         AccountDao accountDao = new SqliteAccountDao();
-        EmailService emailService = new JavaxEmailService();
+        EmailSubsystem emailSubsystem = new JavaxEmailSubsystem();
         RoleDao roleDao = new SqliteRoleDao();
-        this.accountController = new AccountController(accountDao, emailService, roleDao);
+        this.accountController = new AccountController(accountDao, emailSubsystem, roleDao);
     }
 
     @FXML
