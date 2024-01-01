@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class VNPayController {
-    public String buildUrl(String amount) {
+    protected String buildUrl(String amount) {
         String url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html?";
         String vnp_Amount = "vnp_Amount=" + amount + "00&";
         String vnp_BankCode = "vnp_BankCode=NCB&";
