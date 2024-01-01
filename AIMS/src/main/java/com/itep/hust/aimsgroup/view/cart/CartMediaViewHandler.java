@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.view;
+package com.itep.hust.aimsgroup.view.cart;
 
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;

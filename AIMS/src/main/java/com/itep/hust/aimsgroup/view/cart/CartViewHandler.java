@@ -1,8 +1,10 @@
-package com.itep.hust.aimsgroup.view;
+package com.itep.hust.aimsgroup.view.cart;
 
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.home.HomeViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.DeliveryInfoViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -85,7 +87,11 @@ public class CartViewHandler {
     }
     @FXML
     void PlaceOrder(ActionEvent event) {
-        Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
+        if(vboxCart.getChildren().size() < 1) {
+            Popup.showError("Không có sản phẩm trong giỏ hàng");
+        } else  {
+            Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
+        }
     }
     public void updateLabel() {
         int subTotal = Cart.getInstance().getTotalPrice();

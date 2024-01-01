@@ -1,10 +1,11 @@
-package com.itep.hust.aimsgroup.view;
+package com.itep.hust.aimsgroup.view.home;
 
 import com.itep.hust.aimsgroup.controller.HomeController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
 import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.cart.CartViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
