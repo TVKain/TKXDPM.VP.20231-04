@@ -42,8 +42,15 @@ public class Cart {
      * @return              the global cart object
      * @author tvkain
      */
-    public static Cart getInstance() {
+    public static synchronized Cart getInstance() {
         return cart;
+    }
+
+    /**
+     * Singleton
+     */
+    private Cart() {
+
     }
 
     /**
