@@ -1,17 +1,15 @@
 package com.itep.hust.aimsgroup.view.deliveryinfo;
 
 import com.itep.hust.aimsgroup.controller.placeorder.invoice.InvoiceController;
-import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
-import com.itep.hust.aimsgroup.model.deliveryinfo.RushDeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.util.ComponentLoader;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
-import com.itep.hust.aimsgroup.view.CartViewHandler;
+import com.itep.hust.aimsgroup.view.cart.CartViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.form.DeliveryInfoFormViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.form.NormalDeliveryInfoFormViewHandler;
 import com.itep.hust.aimsgroup.view.deliveryinfo.form.RushDeliveryInfoFormViewHandler;
@@ -21,7 +19,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 

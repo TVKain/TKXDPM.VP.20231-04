@@ -1,7 +1,7 @@
 package com.itep.hust.aimsgroup.view.payment;
 
 import com.itep.hust.aimsgroup.util.Screen;
-import com.itep.hust.aimsgroup.view.HomeViewHandler;
+import com.itep.hust.aimsgroup.view.home.HomeViewHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 

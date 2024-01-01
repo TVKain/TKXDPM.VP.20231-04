@@ -11,9 +11,7 @@ module com.itep.hust.aimsgroup {
 
     requires servlet.api;
     requires java.mail;
-
     opens com.itep.hust.aimsgroup to javafx.fxml;
-    opens com.itep.hust.aimsgroup.view to javafx.fxml;
     exports com.itep.hust.aimsgroup;
     exports com.itep.hust.aimsgroup.util;
     opens com.itep.hust.aimsgroup.model.media to javafx.base;
@@ -37,4 +35,6 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.manager.view.dvd to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.view.book to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.manager.view.cd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.cart to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.home to javafx.fxml;
 }
