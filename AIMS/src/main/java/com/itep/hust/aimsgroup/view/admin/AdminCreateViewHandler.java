@@ -1,6 +1,7 @@
 package com.itep.hust.aimsgroup.view.admin;
 
-import com.itep.hust.aimsgroup.controller.admin.AdminController;
+import com.itep.hust.aimsgroup.controller.account.AccountController;
+import com.itep.hust.aimsgroup.exception.account.CreateAccountException;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
@@ -14,7 +15,7 @@ import org.controlsfx.control.CheckListView;
 
 import java.util.List;
 
-public class AdminAddViewHandler {
+public class AdminCreateViewHandler {
 
 
     @FXML
@@ -35,11 +36,10 @@ public class AdminAddViewHandler {
     @FXML
     private PasswordField passwordTextField;
 
-    private final AdminController adminController;
+    private final AccountController accountController;
 
-    public AdminAddViewHandler(AdminController adminController) {
-
-        this.adminController = adminController;
+    public AdminCreateViewHandler(AccountController accountController) {
+        this.accountController = accountController;
     }
 
     @FXML
@@ -49,31 +49,27 @@ public class AdminAddViewHandler {
     }
 
     public void initializeButtons() {
-        backButton.setOnMouseClicked(e -> {
-            Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
-        });
+        backButton.setOnMouseClicked(e -> Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler()));
 
-        logoutButton.setOnMouseClicked(e -> {
-            Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
-        });
+        logoutButton.setOnMouseClicked(e -> Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler()));
 
         createAccountButton.setOnMouseClicked(e -> {
             String email = emailTextField.getText();
             String password = passwordTextField.getText();
             List<Role> roles = roleCheckList.getCheckModel().getCheckedItems().stream().toList();
 
-            if (!adminController.createAccount(email, password, roles)) {
-                return;
+            try {
+                accountController.createAccount(email, password, roles);
+                Popup.showSuccess("Account created successfully");
+                Screen.setScreen("/fxml/admin/admin-add.fxml", new AdminCreateViewHandler(accountController));
+            } catch (CreateAccountException createAccountException) {
+                Popup.showError(createAccountException.getMessage());
             }
-
-            Popup.showSuccess("Account created successfully");
-
-            Screen.setScreen("/fxml/admin/admin-add.fxml", new AdminAddViewHandler(adminController));
         });
     }
 
     public void initializeRoleCheckList() {
-        List<Role> roles = adminController.getAllRoles();
+        List<Role> roles = accountController.getAllRoles();
 
         roleCheckList.setItems(FXCollections.observableArrayList(roles));
         roleCheckList.setSelectionModel(null);

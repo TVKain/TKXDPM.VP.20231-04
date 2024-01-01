@@ -1,6 +1,7 @@
 package com.itep.hust.aimsgroup.view.login;
 
 import com.itep.hust.aimsgroup.controller.login.AccountLoginController;
+import com.itep.hust.aimsgroup.exception.account.LoginAccountException;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteAccountDao;
@@ -51,20 +52,18 @@ public class AccountLoginViewHandler {
 
     public void initializeLoginButton() {
         loginButton.setOnMouseClicked(e -> {
-            String username = usernameLabel.getText();
+            String email = usernameLabel.getText();
             String password = passwordLabel.getText();
             Role role = roleComboBox.getValue();
 
-            Account account = new Account(username, password);
+            try {
+                accountLoginController.login(email, password, role,  new SqliteAccountDao());
 
-            if (!accountLoginController.authenticateLogin(account, role,  new SqliteAccountDao())) {
-                Popup.showError("Login fail");
-                return;
+                Pair<String, Object> screen = roleScreenMap.get(role.getRoleName());
+                Screen.setScreen(screen.getKey(), screen.getValue());
+            } catch (LoginAccountException loginAccountException) {
+                Popup.showError(loginAccountException.getMessage());
             }
-
-
-            Pair<String, Object> screen = roleScreenMap.get(role.getRoleName());
-            Screen.setScreen(screen.getKey(), screen.getValue());
         });
     }
 

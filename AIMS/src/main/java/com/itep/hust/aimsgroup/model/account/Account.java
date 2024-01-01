@@ -53,6 +53,14 @@ public class Account {
         this.password = password;
     }
 
+    public Account(Integer id, String email, String password, AccountStatus status, List<Role> roles) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+        this.roles = roles;
+    }
+
     public Account(String email, String password, List<Role> roles, AccountStatus status) {
         this.email = email;
         this.password = password;
@@ -60,10 +68,7 @@ public class Account {
         this.status = status;
     }
 
-    public Account(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+
 
     public Account() {
 

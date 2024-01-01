@@ -1,6 +1,7 @@
 package com.itep.hust.aimsgroup.view.admin;
 
-import com.itep.hust.aimsgroup.controller.admin.AdminController;
+import com.itep.hust.aimsgroup.controller.account.AccountController;
+import com.itep.hust.aimsgroup.exception.account.UpdateAccountException;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteRoleDao;
@@ -37,10 +38,10 @@ public class AdminUpdateViewHandler {
 
     private final Account account;
 
-    private final AdminController adminController;
-    public AdminUpdateViewHandler(Account account, AdminController adminController) {
+    private final AccountController accountController;
+    public AdminUpdateViewHandler(Account account, AccountController accountController) {
         this.account = account;
-        this.adminController = adminController;
+        this.accountController = accountController;
     }
 
     @FXML
@@ -69,11 +70,11 @@ public class AdminUpdateViewHandler {
             String password = passwordTextField.getText();
             List<Role> roles = roleCheckList.getCheckModel().getCheckedItems().stream().toList();
 
-            Account toUpdate = new Account(email, password, roles, account.getStatus());
-            toUpdate.setId(this.account.getId());
-
-            if (adminController.updateAccount(toUpdate)) {
+            try {
+                accountController.updateAccount(account.getId(), email, password, roles, account.getStatus());
                 Popup.showSuccess("Update account success");
+            } catch (UpdateAccountException updateAccountException) {
+                Popup.showError(updateAccountException.getMessage());
             }
         });
     }

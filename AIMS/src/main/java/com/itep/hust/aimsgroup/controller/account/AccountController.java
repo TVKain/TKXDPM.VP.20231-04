@@ -1,12 +1,13 @@
-package com.itep.hust.aimsgroup.controller.admin;
+package com.itep.hust.aimsgroup.controller.account;
 
-import com.itep.hust.aimsgroup.controller.admin.mail.AdminBlockMail;
-import com.itep.hust.aimsgroup.controller.admin.mail.AdminCreateMail;
-import com.itep.hust.aimsgroup.controller.admin.mail.AdminDeleteMail;
-import com.itep.hust.aimsgroup.controller.admin.mail.AdminUpdateMail;
-import com.itep.hust.aimsgroup.controller.admin.validator.AccountAddValidator;
-import com.itep.hust.aimsgroup.controller.admin.validator.AccountUpdateValidator;
-import com.itep.hust.aimsgroup.controller.admin.validator.AccountValidator;
+import com.itep.hust.aimsgroup.controller.account.mail.AdminBlockMail;
+import com.itep.hust.aimsgroup.controller.account.mail.AdminCreateMail;
+import com.itep.hust.aimsgroup.controller.account.mail.AdminDeleteMail;
+import com.itep.hust.aimsgroup.controller.account.mail.AdminUpdateMail;
+import com.itep.hust.aimsgroup.controller.account.validator.AccountCreateValidator;
+import com.itep.hust.aimsgroup.controller.account.validator.AccountUpdateValidator;
+import com.itep.hust.aimsgroup.exception.account.CreateAccountException;
+import com.itep.hust.aimsgroup.exception.account.UpdateAccountException;
 import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.AccountStatus;
 import com.itep.hust.aimsgroup.model.account.Role;
@@ -15,11 +16,11 @@ import com.itep.hust.aimsgroup.persistence.dao.RoleDao;
 import com.itep.hust.aimsgroup.subsystem.email.EmailService;
 
 import java.util.List;
-public class AdminController {
+public class AccountController {
     private final AccountDao accountDao;
     private final RoleDao roleDao;
     private final EmailService emailService;
-    public AdminController(AccountDao accountDao, EmailService emailService, RoleDao roleDao) {
+    public AccountController(AccountDao accountDao, EmailService emailService, RoleDao roleDao) {
         this.accountDao = accountDao;
         this.emailService = emailService;
         this.roleDao = roleDao;
@@ -28,14 +29,15 @@ public class AdminController {
         return accountDao.getAll();
     }
 
-    public boolean createAccount(String username, String password, List<Role> roles) {
-        AccountValidator accountValidator = new AccountAddValidator(accountDao);
+    public void createAccount(String email, String password, List<Role> roles)
+            throws CreateAccountException {
+        AccountCreateValidator accountCreateValidator = new AccountCreateValidator();
 
-        Account account = new Account(username, password, roles, AccountStatus.ACTIVE);
+        accountCreateValidator.validateEmail(email, accountDao);
+        accountCreateValidator.validatePassword(password);
+        accountCreateValidator.validateRoles(roles);
 
-        if (accountValidator.validateAccount(account)) {
-            return false;
-        }
+        Account account = new Account(email, password, roles, AccountStatus.ACTIVE);
 
         accountDao.insert(account);
 
@@ -43,21 +45,21 @@ public class AdminController {
 
         emailService.sendMail(account.getEmail(), "AIMS ADMIN", content);
 
-        return true;
     }
 
-    public boolean updateAccount(Account account) {
-        AccountValidator accountValidator = new AccountUpdateValidator(accountDao);
+    public void updateAccount(Integer id, String email, String password, List<Role> roles, AccountStatus accountStatus)
+            throws UpdateAccountException {
+        AccountUpdateValidator accountUpdateValidator = new AccountUpdateValidator();
 
-        if (accountValidator.validateAccount(account)) {
-            return false;
-        }
+        accountUpdateValidator.validateEmail(id, email, accountDao);
+        accountUpdateValidator.validatePassword(password);
+        accountUpdateValidator.validateRoles(roles);
+
+        Account account = new Account(id, email, password, accountStatus, roles);
 
         accountDao.update(account);
 
         emailService.sendMail(account.getEmail(), "AIMS Admin", AdminUpdateMail.getContent(account));
-
-        return true;
     }
 
     public void deleteAccount(Account account) {
@@ -80,4 +82,6 @@ public class AdminController {
     public List<Role> getAllRoles() {
         return roleDao.getAll();
     }
+
+
 }
