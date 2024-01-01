@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JavaxEmailController {
-    protected Message prepareMessage(String subject, String recipient, String htmlCode) {
+    protected Message prepareMessage(String subject, String recipient, String content) {
         try {
             Properties properties = getProperties();
 
@@ -26,7 +26,7 @@ public class JavaxEmailController {
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             message.setSubject(subject);
-            message.setContent(htmlCode, "text/html");
+            message.setContent(content, "text/html");
             return message;
         } catch (Exception ex) {
             Logger.getLogger(JavaxEmailSubsystem.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,7 +43,7 @@ public class JavaxEmailController {
             throw new RuntimeException(e);
         }
     }
-    protected Properties getProperties() {
+    private Properties getProperties() {
         Properties properties = new Properties();
         //Enable authentication
         properties.put("mail.smtp.auth", String.valueOf(JavaxEmailConfig.getInstance().isAuth()));

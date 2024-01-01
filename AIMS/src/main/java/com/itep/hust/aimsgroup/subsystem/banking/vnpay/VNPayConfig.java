@@ -11,13 +11,13 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 public class VNPayConfig {
-    public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8080/vnpay_jsp/vnpay_return.jsp";
-    public static String vnp_TmnCode = "AP0PB1XS";
-    public static String secretKey = "EFWLISXZSEHRCSMLNRXXVEKZHXYEOGLY";
-    public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
+    protected static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    protected static String vnp_ReturnUrl = "http://localhost:8080/vnpay_jsp/vnpay_return.jsp";
+    protected static String vnp_TmnCode = "AP0PB1XS";
+    protected static String secretKey = "EFWLISXZSEHRCSMLNRXXVEKZHXYEOGLY";
+    protected static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 
-    public static String md5(String message) {
+    protected static String md5(String message) {
         String digest = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -35,7 +35,7 @@ public class VNPayConfig {
         return digest;
     }
 
-    public static String Sha256(String message) {
+    protected static String Sha256(String message) {
         String digest = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -54,7 +54,7 @@ public class VNPayConfig {
     }
 
     //Util for VNPAY
-    public static String hashAllFields(Map fields) {
+    protected static String hashAllFields(Map fields) {
         List fieldNames = new ArrayList(fields.keySet());
         Collections.sort(fieldNames);
         StringBuilder sb = new StringBuilder();
@@ -74,7 +74,7 @@ public class VNPayConfig {
         return hmacSHA512(secretKey,sb.toString());
     }
 
-    public static String hmacSHA512(final String key, final String data) {
+    protected static String hmacSHA512(final String key, final String data) {
         try {
 
             if (key == null || data == null) {
@@ -97,7 +97,7 @@ public class VNPayConfig {
         }
     }
 
-    public static String getIpAddress(HttpServletRequest request) {
+    protected static String getIpAddress(HttpServletRequest request) {
         String ipAdress;
         try {
             ipAdress = request.getHeader("X-FORWARDED-FOR");
@@ -110,7 +110,7 @@ public class VNPayConfig {
         return ipAdress;
     }
 
-    public static String getRandomNumber(int len) {
+    protected static String getRandomNumber(int len) {
         Random rnd = new Random();
         String chars = "0123456789";
         StringBuilder sb = new StringBuilder(len);
