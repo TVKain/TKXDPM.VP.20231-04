@@ -33,7 +33,6 @@ public class JavaxEmailController {
         }
         return null;
     }
-
     public void sendMessage(Message message) {
         System.out.println("Preparing to send email");
         try {

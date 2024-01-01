@@ -4,6 +4,7 @@ import com.itep.hust.aimsgroup.controller.placeorder.PlaceOrderController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteInvoiceDao;
 import com.itep.hust.aimsgroup.subsystem.email.javax.JavaxEmailSubsystem;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.deliveryinfo.DeliveryInfoViewHandler;
@@ -60,7 +61,7 @@ public class InvoiceViewHandler {
 
     private void initializePaymentButton() {
         paymentButton.setOnMouseClicked(e -> {
-            placeOrderController.redirectToPayment(invoice, new JavaxEmailSubsystem());
+            placeOrderController.redirectToPayment(invoice, new JavaxEmailSubsystem(), new SqliteInvoiceDao());
         });
     }
 
