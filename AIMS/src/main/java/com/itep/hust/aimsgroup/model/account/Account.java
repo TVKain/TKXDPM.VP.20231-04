@@ -68,8 +68,6 @@ public class Account {
         this.status = status;
     }
 
-
-
     public Account() {
 
     }

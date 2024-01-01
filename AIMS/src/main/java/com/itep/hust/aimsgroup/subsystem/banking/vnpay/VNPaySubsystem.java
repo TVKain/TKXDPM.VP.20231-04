@@ -7,7 +7,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class VNPaySubsystem implements Banking {
-    private VNPayController vnPayController = new VNPayController();
+    private final VNPayController vnPayController = new VNPayController();
 
     @Override
     public void processTransaction(double money, Runnable onSuccess, Runnable onFailure) {
