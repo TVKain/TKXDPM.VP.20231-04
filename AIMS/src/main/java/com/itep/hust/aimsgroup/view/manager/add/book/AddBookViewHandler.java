@@ -34,8 +34,12 @@ public class AddBookViewHandler extends AddMediaViewHandler {
             Book newBook = new Book(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
                     media.getWeight(), media.getImageURL(), author.getText(), coverType.getText(), publisher.getText(), publishDate.getValue(), media.getRushDelivery());
             ManagerController managerController = new ManagerController(new SqliteMediaDao());
-            managerController.addMedia(newBook);
-            Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            if(managerController.addMedia(newBook)) {
+                Popup.showSuccess("Thêm mới book thành công !");
+                Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            } else {
+                Popup.showError("Thêm mới thất bại! Thông tin không hợp lệ");
+            }
         }
     }
 }

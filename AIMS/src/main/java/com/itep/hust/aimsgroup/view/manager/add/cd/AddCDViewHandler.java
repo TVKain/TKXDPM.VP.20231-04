@@ -59,8 +59,12 @@ public class AddCDViewHandler extends AddMediaViewHandler implements Initializab
                 newCD.addTrack(track);
             }
             ManagerController managerController = new ManagerController(new SqliteMediaDao());
-            managerController.addMedia(newCD);
-            Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            if(managerController.addMedia(newCD)) {
+                Popup.showSuccess("Thêm mới CD thành công !");
+                Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            } else {
+                Popup.showError("Thêm mới thất bại! Thông tin không hợp lệ");
+            }
         }
 
     }

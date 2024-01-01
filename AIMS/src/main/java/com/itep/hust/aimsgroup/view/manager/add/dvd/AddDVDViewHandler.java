@@ -39,8 +39,13 @@ public class AddDVDViewHandler extends AddMediaViewHandler {
             DVD newDVD = new DVD(media.getId(), media.getTitle(), media.getCategory(), media.getPrice(), media.getValue(), media.getQuantity(),
                     media.getWeight(), media.getImageURL(), discType.getText(), director.getText(), runtime.getText(), studio.getText(), language.getText(),  subtitle.getText(), media.getRushDelivery());
             ManagerController managerController = new ManagerController(new SqliteMediaDao());
-            managerController.addMedia(newDVD);
-            Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            if(managerController.addMedia(newDVD)) {
+                Popup.showSuccess("Thêm mới DVD thành công !");
+                Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
+            } else {
+                Popup.showError("Thêm mới thất bại! Thông tin không hợp lệ");
+            }
+
         }
     }
 }
