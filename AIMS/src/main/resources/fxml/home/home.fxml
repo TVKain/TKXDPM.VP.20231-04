@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1326.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1326.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox prefHeight="104.0" prefWidth="1326.0" style="-fx-background-color: #ccebff; -fx-border-color: #33adff;">
+        <HBox layoutX="-3.0" prefHeight="104.0" prefWidth="1326.0" style="-fx-background-color: #ccebff; -fx-border-color: #33adff;">
             <children>
                 <VBox prefHeight="102.0" prefWidth="231.0">
                     <children>
@@ -39,21 +39,22 @@
                     <children>
                         <Pane prefHeight="102.0" prefWidth="562.0">
                             <children>
-                                <TextField fx:id="searchBox" layoutX="17.0" layoutY="27.0" prefHeight="48.0" prefWidth="528.0">
+                                <TextField fx:id="searchBox" layoutX="-74.0" layoutY="31.0" prefHeight="41.0" prefWidth="513.0">
                                     <font>
                                         <Font size="18.0" />
                                     </font>
                                 </TextField>
+                        <Button fx:id="splitMenuBtnSearch" layoutX="462.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="92.0" text="Search">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </Pane>
                         <Pane prefHeight="102.0" prefWidth="301.0">
                             <children>
-                        <Button fx:id="splitMenuBtnSearch" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" text="Search">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                        <ChoiceBox fx:id="attribute" layoutX="131.0" layoutY="31.0" prefHeight="41.0" prefWidth="170.0" />
+                        <ChoiceBox fx:id="attribute" layoutX="14.0" layoutY="36.0" prefHeight="30.0" prefWidth="173.0" />
+                        <MenuButton fx:id="sort" layoutX="203.0" layoutY="39.0" mnemonicParsing="false" text="MenuButton" />
                             </children>
                         </Pane>
                     </children>
@@ -62,16 +63,17 @@
                     <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <ImageView fx:id="cartImage" fitHeight="75.0" fitWidth="64.0" layoutX="14.0" layoutY="19.0" onMouseClicked="#viewCart" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                <ImageView fx:id="cartImage" fitHeight="30.0" fitWidth="33.0" layoutX="133.0" layoutY="36.0" onMouseClicked="#viewCart" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../../image/cart.png" />
                            </image>
                         </ImageView>
-                                <Label fx:id="numMediaInCart" layoutX="83.0" layoutY="38.0" prefHeight="30.0" prefWidth="92.0" text="0 media" textFill="#e55050">
+                                <Label fx:id="numMediaInCart" layoutX="126.0" layoutY="65.0" prefHeight="17.0" prefWidth="71.0" text="0 media" textFill="#e55050">
                                     <font>
-                                        <Font name="System Bold" size="18.0" />
+                                        <Font name="System Bold" size="13.0" />
                                     </font>
                                 </Label>
+                        <Button layoutX="53.0" layoutY="39.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="56.0" text="Login" />
                             </children>
                         </Pane>
                     </children>
@@ -90,7 +92,6 @@
              </HBox>
           </content>
        </ScrollPane>
-      <MenuButton fx:id="sort" layoutX="1183.0" layoutY="104.0" mnemonicParsing="false" text="MenuButton" />
 
     </children>
 </AnchorPane>

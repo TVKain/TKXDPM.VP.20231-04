@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS Account (
 -- Account Data
 INSERT INTO Account(email, password, status)
 VALUES
-("tvkain.it@gmail.com", "1", "ACTIVE"),
-("vinhkhanh2611@gmail.com", "1", "ACTIVE"),
-("khanhngocdam@gmail.com", "1", "ACTIVE");
+("tvkain.it@gmail.com", "12345678", "ACTIVE"),
+("vinhkhanh2611@gmail.com", "12345678", "ACTIVE"),
+("khanhngocdam@gmail.com", "12345678", "ACTIVE");
 
 -- Account Role (many to many)
 CREATE TABLE IF NOT EXISTS AccountRole (
@@ -175,14 +175,17 @@ INSERT INTO CD VALUES(56,'artist1','music_type1','record_label1','category_cd1',
 INSERT INTO Track VALUES(3,'track3',56);
 INSERT INTO Track VALUES(4,'track4',56);
 
---INSERT INTO Media VALUES(40,'book','adventure',73,11,0.5,'book10',69,'/image/book/book10.jpg',1);
+INSERT INTO Media VALUES(40,'book','adventure',730000,11,0.5,'book10',690000,'/image/book/book10.jpg',1);
+INSERT INTO Book VALUES(40,'author10','publisher10','2023-12-29',300, 'category10', 'covertype2', 'english');
+
 --INSERT INTO Media VALUES(41,'book','story',66,2,1.1,'book6',62,'/image/book/book6.jpg',1);
 --INSERT INTO Media VALUES(42,'cd','pop',24,6,1.0,'cd7',20,'/image/cd/cd7.jpg',0);
 --INSERT INTO Media VALUES(43,'book','story',50,7,0.5,'book12',44,'/image/book/book12.jpg',0);
 --INSERT INTO Media VALUES(44,'book','story',57,10,0.6,'book4',53,'/image/book/book4.jpg',1);
 --INSERT INTO Media VALUES(45,'cd','pop',66,8,1.0,'cd3',60,'/image/cd/cd3.jpg',1);
 --INSERT INTO Media VALUES(46,'book','bussiness',79,17,0.5,'book1',72,'/image/book/book1.jpg',1);
---INSERT INTO Media VALUES(47,'dvd','cartoon',82,1,0.4,'dvd12',78,'/image/dvd/dvd12.jpg',0);
+INSERT INTO Media VALUES(47,'dvd','cartoon',82,1,0.4,'dvd12',78,'/image/dvd/dvd12.jpg',0);
+INSERT INTO DVD VALUES(47,'studio12','type3','subtitle12', 'language3', '1:30', 'director12', '2023-12-29', 'dvd-category12');
 --INSERT INTO Media VALUES(48,'book','science',25,10,0.6,'book3',22,'/image/book/book3.jpg',0);
 --INSERT INTO Media VALUES(49,'dvd','science fiction',75,3,0.6,'dvd10',74,'/image/dvd/dvd10.jpg',1);
 --INSERT INTO Media VALUES(50,'book','bussiness',26,4,0.5,'book11',19,'/image/book/book11.jpg',1);
