@@ -34,7 +34,7 @@ public class AdminCreateViewHandler {
     private Button logoutButton;
 
     @FXML
-    private PasswordField passwordTextField;
+    private TextField passwordTextField;
 
     private final AccountController accountController;
 
