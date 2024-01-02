@@ -12,6 +12,7 @@ public class PaymentViewHandler {
     @FXML
     private void initialize() {
         backToHomeButton.setOnMouseClicked(e -> {
+
             Screen.setScreen("/fxml/home/home.fxml", new HomeViewHandler());
         });
     }
