@@ -201,14 +201,11 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Implement Delivery Info screen and part of Place Order Controller
-    - SOLID Analysis for Cart class and AdminLoginController
+    - Did nothing this week 
 - Implementation details:
-    - Pull Request(s): [34](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/34) [33](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/33) [32](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/32)
+    - Pull Request(s): 
     - Specific implementation details:
-        - Add FXML file, DeliveryInfoViewHandler, PlaceOrderController, Factory class for DeliveryInfo and RushDeliveryInfo
-        - Add Delivery Info Validator factory class
-        - SOLID Analysis
+        
 
 </details>
 
@@ -252,14 +249,40 @@ This is the source code for the AIMS project for the Software Design and Constru
 <br>
 
 - Assigned tasks:
-    - Implement Delivery Info screen and part of Place Order Controller
-    - SOLID Analysis for Cart class and AdminLoginController
+    - Implemented login with roles  
+    - Implemented account crud, account block unblock for admin 
+    - Finished up the place order use case 
+      - Delivery Info
+      - Invoice
+      - Payment
+    - Implemented banking subsystem 
+    - Refactor email subsystem
 - Implementation details:
-    - Pull Request(s): [34](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/34) [33](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/33) [32](https://github.com/TVKain/TKXDPM.VP.20231-04/pull/32)
+    - Pull Request(s): 
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/44
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/45
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/51
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/60
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/61
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/63
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/64
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/70
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/74
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/76
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/77
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/78
+      - https://github.com/TVKain/TKXDPM.VP.20231-04/pull/79
     - Specific implementation details:
-        - Add FXML file, DeliveryInfoViewHandler, PlaceOrderController, Factory class for DeliveryInfo and RushDeliveryInfo
-        - Add Delivery Info Validator factory class
-        - SOLID Analysis
+        - Added necessary dao classes 
+        - Refactor AccountController 
+        - Added AccountUpdateValidator, AccountCreateValidator
+        - Added invoice.fxml, delivery-info.fxml, payment fxml files 
+        - Added account-create.fxml, account-update.fxml 
+        - Update login-account.fxml
+        - Added ShippingCalculator (for place order)
+        - Added AccountUpdateException, AccountCreateException 
+        - Refactor AccountViewHandler, AccountAddViewHandler, AccountCreateViewHandler
+        
 
 </details>
 
