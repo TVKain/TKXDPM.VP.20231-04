@@ -34,7 +34,7 @@ public class AdminUpdateViewHandler {
     private Button logoutButton;
 
     @FXML
-    private PasswordField passwordTextField;
+    private TextField passwordTextField;
 
     private final Account account;
 

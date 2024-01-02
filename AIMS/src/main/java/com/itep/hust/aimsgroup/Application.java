@@ -25,8 +25,8 @@ public class Application extends javafx.application.Application {
 
         // Screen.setScreen("/fxml/delivery-info/delivery-info.fxml", new DeliveryInfoViewHandler());
          Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
-        // Screen.setScreen("/fxml/manager/manager.fxml", new ManagerViewHandler());
-//        Screen.setScreen("/fxml/admin/admin.fxml", new AdminViewHandler());
+
+
 
         stage.setWidth(1340);
         stage.setHeight(760);
