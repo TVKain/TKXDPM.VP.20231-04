@@ -1,6 +1,7 @@
 package com.itep.hust.aimsgroup.view.deliveryinfo;
 
 import com.itep.hust.aimsgroup.controller.placeorder.invoice.InvoiceController;
+import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculator;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
@@ -41,6 +42,7 @@ public class DeliveryInfoViewHandler {
     TableView<Map.Entry<Media, Integer>> mediaTable;
     private DeliveryInfoFormViewHandler deliveryInfoFormViewHandler = new NormalDeliveryInfoFormViewHandler();
 
+    private ShippingCalculator shippingCalculator = new ShippingCalculator();
     private InvoiceController invoiceController = new InvoiceController();
     @FXML
     public void initialize() {
@@ -95,7 +97,8 @@ public class DeliveryInfoViewHandler {
             DeliveryInfo deliveryInfo = this.deliveryInfoFormViewHandler.getDeliveryInfoFactory()
                     .getDeliveryInfo(this.deliveryInfoFormViewHandler.getFormValue());
 
-            double shippingFee = this.deliveryInfoFormViewHandler.getShippingFeeCalculator().calculateShip(deliveryInfo);
+            shippingCalculator.setShippingCalculatorStrategy(this.deliveryInfoFormViewHandler.getShippingFeeCalculator());
+            double shippingFee = shippingCalculator.execute(deliveryInfo);
 
             System.out.println(shippingFee);
             System.out.println(deliveryInfo);

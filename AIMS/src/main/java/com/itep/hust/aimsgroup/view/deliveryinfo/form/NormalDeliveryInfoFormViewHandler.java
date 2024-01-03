@@ -2,15 +2,10 @@ package com.itep.hust.aimsgroup.view.deliveryinfo.form;
 
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.DeliveryInfoFactory;
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.NormalDeliveryInfoFactory;
-import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.RushDeliveryInfoFactory;
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.DeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.DeliveryInfoValidatorSelector;
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.NormalDeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.RushDeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.NormalShippingCalculator;
-import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculator;
-import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
-import com.itep.hust.aimsgroup.model.deliveryinfo.type.DeliveryType;
+import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.NormalShippingCalculatorStrategy;
+import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculatorStrategy;
 import javafx.fxml.FXML;
 import javafx.util.Pair;
 
@@ -56,7 +51,7 @@ public class NormalDeliveryInfoFormViewHandler extends  DeliveryInfoFormViewHand
     }
 
     @Override
-    public ShippingCalculator getShippingFeeCalculator() {
-        return new NormalShippingCalculator();
+    public ShippingCalculatorStrategy getShippingFeeCalculator() {
+        return new NormalShippingCalculatorStrategy();
     }
 }

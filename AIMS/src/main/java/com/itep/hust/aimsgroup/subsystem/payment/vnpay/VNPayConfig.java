@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.subsystem.banking.vnpay;
+package com.itep.hust.aimsgroup.subsystem.payment.vnpay;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
