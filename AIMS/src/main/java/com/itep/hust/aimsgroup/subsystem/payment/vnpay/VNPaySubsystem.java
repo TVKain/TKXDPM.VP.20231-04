@@ -1,12 +1,12 @@
-package com.itep.hust.aimsgroup.subsystem.banking.vnpay;
+package com.itep.hust.aimsgroup.subsystem.payment.vnpay;
 
-import com.itep.hust.aimsgroup.subsystem.banking.Banking;
+import com.itep.hust.aimsgroup.subsystem.payment.Payment;
 import com.itep.hust.aimsgroup.util.Screen;
 import javafx.concurrent.Worker;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class VNPaySubsystem implements Banking {
+public class VNPaySubsystem implements Payment {
     private final VNPayController vnPayController = new VNPayController();
 
     @Override

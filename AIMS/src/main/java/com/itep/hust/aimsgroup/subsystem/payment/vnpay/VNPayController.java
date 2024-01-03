@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.subsystem.banking.vnpay;
+package com.itep.hust.aimsgroup.subsystem.payment.vnpay;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

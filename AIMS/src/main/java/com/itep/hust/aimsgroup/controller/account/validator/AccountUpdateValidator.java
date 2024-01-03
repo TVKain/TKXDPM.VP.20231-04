@@ -21,7 +21,6 @@ public class AccountUpdateValidator {
         }
     }
 
-
     public void validatePassword(String password) throws UpdateAccountException {
         if (password.length() < 8) {
             throw new UpdateAccountException("Invalid password - password must be at least 8 characters");

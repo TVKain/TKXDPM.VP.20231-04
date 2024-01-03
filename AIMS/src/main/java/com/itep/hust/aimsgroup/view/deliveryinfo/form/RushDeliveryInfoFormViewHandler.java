@@ -1,13 +1,11 @@
 package com.itep.hust.aimsgroup.view.deliveryinfo.form;
 
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.DeliveryInfoFactory;
-import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.NormalDeliveryInfoFactory;
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.RushDeliveryInfoFactory;
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.DeliveryInfoValidator;
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.RushDeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.RushShippingCalculator;
-import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculator;
-import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
+import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.RushShippingCalculatorStrategy;
+import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculatorStrategy;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
@@ -65,7 +63,7 @@ public class RushDeliveryInfoFormViewHandler extends DeliveryInfoFormViewHandler
     }
 
     @Override
-    public ShippingCalculator getShippingFeeCalculator() {
-        return new RushShippingCalculator();
+    public ShippingCalculatorStrategy getShippingFeeCalculator() {
+        return new RushShippingCalculatorStrategy();
     }
 }

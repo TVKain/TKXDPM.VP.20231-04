@@ -1,12 +1,8 @@
 package com.itep.hust.aimsgroup.view.deliveryinfo.form;
 
 import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.factory.DeliveryInfoFactory;
-import com.itep.hust.aimsgroup.controller.placeorder.deliveryinfo.validator.DeliveryInfoValidator;
-import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculator;
-import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
-import com.itep.hust.aimsgroup.util.Popup;
+import com.itep.hust.aimsgroup.controller.placeorder.shippingcalculator.ShippingCalculatorStrategy;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
@@ -41,8 +37,6 @@ public abstract class DeliveryInfoFormViewHandler {
 
     public abstract Pair<String, Boolean> validateValue();
     public abstract Map<String, String> getFormValue();
-
     public abstract DeliveryInfoFactory getDeliveryInfoFactory();
-
-    public abstract ShippingCalculator getShippingFeeCalculator();
+    public abstract ShippingCalculatorStrategy getShippingFeeCalculator();
 }

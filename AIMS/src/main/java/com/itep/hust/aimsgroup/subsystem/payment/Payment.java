@@ -1,5 +1,5 @@
-package com.itep.hust.aimsgroup.subsystem.banking;
+package com.itep.hust.aimsgroup.subsystem.payment;
 
-public interface Banking {
+public interface Payment {
     void processTransaction(double money, Runnable onSuccess, Runnable onFailure);
 }
