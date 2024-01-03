@@ -306,3 +306,13 @@ This is the source code for the AIMS project for the Software Design and Constru
 </details>
 
 </details>
+
+
+<details>
+  <summary>W14: 26/12/2023~1/1/2023 </summary>
+<br>
+- Update sử dụng myqsl với Xampp để giả lập môi trường server để khắc phục Sqlite. Tránh việc database là local trên mỗi máy, đồng bộ dữ liệu khi triển khai thực tế
+- Fix tính năng tìm kiếm và sắp xếp ở trang home screen
+- Thêm tính năng xem chi tiết 1 sản phẩm ở home
+
+</details>
