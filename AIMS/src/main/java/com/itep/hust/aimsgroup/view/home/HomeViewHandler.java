@@ -1,20 +1,19 @@
 package com.itep.hust.aimsgroup.view.home;
-
-import com.itep.hust.aimsgroup.controller.HomeController;
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteMediaDao;
+import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.cart.CartViewHandler;
 import com.itep.hust.aimsgroup.view.login.LoginViewHandler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -35,67 +34,92 @@ public class HomeViewHandler {
      * Dependency inversion principle: lớp này phụ thuộc vào lớp Media và MediaHomeViewHandler giao tiếp qua interface (thỏa mãn)
      */
 
-
-    @FXML
-    private ImageView aimsImage;
-
-    @FXML
-    private ImageView cartImage;
-
-    @FXML
-    private HBox hboxMedia;
-
     @FXML
     private AnchorPane mainAnchorPane;
-
     @FXML
     private Label numMediaInCart;
-
-    @FXML
-    private Button splitMenuBtnSearch;
-
-    @FXML
+        @FXML
     private VBox vboxMedia1;
-
     @FXML
     private VBox vboxMedia2;
-
     @FXML
     private VBox vboxMedia3;
-
+    @FXML
+    private ToggleGroup filterPrice;
     @FXML
     private TextField searchBox;
-
     @FXML
     private VBox vboxMedia4;
-
     @FXML
-    private ChoiceBox<String> attribute;
-
-    @FXML
-    private MenuButton sort;
-
-    private HomeController homeController = new HomeController();
-
-    public HomeViewHandler() {
-    }
-    private int currentList = 0;
+    private ComboBox<String> sortByPrice;
+    private List<Media> allMedia = new SqliteMediaDao().getAll();
+    private ObservableList<Media> listShow = FXCollections.observableArrayList();
     /**
      * Hàm này khởi tạo các giá trị và lấy ra thông tin của media từ database thông qua DAO và hiển thị lên giao diện
      * @author: KhanhND
      */
     @FXML
     public void initialize() {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-
-        // Sửa List thành ObservableList để lắng nghe thay đổi
-        ObservableList<Media> lstMedia = FXCollections.observableArrayList();
-        lstMedia.addAll(new SqliteMediaDao().getAll());
         if(Cart.getInstance().getMedias().size() > 0) {
-            updateMedia(lstMedia);
+            allMedia = updateMedia(allMedia);
+            listShow.addAll(allMedia);
+        } else {
+            listShow.addAll(allMedia);
         }
-        // List filtered lưu danh sách kết quả khớp với tìm kiếm
-        ObservableList<Media> filtered = FXCollections.observableArrayList();
+        showMedia(listShow);
+        Cart.getInstance().addChangeListener(e -> {
+            updateNumberOfMedia();
+        });
+        numMediaInCart.setText(Cart.getInstance().getSize() + " media");
+        searchBox.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(newValue.isEmpty()) {
+                    sortByPrice.getSelectionModel().clearSelection();
+                    listShow.clear();
+                    listShow.addAll(allMedia);
+                    clearMedia();
+                    showMedia(listShow);
+
+                }
+            }
+        });
+
+        sortByPrice.getItems().addAll("Low to high", "High to low");
+        sortByPrice.setOnAction(e -> handleSort());
+    }
+
+    private void handleSort() {
+        Comparator<Media> comparator = Comparator.comparingInt(Media::getValue);
+        if(sortByPrice.getValue() == "Low to high") {
+            FXCollections.sort(listShow, comparator);
+        } else if(sortByPrice.getValue() == "High to low") {
+            FXCollections.sort(listShow, comparator.reversed());
+        }
+        clearMedia();
+        showMedia(listShow);
+    }
+
+    private ObservableList<Media> getListFilteredByPrice(ObservableList<Media> listMedia, int priceStart, int priceEnd)  {
+        ObservableList<Media> listFiltered = FXCollections.observableArrayList();
+        if(priceEnd != 0) {
+            for(Media media : listMedia) {
+                if(media.getPrice() >= priceStart && media.getPrice() <= priceEnd) {
+                    listFiltered.add(media);
+                }
+            }
+        } else {
+            for(Media media : listMedia) {
+                if(media.getPrice() >= priceStart) {
+                    listFiltered.add(media);
+                }
+            }
+        }
+        return listFiltered;
+    }
+
+    private void showMedia(ObservableList<Media> listMedia) {
+        clearMedia();
         // Tạo danh sách VBox để lưu trữ các cột
         List<VBox> vboxColumns = new ArrayList<>();
         vboxColumns.add(vboxMedia1);
@@ -103,185 +127,11 @@ public class HomeViewHandler {
         vboxColumns.add(vboxMedia3);
         vboxColumns.add(vboxMedia4); // Thêm vào danh sách
         int i = 0;
-        while (i < lstMedia.size()) {
+        while (i < listMedia.size()) {
             VBox vboxColumn = vboxColumns.get(i%4);
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home/media_home.fxml"));
-                MediaHomeViewHandler mediaHomeViewHandler = new MediaHomeViewHandler(lstMedia.get(i));
-                loader.setController(mediaHomeViewHandler);
-                loader.load();
-                vboxColumn.getChildren().add(loader.getRoot());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            i++;
-        }
-
-        Cart.getInstance().addChangeListener(e -> {
-            updateNumberOfMedia();
-        });
-        numMediaInCart.setText(Cart.getInstance().getSize() + " media");
-
-        MenuItem menuItem0 = new MenuItem("Default");
-        MenuItem menuItem1 = new MenuItem("Price lowest first");
-        MenuItem menuItem2 = new MenuItem("Price highest first");
-        MenuItem menuItem3 = new MenuItem("A to Z");
-        MenuItem menuItem4 = new MenuItem("Z to A");
-
-        sort.getItems().add(menuItem0);
-        sort.getItems().add(menuItem1);
-        sort.getItems().add(menuItem2);
-        sort.getItems().add(menuItem3);
-        sort.getItems().add(menuItem4);
-        sort.setText("Sorting");
-
-        attribute.getItems().add("Title");
-        attribute.getItems().add("Price");
-        attribute.getItems().add("Amount");
-        attribute.setValue("Title");
-
-        // Nếu searchbox trống và danh sách đang được hiển thị là Filtered thì chuyển về danh sách ban đầu
-        searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
-            if ((newValue.isEmpty()) && (currentList==1)) {
-                refresh(lstMedia, vboxColumns);
-                currentList=0;
-            }
-        });
-        menuItem0.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (currentList == 1){
-                    filtered.sort(Comparator.comparing(Media::getId));
-                    refresh(filtered, vboxColumns);
-                    sort.setText("Default");
-
-                }
-                else {
-                    lstMedia.sort(Comparator.comparing(Media::getId));
-                    refresh(lstMedia, vboxColumns);
-                    sort.setText("Default");
-                }
-            }
-        });
-        menuItem1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (currentList == 1){
-                    filtered.sort(Comparator.comparing(Media::getPrice));
-                    refresh(filtered, vboxColumns);
-                    sort.setText("Price lowest first");
-
-                }
-                else {
-                    lstMedia.sort(Comparator.comparing(Media::getPrice));
-                    refresh(lstMedia, vboxColumns);
-                    sort.setText("Price lowest first");
-                }
-            }
-        });
-
-        menuItem2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (currentList == 1){
-                    filtered.sort(Comparator.comparing(Media::getPrice).reversed());
-                    refresh(filtered, vboxColumns);
-                    sort.setText("Price highest first");
-
-                }
-                else {
-                    lstMedia.sort(Comparator.comparing(Media::getPrice).reversed());
-                    refresh(lstMedia, vboxColumns);
-                    sort.setText("Price highest first");
-                }
-            }
-        });
-
-        menuItem3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (currentList == 1){
-                    filtered.sort(Comparator.comparing(Media::getTitle));
-                    refresh(filtered, vboxColumns);
-                    sort.setText("A to Z");
-
-                }
-                else {
-                    lstMedia.sort(Comparator.comparing(Media::getTitle));
-                    refresh(lstMedia, vboxColumns);
-                    sort.setText("A to Z");
-                }
-            }
-        });
-
-        menuItem4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (currentList == 1){
-                    filtered.sort(Comparator.comparing(Media::getTitle).reversed());
-                    refresh(filtered, vboxColumns);
-                    sort.setText("Z to A");
-
-                }
-                else {
-                    lstMedia.sort(Comparator.comparing(Media::getTitle).reversed());
-                    refresh(lstMedia, vboxColumns);
-                    sort.setText("Z to A");
-                }
-            }
-        });
-        splitMenuBtnSearch.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                // kiểm tra xem searchbox có trống không
-                if (!searchBox.getText().isEmpty()){
-                    // xóa toàn bộ list filtered
-                    filtered.clear();
-                    int i = 0;
-                    while (i< lstMedia.size()){
-                        // tìm kiếm dựa theo tên sản phẩm
-                        if  ( (attribute.getValue().equals("Title")) &&  ( lstMedia.get(i).getTitle().contains(searchBox.getCharacters())) ){
-                            // thêm sản phẩm trùng khớp vào list filtered
-                            filtered.add(lstMedia.get(i));
-                        }
-                        if  ( (attribute.getValue().equals("Price")) &&  ( compare( lstMedia.get(i).getPrice() , searchBox.getCharacters().toString()) ) ){
-                            // thêm sản phẩm trùng khớp vào list filtered
-                            filtered.add(lstMedia.get(i));
-                        }
-                        i++;
-                    }
-                   // nếu danh sách filtered trống thì thông báo tới người dùng
-                    if (filtered.isEmpty()){
-                        a.setContentText("No results were found");
-                        a.show();
-                    }
-                    else {
-                        // nếu danh sách filtered không trống thay danh sách toàn bộ sản phẩm bằng danh sách đã được lọc
-                        refresh(filtered, vboxColumns);
-                        currentList=1;
-                    }
-                }
-            }
-        });
-    }
-
-    private void updateNumberOfMedia() {
-        numMediaInCart.setText(Cart.getInstance().getSize() + " media");
-    }
-
-    @FXML
-    public void refresh(ObservableList<Media> lstMedia, List<VBox> vboxColumns  ){
-        int i = 0;
-        //xóa toàn bộ item khỏi các cột
-        vboxColumns.get(0).getChildren().clear();
-        vboxColumns.get(1).getChildren().clear();
-        vboxColumns.get(2).getChildren().clear();
-        vboxColumns.get(3).getChildren().clear();
-        while (i < lstMedia.size()) {
-            try {
-                VBox vboxColumn = vboxColumns.get(i%4);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home/media_home.fxml"));
-                MediaHomeViewHandler mediaHomeViewHandler = new MediaHomeViewHandler(lstMedia.get(i));
+                MediaHomeViewHandler mediaHomeViewHandler = new MediaHomeViewHandler(listMedia.get(i));
                 loader.setController(mediaHomeViewHandler);
                 loader.load();
                 vboxColumn.getChildren().add(loader.getRoot());
@@ -292,80 +142,56 @@ public class HomeViewHandler {
         }
     }
 
-    public void updateMedia(List<Media> lstMedia) {
+    public List<Media> updateMedia(List<Media> lstMedia) {
         for (Media m : lstMedia) {
             if (Cart.getInstance().getMedias().containsKey(m)) {
                 m.setQuantity(m.getQuantity() - Cart.getInstance().getMedias().get(m));
             }
         }
+        return lstMedia;
     }
+    @FXML
+    void search(ActionEvent event) {
+        sortByPrice.getSelectionModel().clearSelection();
+        String keyWord = searchBox.getText();
+        List<Media> listTMP = new ArrayList<>();
+        for (Media media: allMedia) {
+            if(media.getTitle().contains(keyWord)) {
+                listTMP.add(media);
+            }
+        }
+        if(listTMP.size() == 0) {
+            Popup.showError("Không tìm thấy sản phẩm !");
+        } else {
+            listShow.clear();
+            clearMedia();
+            listShow.addAll(listTMP);
+            showMedia(listShow);
+        }
+    }
+
+
 
     @FXML
     void viewCart(MouseEvent event) {
         Screen.setScreen("/fxml/cart/cart.fxml", new CartViewHandler());
     }
 
-    boolean compare(int number, String input){
-        int number2, number3;
-        String input2 = input.replaceAll("\\s", "");
-
-        if (input2.contains("-")){
-            String[] parts = input2.split("-");
-            number2 = tryParse(parts[0]);
-            number3 = tryParse(parts[1]);
-            if ((number2 <= number) && (number <= number3)) return true;
-        }
-
-        if (isNumeric(input2)){
-            if (number == tryParse(input2))
-                return true;
-        }
-
-         if ( (input2.substring(0,2).matches("<=")) || (input2.substring(0,2).matches("=<")) ) {
-             input2 = input2.replace("<","");
-             input2 = input2.replace("=","");
-             number2 = tryParse(input2);
-             if (number <= number2) return true;
-         }
-
-        if ( (input2.substring(0,2).matches(">=")) || (input2.substring(0,2).matches("=>")) ) {
-            input2 = input2.replace(">","");
-            input2 = input2.replace("=","");
-            number2 = tryParse(input2);
-            if (number >= number2) return true;
-        }
-
-        switch (input2.charAt(0)){
-            case '<':
-                input2 = input2.replace("<","");
-                number2 = tryParse(input2);
-                if (number < number2) return true;
-                break;
-            case '>':
-                input2 = input2.replace(">","");
-                number2 = tryParse(input2);
-                if (number > number2) return true;
-                break;
-        }
-        return false;
-    }
-
-    boolean isNumeric(String str){
-        return str != null && str.matches("[0-9.]+");
-    }
-
-    Integer tryParse(String value) {
-        try {
-            return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            return 2147000000;
-        }
-    }
-
     @FXML
     void login(ActionEvent event) {
         Screen.setScreen("/fxml/login/login.fxml", new LoginViewHandler());
     }
+
+    private void clearMedia() {
+        vboxMedia1.getChildren().clear();
+        vboxMedia2.getChildren().clear();
+        vboxMedia3.getChildren().clear();
+        vboxMedia4.getChildren().clear();
+    }
+    private void updateNumberOfMedia() {
+        numMediaInCart.setText(Cart.getInstance().getSize() + " media");
+    }
+
 }
 
 

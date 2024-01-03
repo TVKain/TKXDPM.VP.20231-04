@@ -180,21 +180,28 @@ INSERT INTO Book VALUES(40,'author10','publisher10','2023-12-29',300, 'category1
 
 INSERT INTO Media VALUES(41,'book',660000,2,1.1,'book6',620000,'/image/book/book6.jpg',1);
 INSERT INTO Book VALUES(41,'author6','publisher6','2023-12-29',300, 'category6', 'covertype2', 'english');
---INSERT INTO Media VALUES(42,'cd','pop',24,6,1.0,'cd7',20,'/image/cd/cd7.jpg',0);
+
 INSERT INTO Media VALUES(43,'book',50000,7,0.5,'book12',44000,'/image/book/book12.jpg',0);
 INSERT INTO Book VALUES(43,'author12','publisher12','2023-12-29',300, 'category12', 'covertype2', 'english');
 INSERT INTO Media VALUES(44,'book',57000,10,0.6,'book4',53000,'/image/book/book4.jpg',1);
 INSERT INTO Book VALUES(44,'author4','publisher4','2023-12-29',300, 'category4', 'covertype2', 'english');
---INSERT INTO Media VALUES(45,'cd','pop',66,8,1.0,'cd3',60,'/image/cd/cd3.jpg',1);
---INSERT INTO Media VALUES(46,'book','bussiness',79,17,0.5,'book1',72,'/image/book/book1.jpg',1);
+
 INSERT INTO Media VALUES(47,'dvd',82000,1,0.4,'dvd12',78000,'/image/dvd/dvd12.jpg',0);
 INSERT INTO DVD VALUES(47,'studio12','type3','subtitle12', 'language3', '1:30', 'director12', '2023-12-29', 'dvd-category12');
---INSERT INTO Media VALUES(48,'book','science',25,10,0.6,'book3',22,'/image/book/book3.jpg',0);
-INSERT INTO Media VALUES(49,'dvd',75000,3,0.6,'dvd10',74000,'/image/dvd/dvd10.jpg',1);
-INSERT INTO DVD VALUES(49,'studio10','type3','subtitle10', 'language3', '1:30', 'director10', '2023-12-29', 'dvd-category10');
---INSERT INTO Media VALUES(50,'book','bussiness',26,4,0.5,'book11',19,'/image/book/book11.jpg',1);
+
 INSERT INTO Media VALUES(51,'dvd',610000,18,0.7,'dvd11',52000,'/image/dvd/dvd11.jpg',0);
 INSERT INTO DVD VALUES(51,'studio11','type3','subtitle11', 'language3', '1:30', 'director11', '2023-12-29', 'dvd-category11');
+
+INSERT INTO Media VALUES(49,'dvd',75000,3,0.6,'dvd10',74000,'/image/dvd/dvd10.jpg',1);
+INSERT INTO DVD VALUES(49,'studio10','type3','subtitle10', 'language3', '1:30', 'director10', '2023-12-29', 'dvd-category10');
+--INSERT INTO Media VALUES(42,'cd','pop',24,6,1.0,'cd7',20,'/image/cd/cd7.jpg',0);
+
+--INSERT INTO Media VALUES(45,'cd','pop',66,8,1.0,'cd3',60,'/image/cd/cd3.jpg',1);
+--INSERT INTO Media VALUES(46,'book','bussiness',79,17,0.5,'book1',72,'/image/book/book1.jpg',1);
+
+--INSERT INTO Media VALUES(48,'book','science',25,10,0.6,'book3',22,'/image/book/book3.jpg',0);
+--INSERT INTO Media VALUES(50,'book','bussiness',26,4,0.5,'book11',19,'/image/book/book11.jpg',1);
+
 --INSERT INTO Media VALUES(52,'cd','rock',40,4,0.5,'cd4',35,'/image/cd/cd4.jpg',1);
 --INSERT INTO Media VALUES(53,'dvd','action',70,16,0.6,'dvd9',60,'/image/dvd/dvd9.jpg',0);
 --INSERT INTO Media VALUES(54,'dvd','romance',47,19,0.7,'dvd2',39,'/image/dvd/dvd2.jpg',0);
