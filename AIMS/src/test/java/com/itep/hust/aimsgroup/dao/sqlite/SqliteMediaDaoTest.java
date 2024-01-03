@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.dao;
+package com.itep.hust.aimsgroup.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.media.Media;
 import com.itep.hust.aimsgroup.persistence.dao.Dao;

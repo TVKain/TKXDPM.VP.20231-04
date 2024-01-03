@@ -2,10 +2,9 @@ package com.itep.hust.aimsgroup.view.login;
 
 import com.itep.hust.aimsgroup.controller.login.AccountLoginController;
 import com.itep.hust.aimsgroup.exception.account.LoginAccountException;
-import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
-import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteAccountDao;
-import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteRoleDao;
+import com.itep.hust.aimsgroup.persistence.dao.mysql.MysqlAccountDao;
+import com.itep.hust.aimsgroup.persistence.dao.mysql.MysqlRoleDao;
 import com.itep.hust.aimsgroup.util.Popup;
 import com.itep.hust.aimsgroup.util.Screen;
 import com.itep.hust.aimsgroup.view.admin.AdminViewHandler;
@@ -57,7 +56,7 @@ public class AccountLoginViewHandler {
             Role role = roleComboBox.getValue();
 
             try {
-                accountLoginController.login(email, password, role,  new SqliteAccountDao());
+                accountLoginController.login(email, password, role,  new MysqlAccountDao());
 
                 Pair<String, Object> screen = roleScreenMap.get(role.getRoleName());
                 Screen.setScreen(screen.getKey(), screen.getValue());
@@ -68,7 +67,7 @@ public class AccountLoginViewHandler {
     }
 
     public void initializeComboBox() {
-        List<Role> roles = accountLoginController.getRoles(new SqliteRoleDao());
+        List<Role> roles = accountLoginController.getRoles(new MysqlRoleDao());
 
         roleComboBox.getItems().addAll(roles);
 
