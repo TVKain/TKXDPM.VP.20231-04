@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.dao;
+package com.itep.hust.aimsgroup.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.deliveryinfo.DeliveryInfo;
 import com.itep.hust.aimsgroup.model.invoice.Invoice;

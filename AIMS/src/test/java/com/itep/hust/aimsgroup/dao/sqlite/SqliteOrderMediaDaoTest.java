@@ -1,4 +1,4 @@
-package com.itep.hust.aimsgroup.dao;
+package com.itep.hust.aimsgroup.dao.sqlite;
 
 import com.itep.hust.aimsgroup.model.order.OrderMedia;
 import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteOrderMediaDao;

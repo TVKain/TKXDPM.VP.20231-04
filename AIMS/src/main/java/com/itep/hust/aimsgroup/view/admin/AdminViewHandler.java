@@ -5,8 +5,8 @@ import com.itep.hust.aimsgroup.model.account.Account;
 import com.itep.hust.aimsgroup.model.account.Role;
 import com.itep.hust.aimsgroup.persistence.dao.AccountDao;
 import com.itep.hust.aimsgroup.persistence.dao.RoleDao;
-import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteAccountDao;
-import com.itep.hust.aimsgroup.persistence.dao.sqlite.SqliteRoleDao;
+import com.itep.hust.aimsgroup.persistence.dao.mysql.MysqlAccountDao;
+import com.itep.hust.aimsgroup.persistence.dao.mysql.MysqlRoleDao;
 import com.itep.hust.aimsgroup.subsystem.email.EmailSubsystem;
 import com.itep.hust.aimsgroup.subsystem.email.javax.JavaxEmailSubsystem;
 import com.itep.hust.aimsgroup.util.Popup;
@@ -40,9 +40,9 @@ public class AdminViewHandler {
 
     private final AccountController accountController;
     public AdminViewHandler() {
-        AccountDao accountDao = new SqliteAccountDao();
+        AccountDao accountDao = new MysqlAccountDao();
         EmailSubsystem emailSubsystem = new JavaxEmailSubsystem();
-        RoleDao roleDao = new SqliteRoleDao();
+        RoleDao roleDao = new MysqlRoleDao();
         this.accountController = new AccountController(accountDao, emailSubsystem, roleDao);
     }
 
