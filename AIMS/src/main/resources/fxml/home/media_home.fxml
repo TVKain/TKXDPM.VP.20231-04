@@ -3,15 +3,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.layout.StackPane?>
-<AnchorPane prefHeight="211.0" prefWidth="298.0" style="-fx-border-color: #ccd9ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+
+<AnchorPane prefHeight="211.0" prefWidth="298.0" style="-fx-border-color: #ccd9ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="mediaImage" fitHeight="152.0" fitWidth="160.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
@@ -59,7 +59,7 @@
                         </Pane>
                         <Pane prefHeight="37.0" prefWidth="60.0">
                            <children>
-                              <Label fx:id="mediaAvail" layoutX="10.0" layoutY="6.0" prefHeight="16.0" prefWidth="42.0" text="9"/>
+                              <Label fx:id="mediaAvail" layoutX="10.0" layoutY="6.0" prefHeight="16.0" prefWidth="42.0" text="9" />
                            </children>
                         </Pane>
                      </children>
@@ -73,8 +73,8 @@
                      <children>
 
                         <StackPane>
-                           <Button fx:id="addToCartBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-cursor: hand;" text="Add to Cart" onAction="#handleAddToCart" />
-                           <Label fx:id="soldOut" text="Sold out" textFill="#FF0000" visible="false"  prefHeight="35.0" prefWidth="97.0">
+                           <Button fx:id="addToCartBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddToCart" prefHeight="35.0" prefWidth="97.0" style="-fx-cursor: hand;" text="Add to Cart" />
+                           <Label fx:id="soldOut" prefHeight="35.0" prefWidth="97.0" text="Sold out" textFill="#FF0000" visible="false">
                               <font>
                                  <Font name="System Bold " size="14.0" />
                               </font>

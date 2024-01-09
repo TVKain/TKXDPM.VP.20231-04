@@ -314,5 +314,6 @@ This is the source code for the AIMS project for the Software Design and Constru
 
 - Update sử dụng myqsl với Xampp để giả lập môi trường server để khắc phục Sqlite. Tránh việc database là local trên mỗi máy, đồng bộ dữ liệu khi triển khai thực tế
 - Fix tính năng tìm kiếm và sắp xếp ở trang home screen
+- Thêm chức năng xem chi tiết mặt hàng ở màn hình khách hàng
 
 </details>

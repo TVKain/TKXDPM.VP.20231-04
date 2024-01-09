@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DetailCDViewHandler implements Initializable {
+public class HomeDetailCDViewHandler implements Initializable {
     @FXML
     private Label artist;
 
@@ -29,7 +29,7 @@ public class DetailCDViewHandler implements Initializable {
     private Label recordLabel;
     private CD cd;
 
-    public DetailCDViewHandler(CD cd) {
+    public HomeDetailCDViewHandler(CD cd) {
         this.cd = cd;
     }
     @Override
@@ -40,7 +40,7 @@ public class DetailCDViewHandler implements Initializable {
         categoryCD.setText(cd.getCDCategory());
 
         for(Track track: cd.getListTrack()) {
-            HBox hbox = (HBox) ComponentLoader.getComponent("/fxml/manager/view/cd/view_detail_track.fxml", new DetailTrackViewHandler(track));
+            HBox hbox = (HBox) ComponentLoader.getComponent("/fxml/manager/view/cd/view_detail_track.fxml", new HomeDetailTrackViewHandler(track));
             boxTrack.getChildren().add(hbox);
         }
     }

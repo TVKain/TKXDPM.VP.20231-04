@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-public class DetailBookViewHandler implements Initializable {
+public class HomeDetailBookViewHandler implements Initializable {
     @FXML
     private Label author;
     @FXML
@@ -18,7 +18,7 @@ public class DetailBookViewHandler implements Initializable {
     private Label type;
     private Book book;
 
-    public DetailBookViewHandler(Book book) {
+    public HomeDetailBookViewHandler(Book book) {
         this.book = book;
     }
 

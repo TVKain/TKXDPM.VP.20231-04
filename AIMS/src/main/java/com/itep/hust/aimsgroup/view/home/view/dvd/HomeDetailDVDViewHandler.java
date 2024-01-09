@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DetailDVDViewHandler implements Initializable {
+public class HomeDetailDVDViewHandler implements Initializable {
     @FXML
     private Label director;
 
@@ -27,7 +27,7 @@ public class DetailDVDViewHandler implements Initializable {
     @FXML
     private Label subtitle;
     private DVD dvd;
-    public DetailDVDViewHandler(DVD dvd) {
+    public HomeDetailDVDViewHandler(DVD dvd) {
         this.dvd = dvd;
     }
 

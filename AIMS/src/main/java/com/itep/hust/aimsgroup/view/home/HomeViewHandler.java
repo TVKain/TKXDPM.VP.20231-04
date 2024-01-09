@@ -38,7 +38,7 @@ public class HomeViewHandler {
     private AnchorPane mainAnchorPane;
     @FXML
     private Label numMediaInCart;
-        @FXML
+    @FXML
     private VBox vboxMedia1;
     @FXML
     private VBox vboxMedia2;

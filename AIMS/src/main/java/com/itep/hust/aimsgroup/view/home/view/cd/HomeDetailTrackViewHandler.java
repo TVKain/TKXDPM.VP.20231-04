@@ -9,14 +9,14 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DetailTrackViewHandler implements Initializable {
+public class HomeDetailTrackViewHandler implements Initializable {
     @FXML
     private HBox hboxTrack;
 
     @FXML
     private Label nameTrack;
     private Track track;
-    public DetailTrackViewHandler(Track track) {
+    public HomeDetailTrackViewHandler(Track track) {
         this.track = track;
     }
     @Override

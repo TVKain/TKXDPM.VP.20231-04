@@ -2,7 +2,11 @@ package com.itep.hust.aimsgroup.view.home;
 
 import com.itep.hust.aimsgroup.model.cart.Cart;
 import com.itep.hust.aimsgroup.model.media.Media;
+import com.itep.hust.aimsgroup.util.Screen;
+import com.itep.hust.aimsgroup.view.home.view.MediaDetailViewHandler;
+import com.itep.hust.aimsgroup.view.manager.view.DetailGeneralViewHandler;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +14,8 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URISyntaxException;
 
@@ -22,7 +28,8 @@ public class MediaHomeViewHandler {
      * Interface segregation principle: lớp này không áp dụng kĩ thuật implements
      * Dependency inversion principle: lớp này phụ thuộc vào lớp Media và Cart giao tiếp qua interface (thỏa mãn)
      */
-
+    @FXML
+    private AnchorPane mediaPane;
     @FXML
     private Button addToCartBtn;
 
@@ -73,6 +80,13 @@ public class MediaHomeViewHandler {
                     new SpinnerValueFactory.IntegerSpinnerValueFactory(1, media.getQuantity(), 1)
             );
         }
+        mediaImage.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println("Clicked item "+media.getId());
+                Screen.setScreen("/fxml/home/view/view_detail_media.fxml", new MediaDetailViewHandler(media));
+            }
+        });
     }
 
     @FXML
@@ -89,7 +103,5 @@ public class MediaHomeViewHandler {
                     new SpinnerValueFactory.IntegerSpinnerValueFactory(1, media.getQuantity(), 1)
             );
         }
-
     }
-
 }
