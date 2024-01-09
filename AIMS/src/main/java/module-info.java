@@ -37,4 +37,8 @@ module com.itep.hust.aimsgroup {
     opens com.itep.hust.aimsgroup.view.manager.view.cd to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.cart to javafx.fxml;
     opens com.itep.hust.aimsgroup.view.home to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.home.view to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.home.view.book to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.home.view.cd to javafx.fxml;
+    opens com.itep.hust.aimsgroup.view.home.view.dvd to javafx.fxml;
 }
